@@ -1,14 +1,11 @@
 ﻿@page
 @model RestaurantReviews.Pages.Landing_pageModel
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Landing page";
     Layout = "_Layout1";
 }
 
 <body>
-    <div class="page-wrapper">
-        <img src="pic/Wave_Painting_Logo_Template__1_-removebg-preview.png" alt="logo" class="logo">
-
         <section class="flex-container">
             <div class="header-content">
                 <h1>My spot</h1>
@@ -19,8 +16,8 @@
                     things.
                 </p>
                 <div class="button">
-                    <a href="" class="login-button">Login</a>
-                    <a href="" class="register-button">Register</a>
+                    <a asp-page="/Login" class="login-button">Login</a>
+                    <a asp-page="/Register" class="register-button">Register</a>
                 </div>
             </div>
 
@@ -29,5 +26,4 @@
             </div>
 
         </section>
-    </div>
 </body>
