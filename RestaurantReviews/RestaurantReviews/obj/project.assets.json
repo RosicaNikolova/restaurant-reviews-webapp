@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rositsa\\source\\repos\\RestaurantReviews\\RestaurantReviews\\RestaurantReviews.csproj",
+      "projectUniqueName": "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\RestaurantReviews\\RestaurantReviews.csproj",
       "projectName": "RestaurantReviews",
-      "projectPath": "C:\\Users\\Rositsa\\source\\repos\\RestaurantReviews\\RestaurantReviews\\RestaurantReviews.csproj",
+      "projectPath": "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\RestaurantReviews\\RestaurantReviews.csproj",
       "packagesPath": "C:\\Users\\Rositsa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rositsa\\source\\repos\\RestaurantReviews\\RestaurantReviews\\obj\\",
+      "outputPath": "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\RestaurantReviews\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
