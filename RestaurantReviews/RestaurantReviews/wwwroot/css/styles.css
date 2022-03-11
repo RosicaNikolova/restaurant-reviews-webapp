@@ -1,0 +1,587 @@
+
+
+body{
+    background-color: #F2E9E4;
+    margin: 0;
+}
+
+.flex-container{
+/*margin: 70px;*/
+margin: 0;
+margin-top: 20px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+border: 1px;
+border-style: outset; 
+box-shadow: 0px 0px 44px 8px rgba(0,0,0,0.35);
+background-color: #1E1E35;
+}
+
+.header-content{
+width: 35%;
+color: #F2E9E4;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.flex-container h1{
+    margin: 0;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px #F2E9E4;
+    font-weight: lighter;
+    letter-spacing: 3px;
+    /*font-size: 80px;*/
+    font-size: 5vw;
+}
+.flex-container h2{
+    /*font-size: 30px;*/
+    font-size: 3vw;
+    margin: 0;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 2px #F2E9E4;
+    font-weight: lighter;
+    letter-spacing: 2px;
+}
+.flex-container p{
+    margin: 0;
+    margin-bottom: 60px;
+    letter-spacing: 0.5px;
+    /*font-size: 20px;*/
+    font-size: 1.3vw;
+}
+
+.button{
+
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.login-button{
+    background-color: #DDC7BB;
+    border: none;
+    color: #1E1E35;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /*font-size: 25px;*/
+    font-size: 1.6vw;
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+
+.register-button{
+    background-color: #DDC7BB;
+    border: none;
+    color: #1E1E35;
+    padding: 15px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /*font-size: 25px;*/
+    font-size: 1.6vw;
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+
+.register-button:hover{
+  background-color: #A2D0EE;
+  color: #F2F2F5;
+}
+
+.login-button:hover{
+  background-color: #A2D0EE;
+  color: #F2F2F5;
+}
+
+
+.header-image{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    }
+  
+.header-image img{
+    width: 530px;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0px 0px 44px 8px rgba(0,0,0,0.35);
+}
+
+.logo{
+    width: 115px;
+    max-width: 100%;
+}
+
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  border-bottom: solid 0.2px #1E1E35;
+}
+
+.navigation_menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+
+.navigation_menu li {
+  float: left;
+  margin: 30px;
+}
+
+.navigation_menu li a{
+  display: block;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 16px;
+  border: 2px solid #A2D0EE;
+  background-color: #A2D0EE;
+  color:#1E1E35;
+  font-size: 20px;
+  transition-duration: 0.5s;
+
+}
+
+.navigation_menu li a:hover{
+  border: 2px solid #A2D0EE;
+  color:#555977;
+  background-color: #F2F2F5;
+}
+
+.login-button:hover{
+  background-color: #A2D0EE;
+  color: #F2F2F5;
+}
+.page-wrapper{
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.logo_nav{
+  width: 100px;
+  height: 70px;
+  max-width: 100%;
+  margin-top: 15px;
+}
+
+
+
+.restaurant_list{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.restaurant_list li{
+  margin-bottom: 60px;
+  color:#1E1E35;
+  border: 1px;
+border-style: outset; 
+box-shadow: 0px 0px 44px 8px rgba(0,0,0,0.35);
+background-color:#F2F2F5;
+
+}
+
+.restaurant_card{
+  display: flex;
+  justify-content: space-between;
+  height: 17vw;
+
+}
+
+.card_content{
+  width: -webkit-fill-available;
+  margin-left: 50px;
+  letter-spacing: 1px
+
+}
+
+.card_buttons a{
+   padding: 10px 20px;
+   text-align: center;
+   width: 90px;
+    display: block;
+    background-color:#A2D0EE;
+    border-radius: 16px;
+    color: #1E1E35;
+    text-decoration: none;
+    font-size: 1vw;
+    transition-duration: 0.5s;
+}
+
+.card_buttons a:hover{
+  background-color: #555977;
+  color:#F2F2F5;
+}
+
+.card_buttons{
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.card_ratings{
+  font-size: 1vw;
+}
+
+.card_ratings div{
+  margin-bottom: 7px;
+}
+.card_r_name{
+  font-size: 1.7vw;
+  letter-spacing: 1.5px
+}
+
+.card_content p{
+  font-size: 1.2vw;
+  margin-top: 1vw;
+}
+
+.card_picture_div{
+height: 17vw;
+width: 21vw;
+
+}
+
+.card_picture_div img{
+  width: inherit;
+  height: inherit;
+}
+
+
+
+
+
+/*restuarant page*/
+
+.hero_section{
+display: flex;
+align-items: center;
+border: 1px;
+border-style: outset; 
+box-shadow: 0px 0px 44px 8px rgba(0,0,0,0.35);
+background-color: #1E1E35;
+padding: 30px;
+justify-content: space-evenly;
+margin-bottom: 30px;
+
+}
+
+
+.restaurnat_info_wrapper{
+  background-color: #DDC7BB;
+  font-size: 1.5vw;
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.hero_image img{
+  width: 500px;
+  height: auto;
+}
+
+.hero_name{
+  background-color: aqua;
+  font-size: 3vw;
+}
+
+
+.rest_info_raitings_flex{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.rest_info_raitings_flex div div{
+  margin-bottom: 30px;
+}
+
+.last_item{
+  margin-bottom: 0;
+}
+
+.review_wrapper{
+  background-color: pink;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.review_header{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2vw;
+  margin-bottom: 20px;
+}
+
+.review_ratings{
+  font-size: 1.6vw;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.review_comment{
+  font-size: 1.2vw;
+  margin: 10px;
+  margin-bottom: 40px;
+}
+
+.reviews_list{
+  list-style: none;
+  padding: 0;
+}
+
+.reviews_header{
+  font-size: 1.8vw;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  background-color: royalblue;
+}
+
+
+.edit-button{
+    background-color: #DDC7BB;
+    color: #1E1E35;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1vw;
+    transition-duration: 0.5s;
+}
+
+.edit-button:hover{
+  background-color: #A2D0EE;
+  color: #F2F2F5;
+}
+
+
+/*1 rem = 16px*/
+/*1 em = */
+
+
+@media (max-width: 2776px) {
+  .button{
+    margin-bottom: 40px;
+  } 
+
+}
+
+
+@media (max-width: 1300px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .restaurant_card{
+    height: auto;
+    flex-direction: column;
+}
+.card_content{
+    flex-direction: column;
+    margin: 0;
+}
+.header-content{
+  width: 70%;
+}
+
+.card_buttons a{
+  padding: 5px 10px;
+  width: 8%;
+  font-size: 1.3vw;
+  margin: 4px;
+}
+
+.navigation_menu li {
+margin: 10px;
+}
+
+.navigation_menu li a{
+padding: 9px; 
+font-size: 15px;
+}
+
+.logo_nav{
+width: 10%;
+height: auto;
+margin-top: auto;
+}
+}
+
+
+@media (max-width: 792px) {
+
+  body{
+    width: 100%;
+    padding: 0;
+  
+  }
+  .page-wrapper{
+    margin: 20px;
+ 
+  }
+
+    .button{
+      margin-left:auto;
+      margin-right: auto;
+      margin-bottom: 30px;
+      width: 40%;
+
+    }
+
+    .login-button{
+      padding: 8px 8px;
+    }
+
+    .register-button{
+      padding: 8px 8px;
+    }
+
+    .header-content{
+      width: 80%;
+   
+      font-size: 5px;
+    }
+
+    .logo{
+      width: 10%;
+
+    }
+
+    .flex-container h1{
+      margin-bottom: 30px;
+    }
+
+    .flex-container h2{
+      margin-bottom: 30px;
+    }
+
+    .flex-container p{
+
+      margin-bottom: 40px;
+      /*font-size: 20px;*/
+      font-size: 1.3vw;
+  }
+  .header-image{
+    padding-top: 0;
+    text-align: center;
+    }
+
+  
+.header-image img{
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    box-shadow: 0px 0px 44px 8px rgba(0,0,0,0.35);
+}
+
+
+
+.logo_nav{
+  width: 10%;
+  margin-bottom: auto;
+}
+
+.navigation_menu li {
+  margin: 7px;
+}
+
+.navigation_menu li a{
+  padding: 5px; 
+  font-size: 10px;
+}
+
+.restaurant_list{
+  margin-top: 20px;
+}
+
+}
+
+
+@media (max-width: 390px) {
+
+  body{
+    width: 100%;
+    padding: 0;
+    
+  }
+
+  .flex-container{
+    margin-top: 5px;
+  }
+  
+
+    .button{
+      margin-left:auto;
+      margin-right: auto;
+      padding: 4px 4px;
+    }
+
+    .login-button{
+      padding: 4px 4px;
+      width: 30%;
+    }
+
+    .register-button{
+      padding: 4px 4px;
+      width: 30%;
+    }
+
+    .header-content{
+      width: 80%;
+    
+      font-size: 5px;
+    }
+
+    .logo{
+      width: 10%;
+    }
+
+    .flex-container h1{
+      margin-bottom: 10px;
+    }
+
+    .flex-container h2{
+      margin-bottom: 10px;
+    }
+
+    .flex-container p{
+
+      margin-bottom: 10px;
+      /*font-size: 20px;*/
+      font-size: 1.3vw;
+  }
+
+  .navigation_menu li {
+    margin: 5px;
+  }
+  
+  .navigation_menu li a{
+    padding: 3px; 
+    font-size: 5px;
+  }
+  .logo_nav{
+    width: 5%;
+  }
+
+  .restaurant_list{
+    margin-top: 10px;
+  }
+
+  
+  
+}
+
+
+  
+ 
+
+ 
+
+  
+    
+  

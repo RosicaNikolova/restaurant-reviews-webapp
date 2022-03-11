@@ -36,3 +36,9 @@ C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\R
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\RestaurantReviews.pdb
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\RestaurantReviews.genruntimeconfig.cache
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\RestaurantReviews.csproj.CopyComplete
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Home.cshtml.g.cs
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Landing_page.cshtml.g.cs
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Myprofile.cshtml.g.cs
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Myreviews.cshtml.g.cs
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Restaurant.cshtml.g.cs
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout1.cshtml.g.cs
