@@ -20,5 +20,27 @@ namespace RestaurantReviews.Models
                 return null;
             }
         }
+
+        public List<User> findAllUsers()
+        {
+            return userRepository.findAll();
+        }
+
+        public void CreateUser(string email, string password, string firstName, string lastName)
+        {
+            if(userRepository.FindUser(email, password) != null)
+            {
+                throw new UserExistsException("User already exists");
+            }
+            else
+            {
+                User user = new User();
+                user.Email = email;
+                user.Password = password;
+                user.FirstName = firstName;
+                user.LastName = lastName;
+                userRepository.SaveUser(user);
+            }
+        }
     }
 }
