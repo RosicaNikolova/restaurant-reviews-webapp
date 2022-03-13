@@ -9,15 +9,15 @@ namespace RestaurantReviews.Models
 {
     public class UserRepository
     {
-        public User FindUser(string username, string password)
+        public User FindUser(string email, string password)
         {
             try
             {
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
-                    string sql = "select id, email, first_name, last_name, role from user where e-mail=@email and password=@password";
+                    string sql = "select id, email, first_name, last_name, role from user where email=@email and password=@password";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("username", username);
+                    cmd.Parameters.AddWithValue("email", email);
                     cmd.Parameters.AddWithValue("password", password);
 
                     conn.Open();
@@ -36,9 +36,9 @@ namespace RestaurantReviews.Models
                     return user;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                return null;
+                throw new Exception();
             }
         }
 

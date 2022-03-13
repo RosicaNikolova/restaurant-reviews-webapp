@@ -5,21 +5,29 @@
        Layout = "_Layout1";
 }
 
+@section scripts{ 
+       <partial name="_ValidationScriptsPartial"/>
+}
+
 <div class="form_container">
 
 
-    <form>
+    <form method="post">
         <div class="container">
             <h2 class="login_heading">Login</h2>
-            <label for="uname">E-mail:</label>
-            <input type="text" placeholder="Enter E-mail" name="uname" required>
+            <label asp-for="User.Email">E-mail:</label>
+            <span asp-validation-for="User.Email"></span>
+            <input asp-for="User.Email" placeholder="Enter E-mail">
 
-            <label for="psw">Password:</label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <label asp-for="User.Password">Password:</label>
+            <span asp-validation-for="User.Password"></span>
+            <input asp-for="User.Password" placeholder="Enter Password">
         </div>
         <div class="login_buttons">
             <input type="submit" value="Log in" class="loginbtn">
             <input type="reset" class="cancelbtn" value="Cancel">
         </div>
     </form>
+
+    <div> @ViewData["Message"] </div>
 </div>

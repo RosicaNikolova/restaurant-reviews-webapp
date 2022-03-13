@@ -44,3 +44,15 @@ C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\R
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout1.cshtml.g.cs
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Login.cshtml.g.cs
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Register.cshtml.g.cs
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\MySql.Data.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\ZstdNet.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll

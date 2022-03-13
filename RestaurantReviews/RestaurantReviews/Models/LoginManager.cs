@@ -12,6 +12,7 @@ namespace RestaurantReviews.Models
         public User Login(string email, string password)
         {
             User user = userRepository.FindUser(email, password);
+
             if(user == null)
             {
                 throw new LoginException("User does not exist");
