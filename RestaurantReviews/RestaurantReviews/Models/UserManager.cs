@@ -9,7 +9,6 @@ namespace RestaurantReviews.Models
     {
         UserRepository userRepository = new UserRepository();
 
-
         public User findUser(string email, string password)
         {
             if (userRepository.FindUser(email, password) != null)

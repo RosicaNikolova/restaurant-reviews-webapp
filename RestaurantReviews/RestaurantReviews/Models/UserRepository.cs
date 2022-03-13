@@ -9,7 +9,6 @@ namespace RestaurantReviews.Models
 {
     public class UserRepository
     {
-
         public User FindUser(string username, string password)
         {
             MySqlConnection conn = new MySqlConnection("server=localhostrestaurants; datebase=restaurants_db; uid=root; password = 9Rosica9");
@@ -46,6 +45,11 @@ namespace RestaurantReviews.Models
         public void DeleteUser(User user)
         {
 
+        }
+
+        public List<User> GetUsers()
+        {
+            return null;
         }
     }
 }

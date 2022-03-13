@@ -14,7 +14,7 @@ namespace RestaurantReviews.Models
             User user = userRepository.FindUser(email, password);
             if(user == null)
             {
-                throw new LoginException("Invalid email or password");
+                throw new LoginException();
             }
             else
             {
