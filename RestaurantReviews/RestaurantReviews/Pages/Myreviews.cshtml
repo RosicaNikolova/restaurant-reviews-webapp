@@ -2,4 +2,63 @@
 @model RestaurantReviews.Pages.MyreviewsModel
 @{
     ViewData["Title"] = "My reviews";
+    Layout = "_Layout";
 }
+
+<div class="reviews_header">
+    My reviews
+</div>
+<ul class="reviews_list">
+    <li class="review_wrapper">
+        <div class="review_header">
+            <div>Pizzeria</div>
+            <time datetime="2021-02-13">13.02.2021</time>
+        </div>
+        <div class="review_ratings">
+            <div>Score: 9.6</div>
+            <div>Price range: 3/5</div>
+            <div>Service: 4/5</div>
+        </div>
+        <p class="review_comment">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+            took a galley of type and scrambled it to make a type specimen book.
+        </p>
+        <a href="" class="edit-button">Edit</a>
+    </li>
+
+    <li class="review_wrapper">
+        <div class="review_header">
+            <div>Casa de Sicilliana</div>
+            <time datetime="2021-02-13">13.02.2021</time>
+        </div>
+        <div class="review_ratings">
+            <div>Score: 9.6</div>
+            <div>Price range: 3/5</div>
+            <div>Service: 4/5</div>
+        </div>
+        <p class="review_comment">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+        </p>
+        <a href="" class="edit-button">Edit</a>
+    </li>
+    <li class="review_wrapper">
+        <div class="review_header">
+            <div>Mediterano</div>
+            <time datetime="2021-02-13">13.02.2021</time>
+        </div>
+        <div class="review_ratings">
+            <div>Score: 9.6</div>
+            <div>Price range: 3/5</div>
+            <div>Service: 4/5</div>
+        </div>
+        <p class="review_comment">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+            has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+            took a galley of type and scrambled it to make a type specimen book.
+        </p>
+        <a href="" class="edit-button">Edit</a>
+    </li>
+
+</ul>

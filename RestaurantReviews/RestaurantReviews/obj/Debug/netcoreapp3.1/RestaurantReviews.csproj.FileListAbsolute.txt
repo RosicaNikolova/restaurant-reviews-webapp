@@ -23,7 +23,6 @@ C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\R
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\RestaurantReviews.TagHelpers.output.cache
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\RestaurantReviews.RazorCoreGenerate.cache
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
-C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\RestaurantReviews\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
