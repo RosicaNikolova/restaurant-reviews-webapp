@@ -143,7 +143,7 @@ nav {
             color: #1E1E35;
             font-size: 20px;
             transition-duration: 0.5s;
-            width: 9vw;
+            width: 7vw;
             text-align: center;
         }
 
@@ -200,13 +200,13 @@ nav {
 }
 
 .card_buttons a {
-    padding: 0.2vw 1vw;
+    padding: 10px 10px;
     text-align: center;
-    width: 7vw;
+    width: 90px;
     display: block;
     background-color: #A2D0EE;
+    box-sizing: content-box;
     border-radius: 16px;
-    color: #1E1E35;
     text-decoration: none;
     font-size: 1vw;
     transition-duration: 0.5s;
@@ -215,6 +215,7 @@ nav {
     .card_buttons a:hover {
         background-color: #555977;
         color: #F2F2F5;
+        
     }
 
 .card_buttons {
@@ -389,9 +390,9 @@ nav {
     }
 
     .card_buttons a {
-        padding: 5px 10px;
-        width: 8%;
-        font-size: 1.3vw;
+        padding: 10px 10px;
+        width: 90px;
+        font-size: 1vw;
         margin: 4px;
     }
 
@@ -402,6 +403,7 @@ nav {
         .navigation_menu li a {
             padding: 9px;
             font-size: 15px;
+           
         }
 
     .logo_nav {
