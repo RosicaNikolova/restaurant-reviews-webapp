@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="~/css/styles.css" />
 </head>
 <body>
-    <header>
+ 
         <div class="page-wrapper">
             <nav>
                 <a asp-page="/Home">
-                <img class="logo_nav" src="pic/Wave_Painting_Logo_Template__1_-removebg-preview.png" alt="Logo">
+                    <img class="logo_nav" src="pic/Wave_Painting_Logo_Template__1_-removebg-preview.png" alt="Logo">
                 </a>
                 <ul class="navigation_menu">
                     <li><a asp-page="/">Add Review</a></li>
@@ -21,11 +21,8 @@
                     <li><a asp-page="/Landing_page">Logout</a></li>
                 </ul>
             </nav>
-
-        </div>
-    </header>  
-
             @RenderBody()
+        </div>
     
     <footer class="border-top footer text-muted">
         <div class="container">

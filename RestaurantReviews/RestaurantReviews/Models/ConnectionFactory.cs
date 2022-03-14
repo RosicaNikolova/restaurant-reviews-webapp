@@ -10,7 +10,7 @@ namespace RestaurantReviews.Models
     {
         public static MySqlConnection CreateConnection()
         {
-            return new MySqlConnection("server=localhostrestaurants; datebase=restaurants_db; uid=root; password = 9Rosica9");
+            return new MySqlConnection("server=localhost; database=restaurants_db; uid=root; password = 9Rosica9:*");
         }
     }
 }

@@ -23,8 +23,6 @@ namespace RestaurantReviews.Pages
 
             try
             {
-                
-                
                 loginManager.Login(User.Email, User.Password);
                 return new RedirectToPageResult("Home");
             }

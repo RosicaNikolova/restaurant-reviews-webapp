@@ -11,36 +11,35 @@ namespace RestaurantReviews.Models
     {
         public User FindUser(string email, string password)
         {
-            try
+            //try
+            //{
+            using (MySqlConnection conn = new MySqlConnection("server=localhost; database=restaurants_db; uid=root; password = 9Rosica9"))
             {
-                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
-                {
-                    string sql = "select id, email, first_name, last_name, role from user where email=@email and password=@password";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("email", email);
-                    cmd.Parameters.AddWithValue("password", password);
+                string sql = "select id, email, first_name, last_name, permision from user where @email=email and @password=password;";
 
-                    conn.Open();
-                    User user = null;
-                    MySqlDataReader dateReader = cmd.ExecuteReader();
-                    if (dateReader.Read())
-                    {
-                        user = new User();
-                        user.Id = dateReader.GetInt32("id");
-                        user.Email = dateReader.GetString("email");
-                        user.FirstName = dateReader.GetString("first_name");
-                        user.LastName = dateReader.GetString("last_name");
-                        string role = dateReader.GetString("role");
-                        user.Role = (Role)Enum.Parse(typeof(Role), role);
-                    }
-                    return user;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("email", email);
+                cmd.Parameters.AddWithValue("password", password);
+
+
+                conn.Open();
+                User user = null;
+                MySqlDataReader dateReader = cmd.ExecuteReader();
+                if (dateReader.Read())
+                {
+                    user = new User();
+                    user.Id = dateReader.GetInt32("id");
+                    user.Email = dateReader.GetString("email");
+                    user.FirstName = dateReader.GetString("first_name");
+                    user.LastName = dateReader.GetString("last_name");
+                    user.Permision = dateReader.GetString("permision");
                 }
+                return user;
             }
-            catch(Exception)
-            {
-                throw new Exception();
-            }
+        
         }
+            
+        
 
         public bool SaveUser(User user)
         {
@@ -48,13 +47,13 @@ namespace RestaurantReviews.Models
             {
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
-                    string sql = "insert into user (email, password, first_name, last_name, role) values(@emal, @password, @first_name, @last_name, @role)";
+                    string sql = "insert into user (email, password, first_name, last_name, role) values(@emal, @password, @first_name, @last_name, @role);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("email", user.Email);
                     cmd.Parameters.AddWithValue("password", user.Password);
                     cmd.Parameters.AddWithValue("first_name", user.FirstName);
                     cmd.Parameters.AddWithValue("last_name", user.LastName);
-                    cmd.Parameters.AddWithValue("role", user.Role.ToString());
+                    cmd.Parameters.AddWithValue("role", user.Roles.ToString());
 
                     conn.Open();
 
@@ -80,7 +79,7 @@ namespace RestaurantReviews.Models
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     List<User> users = new List<User>();
-                    string sql = "select id, email, first_name, last_name, from user where role = 'USER' order by email";
+                    string sql = "select id, email, first_name, last_name, from user where role = 'USER' order by email;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                     conn.Open();
