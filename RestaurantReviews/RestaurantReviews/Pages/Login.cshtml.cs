@@ -28,11 +28,29 @@ namespace RestaurantReviews.Pages
 
             if (ModelState.IsValid)
             {
-                loginManager.Login(Login.Email, Login.Password);
-                return new RedirectToPageResult("Home");
+                try
+                {
+                    User user = loginManager.Login(Login.Email, Login.Password);
+                    if(user.Roles == Role.ADMIN)
+                    {
+                        ViewData["Message"] = "Wellcome Admin! You can login to the desktop application";
+                        return Page();
+                    }
+                    else
+                    {
+                        return new RedirectToPageResult("Home");
+                    }
+                    
+                }
+                catch (LoginException)
+                {
+                    @ViewData["Message"] = "Invalid credentials. Please, try again.";
+                    return Page();
+                }
             }
             else
             {
+                ViewData["Message"] = "Please enter all data fields!";
                 return Page();
             }
            

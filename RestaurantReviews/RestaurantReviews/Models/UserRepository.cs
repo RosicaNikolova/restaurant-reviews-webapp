@@ -11,10 +11,11 @@ namespace RestaurantReviews.Models
     {
         public User FindUser(string email, string password)
         {
-            
-            using (MySqlConnection conn = new MySqlConnection("server=localhost; database=restaurants_db; uid=root; password = 9Rosica9"))
+
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+
             {
-                string sql = "select id, email, first_name, last_name, permision from user where @email=email and @password=password;";
+                string sql = "select id, email, first_name, last_name, role from user where @email=email and @password=password;";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("email", email);
@@ -31,7 +32,7 @@ namespace RestaurantReviews.Models
                     user.Email = dateReader.GetString("email");
                     user.FirstName = dateReader.GetString("first_name");
                     user.LastName = dateReader.GetString("last_name");
-                    user.Permision = dateReader.GetString("permision");
+                    user.Roles = (Role)Enum.Parse(typeof(Role), dateReader.GetString("role"), true) ;
                 }
                 return user;
             }
