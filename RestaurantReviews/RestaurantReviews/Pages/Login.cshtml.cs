@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,11 @@ namespace RestaurantReviews.Pages
     public class LoginModel : PageModel
     {
         [BindProperty]
-        public User User { get; set; }
+        public User Login { get; set; }
+
+        
+        
+
         public void OnGet()
         {
 
@@ -21,16 +26,16 @@ namespace RestaurantReviews.Pages
         {
             LoginManager loginManager = new LoginManager();
 
-            try
+            if (ModelState.IsValid)
             {
-                loginManager.Login(User.Email, User.Password);
+                loginManager.Login(Login.Email, Login.Password);
                 return new RedirectToPageResult("Home");
             }
-            catch (LoginException)
+            else
             {
-                ViewData["Message"] = "Invalid credentials";
                 return Page();
             }
+           
         }
     }
 }

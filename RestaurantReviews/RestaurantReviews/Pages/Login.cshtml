@@ -15,13 +15,13 @@
     <form method="post">
         <div class="container">
             <h2 class="login_heading">Login</h2>
-            <label asp-for="User.Email">E-mail:</label>
-            <span asp-validation-for="User.Email"></span>
-            <input asp-for="User.Email" placeholder="Enter E-mail">
+            @*<span asp-validation-for="Login.Email"></span>*@
+            <label asp-for="Login.Email">E-mail:</label>
+            <input asp-for="Login.Email" placeholder="Enter E-mail" type="text">
 
-            <label asp-for="User.Password">Password:</label>
-            <span asp-validation-for="User.Password"></span>
-            <input asp-for="User.Password" placeholder="Enter Password">
+            <label asp-for="Login.Password">Password:</label>
+            @*<span asp-validation-for="Login.Password"></span>*@
+            <input asp-for="Login.Password" placeholder="Enter Password" type="password" >
         </div>
         <div class="login_buttons">
             <input type="submit" value="Log in" class="loginbtn">

@@ -11,8 +11,7 @@ namespace RestaurantReviews.Models
     {
         public User FindUser(string email, string password)
         {
-            //try
-            //{
+            
             using (MySqlConnection conn = new MySqlConnection("server=localhost; database=restaurants_db; uid=root; password = 9Rosica9"))
             {
                 string sql = "select id, email, first_name, last_name, permision from user where @email=email and @password=password;";
@@ -43,8 +42,7 @@ namespace RestaurantReviews.Models
 
         public bool SaveUser(User user)
         {
-            try
-            {
+            
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     string sql = "insert into user (email, password, first_name, last_name, role) values(@emal, @password, @first_name, @last_name, @role);";
@@ -60,11 +58,7 @@ namespace RestaurantReviews.Models
                     int result = cmd.ExecuteNonQuery();
                     return true;
                 }
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+           
         }
       
         public void DeleteUser(User user)
@@ -74,8 +68,6 @@ namespace RestaurantReviews.Models
 
         public List<User> findAll()
         {
-            try
-            {
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     List<User> users = new List<User>();
@@ -95,12 +87,7 @@ namespace RestaurantReviews.Models
                         users.Add(user);
                     }
                     return users;
-                }
-            }
-            catch (Exception ex)
-            {
-                return null;       
-            }
+                } 
         }
     }
 }
