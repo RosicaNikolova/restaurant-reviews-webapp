@@ -44,7 +44,7 @@ namespace RestaurantReviews.Pages
                 }
                 catch (LoginException)
                 {
-                    @ViewData["Message"] = "Invalid credentials. Please, try again.";
+                    ViewData["Message"] = "Invalid credentials. Please, try again.";
                     return Page();
                 }
             }

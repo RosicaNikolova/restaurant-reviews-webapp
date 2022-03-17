@@ -5,11 +5,18 @@ using System.Threading.Tasks;
 
 namespace RestaurantReviews.Models
 {
-    public class Restaurant : RatableContent
+    public class Restaurant
     {
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string Address { get; set; }
-        public List<Review> Reviews { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string PostCode { get; set; }
+        public int StreetNumber { get; set; }
+        public string PhoneNumber { get; set; }
+        public string HasParking { get; set; }
+        public string HasDelivery { get; set; }
 
+        //public List<Review> Reviews { get; set; }
     }
 }

@@ -8,7 +8,51 @@
 
 <div class="homepage_content">
     <ul class="restaurant_list">
-        <li>
+
+        @{
+            foreach (var rest in Model.restaurants)
+            {
+                <li>
+                    <div class="restaurant_card">
+                        <div class="card_picture_div">
+                            <img src="pic/istockphoto-1248298343-612x612.jpg" alt="">
+                        </div>
+
+                        <div class="card_content">
+                            <h2 class="card_r_name">@rest.Name</h2>
+                            <div class="card_ratings">
+                                <div>
+                                    Score: 9.6
+                                </div>
+                                <div>
+                                    56 reviews
+                                </div>
+                                <div>
+                                    Price range: 3/5
+                                </div>
+                                <div>
+                                    Service: 4/5
+                                </div>
+
+                            </div>
+                            <p>
+                                Characteristics:  romantic, cozy, beautiful view
+                            </p>
+                            <p>
+                                Cuisine:  Italian, grill, pizza
+                            </p>
+
+                        </div>
+                        <div class="card_buttons">
+                            <a href="">Add to list</a>
+                            <a href="">View</a>
+                        </div>
+
+                    </div>
+                </li>
+            }
+        }
+        @*<li>
             <div class="restaurant_card">
                 <div class="card_picture_div">
                     <img src="pic/istockphoto-1248298343-612x612.jpg" alt="">
@@ -77,6 +121,6 @@
                 </div>
 
             </div>
-        </li>
+        </li>*@
     </ul>
 </div>

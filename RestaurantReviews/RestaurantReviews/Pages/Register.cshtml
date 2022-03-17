@@ -4,28 +4,40 @@
     ViewData["Title"] = "Register";
     Layout = "_Layout1";
 }
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
 
 
 <div class="form_container">
-    <form>
+    <form method="post">
         <div class="container">
             <h2 class="login_heading">Register</h2>
-            <label for="uname">E-mail:</label>
-            <input type="text" placeholder="Enter E-mail" name="uname" required>
 
-            <label for="psw">Password:</label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <label asp-for="Register.Email">E-mail:</label> <br />
+            <span asp-validation-for="Register.Email"></span>
+            <input asp-for="Register.Email" type="text" placeholder="Enter E-mail">
 
-            <label for="psw">First Name:</label>
-            <input type="password" placeholder="Enter First name" name="psw" required>
+            <label asp-for="Register.Password">Password:</label> <br />
+            <span asp-validation-for="Register.Password"></span>
+            <input asp-for="Register.Password" type="password" placeholder="Enter Password">
 
-            <label for="psw">Last Name:</label>
-            <input type="password" placeholder="Enter Last Name" name="psw" required>
+            <label asp-for="Register.FirstName">First Name:</label> <br />
+            <span asp-validation-for="Register.FirstName"></span>
+            <input asp-for="Register.FirstName" type="password" placeholder="Enter First name">
+
+            <label asp-for="Register.LastName">Last Name:</label> <br />
+            <span asp-validation-for="Register.LastName"></span>
+            <input asp-for="Register.LastName" type="password" placeholder="Enter Last Name">
 
         </div>
         <div class="login_buttons">
             <input type="submit" value="Register" class="loginbtn">
-            <input type="reset" class="cancelbtn" value="Cancel">
+            @*<input type="reset" class="cancelbtn" value="Cancel">*@
+            <button type="reset" class="cancelbtn" value="Cancel">Cancel</button>
+
         </div>
     </form>
+
+    <div> @ViewData["Message_register"] </div>
 </div>

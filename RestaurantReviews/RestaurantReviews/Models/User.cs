@@ -20,11 +20,13 @@ namespace RestaurantReviews.Models
         [Required]
         public string Password { get; set; }
 
+      
         public string FirstName { get; set; }
+       
         public string LastName { get; set; }
         public Role Roles { get; set; }
 
-        public string Permision { get; set; }
+        //public string Permision { get; set; }
 
         public override string ToString()
         {

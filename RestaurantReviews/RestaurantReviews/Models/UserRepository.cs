@@ -38,15 +38,38 @@ namespace RestaurantReviews.Models
             }
         
         }
-            
-        
 
-        public bool SaveUser(User user)
+        public User FindUserByEmail(string email)
+        {
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+
+            {
+                string sql = "select id, email, first_name, last_name, role from user where @email=email;";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("email", email);
+                conn.Open();
+                User user = null;
+                MySqlDataReader dateReader = cmd.ExecuteReader();
+                if (dateReader.Read())
+                {
+                    user = new User();             
+                    user.Email = dateReader.GetString("email");
+
+                }
+                return user;
+            }
+
+        }
+
+
+
+        public void SaveUser(User user)
         {
             
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
-                    string sql = "insert into user (email, password, first_name, last_name, role) values(@emal, @password, @first_name, @last_name, @role);";
+                    string sql = "insert into user (email, password, first_name, last_name, role) values(@email, @password, @first_name, @last_name, @role);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("email", user.Email);
                     cmd.Parameters.AddWithValue("password", user.Password);
@@ -57,7 +80,7 @@ namespace RestaurantReviews.Models
                     conn.Open();
 
                     int result = cmd.ExecuteNonQuery();
-                    return true;
+                 
                 }
            
         }
