@@ -18,5 +18,13 @@ namespace RestaurantReviews.Models
         public string HasDelivery { get; set; }
 
         //public List<Review> Reviews { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"{this.Name}, Address: {this.City}, {this.Street} {this.StreetNumber}, {this.PostCode}";
+        }
     }
+
+  
 }

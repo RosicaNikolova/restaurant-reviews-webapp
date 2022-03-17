@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace RestaurantReviews.Models
 {
     [Serializable]
-    internal class LoginException : Exception
+    public class LoginException : Exception
     {
         public LoginException()
         {

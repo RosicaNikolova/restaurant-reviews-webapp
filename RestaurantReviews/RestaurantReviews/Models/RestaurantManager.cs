@@ -13,5 +13,20 @@ namespace RestaurantReviews.Models
         {
             return restaurantRepository.GetRestuarants();
         }
+
+        public void CreateNewRestaurant(string name, string city, string street, string postcode, int streetNumber, string phone, string parking, string delivery)
+        {
+            Restaurant restaurant = new Restaurant();
+            restaurant.Name = name;
+            restaurant.City = city;
+            restaurant.Street = street;
+            restaurant.PostCode = postcode;
+            restaurant.StreetNumber = streetNumber;
+            restaurant.PhoneNumber = phone;
+            restaurant.HasParking = parking;
+            restaurant.HasDelivery = delivery;
+
+            restaurantRepository.SaveRestaurant(restaurant);
+        }
     }
 }

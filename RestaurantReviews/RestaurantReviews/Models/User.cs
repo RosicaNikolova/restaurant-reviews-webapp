@@ -30,7 +30,7 @@ namespace RestaurantReviews.Models
 
         public override string ToString()
         {
-            return $"{this.Id}, {this.FirstName}";
+            return $"{this.FirstName}, {this.LastName}, E-mail: {this.Email}, Id: {this.Email}";
         }
     }
 }

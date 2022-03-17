@@ -36,5 +36,26 @@ namespace RestaurantReviews.Models
                 return restaurants;
             }
         }
+
+        public void SaveRestaurant(Restaurant restaurant)
+        {
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+            {
+                string sql = "insert into restaurant (name, city, street, postcode, street_number, phone, is_parking_available, is_delivery_available) values (@name,@city,@street,@postcode,@street_number,@phone,@is_parking_available,@is_delivery_available)";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("name", restaurant.Name);
+                cmd.Parameters.AddWithValue("city", restaurant.City);
+                cmd.Parameters.AddWithValue("street", restaurant.Street);
+                cmd.Parameters.AddWithValue("postcode", restaurant.PostCode);
+                cmd.Parameters.AddWithValue("street_number", restaurant.StreetNumber);
+                cmd.Parameters.AddWithValue("phone", restaurant.PhoneNumber);
+                cmd.Parameters.AddWithValue("is_parking_available", restaurant.HasParking);
+                cmd.Parameters.AddWithValue("is_delivery_available", restaurant.HasDelivery);
+        
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

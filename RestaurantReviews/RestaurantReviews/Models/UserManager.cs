@@ -42,5 +42,9 @@ namespace RestaurantReviews.Models
                 userRepository.SaveUser(user);
             }
         }
+        public void DeleteUser(User user)
+        {
+            userRepository.DeleteUser(user);
+        }
     }
 }

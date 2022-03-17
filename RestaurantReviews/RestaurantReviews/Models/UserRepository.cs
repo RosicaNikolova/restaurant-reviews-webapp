@@ -48,13 +48,17 @@ namespace RestaurantReviews.Models
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("email", email);
+                
                 conn.Open();
                 User user = null;
                 MySqlDataReader dateReader = cmd.ExecuteReader();
                 if (dateReader.Read())
                 {
-                    user = new User();             
+                    user = new User();
+                    user.Id = dateReader.GetInt32("id");
                     user.Email = dateReader.GetString("email");
+                    user.FirstName = dateReader.GetString("first_name");
+                    user.LastName = dateReader.GetString("last_name");
 
                 }
                 return user;
@@ -62,11 +66,8 @@ namespace RestaurantReviews.Models
 
         }
 
-
-
         public void SaveUser(User user)
         {
-            
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     string sql = "insert into user (email, password, first_name, last_name, role) values(@email, @password, @first_name, @last_name, @role);";
@@ -82,12 +83,18 @@ namespace RestaurantReviews.Models
                     int result = cmd.ExecuteNonQuery();
                  
                 }
-           
         }
       
         public void DeleteUser(User user)
         {
-
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+            {
+                string sql = "Delete from user where @id=id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("id", user.Id);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public List<User> findAll()
@@ -95,7 +102,7 @@ namespace RestaurantReviews.Models
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     List<User> users = new List<User>();
-                    string sql = "select id, email, first_name, last_name, from user where role = 'USER' order by email;";
+                    string sql = "select id, email, first_name, last_name, role from user where role = 'USER' order by email;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                     conn.Open();
@@ -108,10 +115,39 @@ namespace RestaurantReviews.Models
                         user.Email = dateReader.GetString("email");
                         user.FirstName = dateReader.GetString("first_name");
                         user.LastName = dateReader.GetString("last_name");
+                        user.Roles = (Role)Enum.Parse(typeof(Role), dateReader.GetString("role"), true);
                         users.Add(user);
                     }
                     return users;
                 } 
         }
+
+
+
+        public List<User> FindAllReguralUsers()
+        {
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+            {
+                List<User> users = new List<User>();
+                string sql = "select id, email, first_name, last_name, from user where role = 'USER' order by email;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+
+                MySqlDataReader dateReader = cmd.ExecuteReader();
+                while (dateReader.Read())
+                {
+                    User user = new User();
+                    user.Id = dateReader.GetInt32("id");
+                    user.Email = dateReader.GetString("email");
+                    user.FirstName = dateReader.GetString("first_name");
+                    user.LastName = dateReader.GetString("last_name");
+                    users.Add(user);
+                }
+                return users;
+            }
+        }
+
+
     }
 }
