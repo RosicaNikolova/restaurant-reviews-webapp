@@ -13,13 +13,22 @@ namespace RestaurantReviews.Pages
         public Restaurant restaurant;
         public List<Review> reviews;
         
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
             RestaurantManager restaurantManager = new RestaurantManager();
             ReviewManager reviewManager = new ReviewManager();
 
-            restaurant = restaurantManager.GetRestaurant((int)id);
-            reviews = reviewManager.GetReviewsForRestaurant((int)id);
+            try {
+                restaurant = restaurantManager.GetRestaurant((int)id);
+                reviews = reviewManager.GetReviewsForRestaurant((int)id);
+                return Page();
+            }
+            catch(RestaurantException)
+            {
+                return new RedirectToPageResult("Home");
+            }
+
+            
         }
     }
 }

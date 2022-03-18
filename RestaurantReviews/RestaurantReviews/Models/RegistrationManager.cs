@@ -12,6 +12,7 @@ namespace RestaurantReviews.Models
         public User Register(string email, string password, string firstName, string lastName)
         {
             User user = userRepository.FindUserByEmail(email);
+
             if(user == null)
             {
                 user = new User();
@@ -20,17 +21,27 @@ namespace RestaurantReviews.Models
                 user.FirstName = firstName;
                 user.LastName = lastName;
                 user.Roles = Role.USER;
-                userRepository.SaveUser(user);
+
+                if (userRepository.SaveUser(user))
+                {
+                    return user;
+                }
+                else
+                {
+                    throw new SaveUserException();
+                }
             }
-            return user;
-            
+            else
+            {
+                throw new RegistrationException("User with this e-mail already exists.");
+            }
         }
 
-        public User UserExists(string email)
-        {
-            User user = userRepository.FindUserByEmail(email);
-            return user;
+        //public User UserExists(string email)
+        //{
+        //    User user = userRepository.FindUserByEmail(email);
+        //    return user;
 
-        }
+        //}
     }
 }

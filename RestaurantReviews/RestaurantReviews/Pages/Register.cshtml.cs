@@ -27,14 +27,13 @@ namespace RestaurantReviews.Pages
 
             if (ModelState.IsValid)
             {
-                User user = registrationManager.UserExists(Register.Email);
-
-                if (user == null)
+                try
                 {
-                    user = registrationManager.Register(Register.Email, Register.Password, Register.FirstName, Register.LastName);
+                    User user = registrationManager.Register(Register.Email, Register.Password, Register.FirstName, Register.LastName);
                     return new RedirectToPageResult("Home");
                 }
-                else
+
+                catch (RegistrationException)
                 {
                     ViewData["Message_register"] = "User with this email already exists.";
                     return Page();

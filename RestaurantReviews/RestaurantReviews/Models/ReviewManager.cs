@@ -10,17 +10,31 @@ namespace RestaurantReviews.Models
         ReviewRepository reviewRepository = new ReviewRepository();
         public List<Review> GetReviewsForRestaurant(int id)
         {
-            return reviewRepository.FindReviewsForRestaurant(id);
+            List<Review> reviews = reviewRepository.FindReviewsForRestaurant(id);
+            if (reviews == null)
+            {
+                throw new RestaurantException();
+            }
+            return reviews;
         }
 
         public List<Review> GetAllReviews()
         {
-            return reviewRepository.GetAll();
+
+            List<Review> reviews = reviewRepository.GetAll();
+            if (reviews == null)
+            {
+                throw new RestaurantException();
+            }
+            return reviews;
         }
 
         public void DeleteReview(Review review)
         {
-            reviewRepository.DeleteReview(review);
+            if (!reviewRepository.DeleteReview(review))
+            {
+                throw new ReviewException();
+            }
         }
     }
 }

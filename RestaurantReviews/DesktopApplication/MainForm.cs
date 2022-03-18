@@ -51,7 +51,15 @@ namespace DesktopApplication
             {
                 object selectedUser = lbxUsers.SelectedItem;
                 User user = ((User)selectedUser);
-                userManager.DeleteUser(user);
+                try
+                {
+                    userManager.DeleteUser(user);
+                }
+                catch (DelteUserException)
+                {
+                    MessageBox.Show("Unable to delete user");
+                }
+                
                 DisplayUsers();
                 errorMessageDelete.Text = "";
             }
@@ -66,9 +74,16 @@ namespace DesktopApplication
         private void DisplayUsers()
         {
             lbxUsers.Items.Clear();
-            foreach (User user in userManager.findAllUsers())
+            try 
             {
-                lbxUsers.Items.Add(user);
+                foreach (User user in userManager.findAllUsers())
+                {
+                    lbxUsers.Items.Add(user);
+                }
+            }
+            catch (FindUsersException)
+            {
+                MessageBox.Show("Unable to find users");
             }
         }
 
@@ -84,10 +99,17 @@ namespace DesktopApplication
         private void DisplayReviews()
         {
             lbxReviews.Items.Clear();
-            foreach (Review review in reviewManager.GetAllReviews())
+            try
             {
-                lbxReviews.Items.Add(review);
-                lbxReviews.Items.Add(Environment.NewLine);
+                foreach (Review review in reviewManager.GetAllReviews())
+                {
+                    lbxReviews.Items.Add(review);
+                    lbxReviews.Items.Add(Environment.NewLine);
+                }
+            }
+            catch (RestaurantException)
+            {
+                MessageBox.Show("Unable to display reviews.");
             }
         }
 
@@ -245,9 +267,17 @@ namespace DesktopApplication
             {
                 object selectedReview = lbxReviews.SelectedItem;
                 Review review = ((Review)selectedReview);
-                reviewManager.DeleteReview(review);
-                DisplayReviews();
-                MessageBox.Show("Restaurant deleted successfully");
+                try
+                {
+                    reviewManager.DeleteReview(review);
+                    DisplayReviews();
+                    MessageBox.Show("Restaurant deleted successfully");
+                }
+                catch (ReviewException)
+                {
+                    MessageBox.Show("Unable to delete review");
+                }
+                
             }
         }
     }

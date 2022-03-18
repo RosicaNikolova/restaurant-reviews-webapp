@@ -16,17 +16,10 @@ namespace RestaurantReviews.Models
         public string PhoneNumber { get; set; }
         public string HasParking { get; set; }
         public string HasDelivery { get; set; }
-
         public double Food_Score { get; set; }
-
         public double Service_Score { get; set; }
         public double Price_Score { get; set; }
-
         public int NumberOfReviews { get; set; }
-
-
-        //public List<Review> Reviews { get; set; }
-
 
         public override string ToString()
         {

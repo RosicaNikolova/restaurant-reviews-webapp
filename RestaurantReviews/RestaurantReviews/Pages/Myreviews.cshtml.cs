@@ -12,10 +12,19 @@ namespace RestaurantReviews.Pages
     {
         public List<Review> reviews = new List<Review>();
         ReviewManager reviewManager = new ReviewManager();
-        public void OnGet()
+
+        public IActionResult OnGet()
         {
             ReviewManager reviewManager = new ReviewManager();
-            reviews = reviewManager.GetAllReviews();
+            try
+            {
+                reviews = reviewManager.GetAllReviews();
+                return Page();
+            }
+            catch (RestaurantException)
+            {
+                return new RedirectToPageResult("Home");
+            }
         }
     }
 }

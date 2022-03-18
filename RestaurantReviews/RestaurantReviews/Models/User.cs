@@ -26,7 +26,7 @@ namespace RestaurantReviews.Models
         public string LastName { get; set; }
         public Role Roles { get; set; }
 
-        //public string Permision { get; set; }
+       
 
         public override string ToString()
         {
