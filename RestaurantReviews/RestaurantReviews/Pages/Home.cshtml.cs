@@ -11,10 +11,11 @@ namespace RestaurantReviews.Pages
     public class HomeModel : PageModel
     {
         public List<Restaurant> restaurants = new List<Restaurant>();
-        public void OnGet()
+        public void OnGet(int? id)
         {
             RestaurantManager restaurantManager = new RestaurantManager();
             restaurants = restaurantManager.GetAllRestaurants();
+
         }
     }
 }

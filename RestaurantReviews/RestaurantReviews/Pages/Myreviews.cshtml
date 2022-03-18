@@ -9,7 +9,27 @@
     My reviews
 </div>
 <ul class="reviews_list">
-    <li class="review_wrapper">
+
+    @foreach (var review in Model.reviews)
+    {
+        <li class="review_wrapper">
+            <div class="review_header">
+                <div>@review.RestaurantName</div>
+                <time datetime="2021-02-13">Date: @review.Date.Day-@review.Date.Month-@review.Date.Year</time>
+            </div>
+            <div class="review_ratings">
+                <div>Food: @review.FoodScore</div>
+                <div>Price: @review.PriceScore</div>
+                <div>Service: @review.ServiceScore</div>
+            </div>
+            <p class="review_comment">
+                @review.Comment
+            </p>
+            <a href="" class="edit-button">Edit</a>
+        </li>
+    }
+
+    @*<li class="review_wrapper">
         <div class="review_header">
             <div>Pizzeria</div>
             <time datetime="2021-02-13">13.02.2021</time>
@@ -59,6 +79,6 @@
             took a galley of type and scrambled it to make a type specimen book.
         </p>
         <a href="" class="edit-button">Edit</a>
-    </li>
+    </li>*@
 
 </ul>

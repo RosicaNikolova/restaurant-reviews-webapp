@@ -37,6 +37,96 @@ namespace RestaurantReviews.Models
             }
         }
 
+        public int GetNumberOfReviews(int id)
+        {
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+            {
+                int numberOfReviews = 0;
+                string sql = $"select Count(*) as count from reviews where restaurant_id = @restaurant_id;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("restaurant_id", id);
+
+                conn.Open();
+
+                MySqlDataReader dateReader = cmd.ExecuteReader();
+                if (dateReader.Read())
+                {
+                    numberOfReviews = dateReader.GetInt32("count");
+                }
+
+                return numberOfReviews;
+            }
+        }
+
+        public double GetScoreForRestaurant(int id, string typeOfScore)
+        {
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+            {
+                double score = 0.0;
+                string sql = $"SELECT SUM({typeOfScore}) as sum, Count(*) as count from reviews where restaurant_id = @restaurant_id;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("restaurant_id", id);
+
+                conn.Open();
+
+                MySqlDataReader dateReader = cmd.ExecuteReader();
+
+                    while (dateReader.Read())
+                    {
+                        if(dateReader.GetInt32("count") == 0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            score = (double)dateReader.GetInt32("sum") / dateReader.GetInt32("count");
+                        }
+                       
+                    }
+                    score = Math.Round(score, 1);
+                    return score;
+                
+                    
+                
+               
+                    
+            }
+              
+        }
+
+        public Restaurant FindRestaurant(int id)
+        {
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+            {
+                Restaurant restaurant = null;
+                string sql = "select restaurant_id, name, city, street, postcode, street_number, phone, is_parking_available, is_delivery_available from restaurant where restaurant_id=@restaurant_id;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("restaurant_id", id);
+
+                conn.Open();
+
+                MySqlDataReader dateReader = cmd.ExecuteReader();
+                while (dateReader.Read())
+                {
+                    restaurant = new Restaurant();
+                    restaurant.Id = dateReader.GetInt32("restaurant_id");
+                    restaurant.Name = dateReader.GetString("name");
+                    restaurant.City = dateReader.GetString("city");
+                    restaurant.Street = dateReader.GetString("street");
+                    restaurant.PostCode = dateReader.GetString("postcode");
+                    restaurant.StreetNumber = dateReader.GetInt32("street_number");
+                    restaurant.PhoneNumber = dateReader.GetString("phone");
+                    restaurant.HasParking = dateReader.GetString("is_parking_available");
+                    restaurant.HasDelivery = dateReader.GetString("is_delivery_available");
+                    
+                }
+                return restaurant;
+            }
+        }
+
         public void UpdateRestaurant(Restaurant restaurant)
         {
             using (MySqlConnection conn = ConnectionFactory.CreateConnection())

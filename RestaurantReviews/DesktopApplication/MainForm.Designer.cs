@@ -29,7 +29,7 @@ namespace DesktopApplication
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TabControl = new System.Windows.Forms.TabControl();
             this.tabUsers = new System.Windows.Forms.TabPage();
             this.errorMessageDelete = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -65,24 +65,30 @@ namespace DesktopApplication
             this.txbStreet = new System.Windows.Forms.TextBox();
             this.cbxCity = new System.Windows.Forms.ComboBox();
             this.txbName = new System.Windows.Forms.TextBox();
-            this.tabControl1.SuspendLayout();
+            this.tabManageReviews = new System.Windows.Forms.TabPage();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.btnDeleteReview = new System.Windows.Forms.Button();
+            this.lbxReviews = new System.Windows.Forms.ListBox();
+            this.TabControl.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tabRestuarants.SuspendLayout();
             this.groupBoxAddRestaurant.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabManageReviews.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // TabControl
             // 
-            this.tabControl1.Controls.Add(this.tabUsers);
-            this.tabControl1.Controls.Add(this.tabRestuarants);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1255, 869);
-            this.tabControl1.TabIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.TabControl.Controls.Add(this.tabUsers);
+            this.TabControl.Controls.Add(this.tabRestuarants);
+            this.TabControl.Controls.Add(this.tabManageReviews);
+            this.TabControl.Location = new System.Drawing.Point(0, 0);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(1255, 869);
+            this.TabControl.TabIndex = 0;
+            this.TabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabUsers
             // 
@@ -111,7 +117,7 @@ namespace DesktopApplication
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.LightPink;
             this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richTextBox1.Location = new System.Drawing.Point(601, 60);
+            this.richTextBox1.Location = new System.Drawing.Point(725, 52);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(370, 232);
             this.richTextBox1.TabIndex = 3;
@@ -138,7 +144,7 @@ namespace DesktopApplication
             this.lbxUsers.ItemHeight = 20;
             this.lbxUsers.Location = new System.Drawing.Point(26, 22);
             this.lbxUsers.Name = "lbxUsers";
-            this.lbxUsers.Size = new System.Drawing.Size(481, 304);
+            this.lbxUsers.Size = new System.Drawing.Size(646, 304);
             this.lbxUsers.TabIndex = 0;
             // 
             // tabRestuarants
@@ -459,15 +465,62 @@ namespace DesktopApplication
             this.txbName.Size = new System.Drawing.Size(177, 31);
             this.txbName.TabIndex = 0;
             // 
+            // tabManageReviews
+            // 
+            this.tabManageReviews.BackColor = System.Drawing.Color.MistyRose;
+            this.tabManageReviews.Controls.Add(this.richTextBox2);
+            this.tabManageReviews.Controls.Add(this.btnDeleteReview);
+            this.tabManageReviews.Controls.Add(this.lbxReviews);
+            this.tabManageReviews.Location = new System.Drawing.Point(4, 29);
+            this.tabManageReviews.Name = "tabManageReviews";
+            this.tabManageReviews.Padding = new System.Windows.Forms.Padding(3);
+            this.tabManageReviews.Size = new System.Drawing.Size(1247, 836);
+            this.tabManageReviews.TabIndex = 2;
+            this.tabManageReviews.Text = "Manage Reviews";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BackColor = System.Drawing.Color.LightPink;
+            this.richTextBox2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox2.Location = new System.Drawing.Point(867, 38);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(370, 232);
+            this.richTextBox2.TabIndex = 4;
+            this.richTextBox2.Text = "Be carefull when deleteing reviews!\nA review can be delete only when:\n\nIt is fake" +
+    "\nVulgar and offending lanuage is used.\n\n\n";
+            // 
+            // btnDeleteReview
+            // 
+            this.btnDeleteReview.BackColor = System.Drawing.Color.Pink;
+            this.btnDeleteReview.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDeleteReview.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteReview.Location = new System.Drawing.Point(867, 379);
+            this.btnDeleteReview.Name = "btnDeleteReview";
+            this.btnDeleteReview.Size = new System.Drawing.Size(143, 67);
+            this.btnDeleteReview.TabIndex = 2;
+            this.btnDeleteReview.Text = "Delete Review";
+            this.btnDeleteReview.UseVisualStyleBackColor = false;
+            this.btnDeleteReview.Click += new System.EventHandler(this.btnDeleteReview_Click);
+            // 
+            // lbxReviews
+            // 
+            this.lbxReviews.AllowDrop = true;
+            this.lbxReviews.FormattingEnabled = true;
+            this.lbxReviews.ItemHeight = 20;
+            this.lbxReviews.Location = new System.Drawing.Point(28, 38);
+            this.lbxReviews.Name = "lbxReviews";
+            this.lbxReviews.Size = new System.Drawing.Size(818, 744);
+            this.lbxReviews.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1253, 857);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.TabControl);
             this.Name = "MainForm";
             this.Text = "MainForm";
-            this.tabControl1.ResumeLayout(false);
+            this.TabControl.ResumeLayout(false);
             this.tabUsers.ResumeLayout(false);
             this.tabUsers.PerformLayout();
             this.tabRestuarants.ResumeLayout(false);
@@ -477,13 +530,14 @@ namespace DesktopApplication
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabManageReviews.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage tabUsers;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox lbxUsers;
@@ -519,5 +573,9 @@ namespace DesktopApplication
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.TabPage tabManageReviews;
+        private System.Windows.Forms.ListBox lbxReviews;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Button btnDeleteReview;
     }
 }

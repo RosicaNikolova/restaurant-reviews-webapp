@@ -6,6 +6,7 @@
 }
 
 
+
 <div class="homepage_content">
     <ul class="restaurant_list">
 
@@ -19,19 +20,19 @@
                         </div>
 
                         <div class="card_content">
-                            <h2 class="card_r_name">@rest.Name</h2>
+                            <h2 class="card_r_name"> <a asp-page="/Restaurant" asp-route-id="@rest.Id"> @rest.Name</a></h2>
                             <div class="card_ratings">
                                 <div>
-                                    Score: 9.6
+                                    Food: @rest.Food_Score
                                 </div>
                                 <div>
                                     56 reviews
                                 </div>
                                 <div>
-                                    Price range: 3/5
+                                    Price: @rest.Price_Score
                                 </div>
                                 <div>
-                                    Service: 4/5
+                                    Service: @rest.Service_Score
                                 </div>
 
                             </div>

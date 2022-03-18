@@ -14,8 +14,7 @@ namespace RestaurantReviews.Pages
         [BindProperty]
         public User Login { get; set; }
 
-        
-        
+       
 
         public void OnGet()
         {
@@ -28,9 +27,10 @@ namespace RestaurantReviews.Pages
 
             if (ModelState.IsValid)
             {
+                User user = new User();
                 try
                 {
-                    User user = loginManager.Login(Login.Email, Login.Password);
+                    user = loginManager.Login(Login.Email, Login.Password);
                     if(user.Roles == Role.ADMIN)
                     {
                         ViewData["Message"] = "Wellcome Admin! You can login to the desktop application";

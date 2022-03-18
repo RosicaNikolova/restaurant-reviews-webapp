@@ -11,7 +11,18 @@ namespace RestaurantReviews.Models
 
         public List<Restaurant> GetAllRestaurants()
         {
-            return restaurantRepository.GetRestuarants();
+            List<Restaurant> restaurants = restaurantRepository.GetRestuarants();
+
+            foreach (Restaurant restaurant in restaurants)
+            {
+                restaurant.Food_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "food_score");
+                restaurant.Service_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "service_score");
+                restaurant.Price_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "athmosphere_score");
+                restaurant.NumberOfReviews = restaurantRepository.GetNumberOfReviews(restaurant.Id);
+            }
+
+            return restaurants;
+
         }
 
         public void CreateNewRestaurant(string name, string city, string street, string postcode, int streetNumber, string phone, string parking, string delivery)
@@ -27,6 +38,17 @@ namespace RestaurantReviews.Models
             restaurant.HasDelivery = delivery;
 
             restaurantRepository.SaveRestaurant(restaurant);
+        }
+
+        public Restaurant GetRestaurant(int id)
+        {
+            Restaurant restaurant = restaurantRepository.FindRestaurant(id);
+            restaurant.Food_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id,"food_score");
+            restaurant.Service_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "service_score");
+            restaurant.Price_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id,"athmosphere_score");
+            restaurant.NumberOfReviews = restaurantRepository.GetNumberOfReviews(restaurant.Id);
+
+            return restaurant;
         }
 
         public void UpdateRestaurantInfo(string name, string city, string street, string postcode, int streetNumber, string phone, string parking, string delivery, Restaurant restaurant)

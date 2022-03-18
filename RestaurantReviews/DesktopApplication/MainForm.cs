@@ -14,6 +14,7 @@ namespace DesktopApplication
         User user;
         UserManager userManager = new UserManager();
         RestaurantManager restaurantManager = new RestaurantManager();
+        ReviewManager reviewManager = new ReviewManager();
         public MainForm()
         {
             InitializeComponent();
@@ -28,14 +29,19 @@ namespace DesktopApplication
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(tabControl1.SelectedTab == tabUsers)
+            if(TabControl.SelectedTab == tabUsers)
             {
                 DisplayUsers();
                 errorMessageDelete.Text = "";
             }
-            else if(tabControl1.SelectedTab == tabRestuarants)
+            else if(TabControl.SelectedTab == tabRestuarants)
             {
                 DisplayRestaurants();
+                ClearTextBoxes();
+            }
+            else if(TabControl.SelectedTab == tabManageReviews)
+            {
+                DisplayReviews();
             }
         }
 
@@ -75,6 +81,16 @@ namespace DesktopApplication
             }
         }
 
+        private void DisplayReviews()
+        {
+            lbxReviews.Items.Clear();
+            foreach (Review review in reviewManager.GetAllReviews())
+            {
+                lbxReviews.Items.Add(review);
+                lbxReviews.Items.Add(Environment.NewLine);
+            }
+        }
+
         private void ClearTextBoxes()
         {
             txbName.Text = string.Empty;
@@ -104,10 +120,18 @@ namespace DesktopApplication
                 {
                     has_pakring = "No";
                 }
-                restaurantManager.CreateNewRestaurant(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text,txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring,has_delivery);
-                DisplayRestaurants();
-                ClearTextBoxes();
-                MessageBox.Show("Restaurant successfully added");
+                int number;
+                if (int.TryParse(txbStreetNumber.Text, out number))
+                {
+                    restaurantManager.CreateNewRestaurant(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery);
+                    DisplayRestaurants();
+                    ClearTextBoxes();
+                    MessageBox.Show("Restaurant successfully added");
+                }
+                else
+                {
+                    MessageBox.Show("Street Number must be a digit!");
+                }
             }
             else
             {
@@ -133,10 +157,20 @@ namespace DesktopApplication
                 {
                     has_pakring = "No";
                 }
-                restaurantManager.UpdateRestaurantInfo(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery, restaurant);
-                DisplayRestaurants();
-                ClearTextBoxes();
-                MessageBox.Show("Restaurant successfully updated");
+
+                int number;
+
+                if (int.TryParse(txbStreetNumber.Text, out number))
+                {
+                    restaurantManager.UpdateRestaurantInfo(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery, restaurant);
+                    DisplayRestaurants();
+                    ClearTextBoxes();
+                    MessageBox.Show("Restaurant successfully updated");
+                }
+                else
+                {
+                    MessageBox.Show("Street Number must be a digit!");
+                }
             }
             else
             {
@@ -159,6 +193,7 @@ namespace DesktopApplication
             txbStreetNumber.Text = restaurant.StreetNumber.ToString();
             txbPostCode.Text = restaurant.PostCode;
             txbPhone.Text = restaurant.PhoneNumber;
+
             if(restaurant.HasParking == "Yes")
             {
                 rbtParkingYes.Checked = true;
@@ -186,12 +221,34 @@ namespace DesktopApplication
 
         private void btnDeleteRestaurant_Click(object sender, EventArgs e)
         {
-            object selectedRestaurant = lbxRestaurants.SelectedItem;
-            Restaurant restaurant = ((Restaurant)selectedRestaurant);
-            restaurantManager.DeleteRestaurant(restaurant);
-            DisplayRestaurants();
+            if(lbxRestaurants.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please, select a restaurant to be deleted!");
+            }
+            else
+            {
+                object selectedRestaurant = lbxRestaurants.SelectedItem;
+                Restaurant restaurant = ((Restaurant)selectedRestaurant);
+                restaurantManager.DeleteRestaurant(restaurant);
+                DisplayRestaurants();
+            }
+           
         }
 
-       
+        private void btnDeleteReview_Click(object sender, EventArgs e)
+        {
+            if(lbxReviews.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please, select a review to be deleted!");
+            }
+            else
+            {
+                object selectedReview = lbxReviews.SelectedItem;
+                Review review = ((Review)selectedReview);
+                reviewManager.DeleteReview(review);
+                DisplayReviews();
+                MessageBox.Show("Restaurant deleted successfully");
+            }
+        }
     }
 }

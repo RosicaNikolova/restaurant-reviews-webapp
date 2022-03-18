@@ -11,7 +11,6 @@ namespace RestaurantReviews.Pages
     public class Landing_pageModel : PageModel
     {
 
-
         public void OnGet()
         {
 
