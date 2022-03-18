@@ -28,5 +28,23 @@ namespace RestaurantReviews.Models
 
             restaurantRepository.SaveRestaurant(restaurant);
         }
+
+        public void UpdateRestaurantInfo(string name, string city, string street, string postcode, int streetNumber, string phone, string parking, string delivery, Restaurant restaurant)
+        { 
+            restaurant.Name = name;
+            restaurant.City = city;
+            restaurant.Street = street;
+            restaurant.PostCode = postcode;
+            restaurant.StreetNumber = streetNumber;
+            restaurant.PhoneNumber = phone;
+            restaurant.HasParking = parking;
+            restaurant.HasDelivery = delivery;
+            restaurantRepository.UpdateRestaurant(restaurant);
+        }
+
+        public void DeleteRestaurant(Restaurant restaurant)
+        {
+            restaurantRepository.Delete(restaurant);
+        }
     }
 }

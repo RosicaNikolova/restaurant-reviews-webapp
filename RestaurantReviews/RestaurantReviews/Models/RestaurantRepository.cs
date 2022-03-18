@@ -37,6 +37,39 @@ namespace RestaurantReviews.Models
             }
         }
 
+        public void UpdateRestaurant(Restaurant restaurant)
+        {
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+            {
+                string sql = "update restaurant set name=@name, city=@city, street=@street, postcode=@postcode, street_number=@street_number, phone=@phone, is_parking_available=@is_parking_available, is_delivery_available=@is_delivery_available where restaurant_id=@restaurant_id;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("restaurant_id", restaurant.Id);
+                cmd.Parameters.AddWithValue("name", restaurant.Name);
+                cmd.Parameters.AddWithValue("city", restaurant.City);
+                cmd.Parameters.AddWithValue("street", restaurant.Street);
+                cmd.Parameters.AddWithValue("postcode", restaurant.PostCode);
+                cmd.Parameters.AddWithValue("street_number", restaurant.StreetNumber);
+                cmd.Parameters.AddWithValue("phone", restaurant.PhoneNumber);
+                cmd.Parameters.AddWithValue("is_parking_available", restaurant.HasParking);
+                cmd.Parameters.AddWithValue("is_delivery_available", restaurant.HasDelivery);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void Delete(Restaurant restaurant)
+        {
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+            {
+                string sql = "Delete from restaurant where restaurant_id=@restaurant_id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("restaurant_id", restaurant.Id);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public void SaveRestaurant(Restaurant restaurant)
         {
             using (MySqlConnection conn = ConnectionFactory.CreateConnection())

@@ -36,36 +36,41 @@ namespace DesktopApplication
             this.button1 = new System.Windows.Forms.Button();
             this.lbxUsers = new System.Windows.Forms.ListBox();
             this.tabRestuarants = new System.Windows.Forms.TabPage();
-            this.groupBoxAddRestaurant = new System.Windows.Forms.GroupBox();
-            this.txbName = new System.Windows.Forms.TextBox();
-            this.cbxCity = new System.Windows.Forms.ComboBox();
-            this.txbStreet = new System.Windows.Forms.TextBox();
-            this.txbPostCode = new System.Windows.Forms.TextBox();
-            this.txbStreetNumber = new System.Windows.Forms.TextBox();
-            this.txbPhone = new System.Windows.Forms.TextBox();
-            this.rbtParkingYes = new System.Windows.Forms.RadioButton();
-            this.rbtParkingNo = new System.Windows.Forms.RadioButton();
-            this.rbtDeliveryYes = new System.Windows.Forms.RadioButton();
-            this.rbtDeliveryNo = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnAddRestaurant = new System.Windows.Forms.Button();
             this.lbxRestaurants = new System.Windows.Forms.ListBox();
-            this.btnUpdateRestaurant = new System.Windows.Forms.Button();
-            this.btnDeleteRestaurant = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.groupBoxAddRestaurant = new System.Windows.Forms.GroupBox();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.rbtParkingNo = new System.Windows.Forms.RadioButton();
+            this.rbtParkingYes = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.rbtDeliveryNo = new System.Windows.Forms.RadioButton();
+            this.rbtDeliveryYes = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnDeleteRestaurant = new System.Windows.Forms.Button();
+            this.btnUpdateRestaurant = new System.Windows.Forms.Button();
+            this.btnAddRestaurant = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txbPhone = new System.Windows.Forms.TextBox();
+            this.txbStreetNumber = new System.Windows.Forms.TextBox();
+            this.txbPostCode = new System.Windows.Forms.TextBox();
+            this.txbStreet = new System.Windows.Forms.TextBox();
+            this.cbxCity = new System.Windows.Forms.ComboBox();
+            this.txbName = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tabRestuarants.SuspendLayout();
             this.groupBoxAddRestaurant.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -148,28 +153,34 @@ namespace DesktopApplication
             this.tabRestuarants.TabIndex = 1;
             this.tabRestuarants.Text = "Manage Restaurants";
             // 
+            // lbxRestaurants
+            // 
+            this.lbxRestaurants.FormattingEnabled = true;
+            this.lbxRestaurants.ItemHeight = 20;
+            this.lbxRestaurants.Location = new System.Drawing.Point(501, 19);
+            this.lbxRestaurants.Name = "lbxRestaurants";
+            this.lbxRestaurants.Size = new System.Drawing.Size(675, 764);
+            this.lbxRestaurants.TabIndex = 1;
+            // 
             // groupBoxAddRestaurant
             // 
             this.groupBoxAddRestaurant.BackColor = System.Drawing.Color.LightBlue;
             this.groupBoxAddRestaurant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.groupBoxAddRestaurant.Controls.Add(this.btnSelect);
+            this.groupBoxAddRestaurant.Controls.Add(this.groupBox2);
+            this.groupBoxAddRestaurant.Controls.Add(this.groupBox1);
             this.groupBoxAddRestaurant.Controls.Add(this.label11);
             this.groupBoxAddRestaurant.Controls.Add(this.label10);
             this.groupBoxAddRestaurant.Controls.Add(this.label9);
             this.groupBoxAddRestaurant.Controls.Add(this.btnDeleteRestaurant);
             this.groupBoxAddRestaurant.Controls.Add(this.btnUpdateRestaurant);
             this.groupBoxAddRestaurant.Controls.Add(this.btnAddRestaurant);
-            this.groupBoxAddRestaurant.Controls.Add(this.label8);
-            this.groupBoxAddRestaurant.Controls.Add(this.label7);
             this.groupBoxAddRestaurant.Controls.Add(this.label6);
             this.groupBoxAddRestaurant.Controls.Add(this.label5);
             this.groupBoxAddRestaurant.Controls.Add(this.label4);
             this.groupBoxAddRestaurant.Controls.Add(this.label3);
             this.groupBoxAddRestaurant.Controls.Add(this.label2);
             this.groupBoxAddRestaurant.Controls.Add(this.label1);
-            this.groupBoxAddRestaurant.Controls.Add(this.rbtDeliveryNo);
-            this.groupBoxAddRestaurant.Controls.Add(this.rbtDeliveryYes);
-            this.groupBoxAddRestaurant.Controls.Add(this.rbtParkingNo);
-            this.groupBoxAddRestaurant.Controls.Add(this.rbtParkingYes);
             this.groupBoxAddRestaurant.Controls.Add(this.txbPhone);
             this.groupBoxAddRestaurant.Controls.Add(this.txbStreetNumber);
             this.groupBoxAddRestaurant.Controls.Add(this.txbPostCode);
@@ -184,64 +195,43 @@ namespace DesktopApplication
             this.groupBoxAddRestaurant.TabStop = false;
             this.groupBoxAddRestaurant.Text = "Add Restaurant";
             // 
-            // txbName
+            // btnSelect
             // 
-            this.txbName.Location = new System.Drawing.Point(177, 53);
-            this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(177, 31);
-            this.txbName.TabIndex = 0;
+            this.btnSelect.BackColor = System.Drawing.Color.LightCyan;
+            this.btnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSelect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSelect.Location = new System.Drawing.Point(275, 629);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(79, 44);
+            this.btnSelect.TabIndex = 24;
+            this.btnSelect.Text = "Select";
+            this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
-            // cbxCity
+            // groupBox2
             // 
-            this.cbxCity.FormattingEnabled = true;
-            this.cbxCity.Location = new System.Drawing.Point(177, 114);
-            this.cbxCity.Name = "cbxCity";
-            this.cbxCity.Size = new System.Drawing.Size(177, 33);
-            this.cbxCity.TabIndex = 1;
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.rbtParkingNo);
+            this.groupBox2.Controls.Add(this.rbtParkingYes);
+            this.groupBox2.Location = new System.Drawing.Point(13, 421);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(378, 50);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
             // 
-            // txbStreet
+            // label7
             // 
-            this.txbStreet.Location = new System.Drawing.Point(177, 182);
-            this.txbStreet.Name = "txbStreet";
-            this.txbStreet.Size = new System.Drawing.Size(177, 31);
-            this.txbStreet.TabIndex = 2;
-            // 
-            // txbPostCode
-            // 
-            this.txbPostCode.Location = new System.Drawing.Point(177, 247);
-            this.txbPostCode.Name = "txbPostCode";
-            this.txbPostCode.Size = new System.Drawing.Size(177, 31);
-            this.txbPostCode.TabIndex = 3;
-            // 
-            // txbStreetNumber
-            // 
-            this.txbStreetNumber.Location = new System.Drawing.Point(177, 303);
-            this.txbStreetNumber.Name = "txbStreetNumber";
-            this.txbStreetNumber.Size = new System.Drawing.Size(177, 31);
-            this.txbStreetNumber.TabIndex = 4;
-            // 
-            // txbPhone
-            // 
-            this.txbPhone.Location = new System.Drawing.Point(177, 369);
-            this.txbPhone.Name = "txbPhone";
-            this.txbPhone.Size = new System.Drawing.Size(177, 31);
-            this.txbPhone.TabIndex = 5;
-            // 
-            // rbtParkingYes
-            // 
-            this.rbtParkingYes.AutoSize = true;
-            this.rbtParkingYes.Location = new System.Drawing.Point(177, 434);
-            this.rbtParkingYes.Name = "rbtParkingYes";
-            this.rbtParkingYes.Size = new System.Drawing.Size(58, 29);
-            this.rbtParkingYes.TabIndex = 6;
-            this.rbtParkingYes.TabStop = true;
-            this.rbtParkingYes.Text = "Yes";
-            this.rbtParkingYes.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(70, 25);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Parking";
             // 
             // rbtParkingNo
             // 
             this.rbtParkingNo.AutoSize = true;
-            this.rbtParkingNo.Location = new System.Drawing.Point(297, 434);
+            this.rbtParkingNo.Location = new System.Drawing.Point(284, 13);
             this.rbtParkingNo.Name = "rbtParkingNo";
             this.rbtParkingNo.Size = new System.Drawing.Size(57, 29);
             this.rbtParkingNo.TabIndex = 7;
@@ -249,21 +239,41 @@ namespace DesktopApplication
             this.rbtParkingNo.Text = "No";
             this.rbtParkingNo.UseVisualStyleBackColor = true;
             // 
-            // rbtDeliveryYes
+            // rbtParkingYes
             // 
-            this.rbtDeliveryYes.AutoSize = true;
-            this.rbtDeliveryYes.Location = new System.Drawing.Point(177, 488);
-            this.rbtDeliveryYes.Name = "rbtDeliveryYes";
-            this.rbtDeliveryYes.Size = new System.Drawing.Size(58, 29);
-            this.rbtDeliveryYes.TabIndex = 8;
-            this.rbtDeliveryYes.TabStop = true;
-            this.rbtDeliveryYes.Text = "Yes";
-            this.rbtDeliveryYes.UseVisualStyleBackColor = true;
+            this.rbtParkingYes.AutoSize = true;
+            this.rbtParkingYes.Location = new System.Drawing.Point(164, 13);
+            this.rbtParkingYes.Name = "rbtParkingYes";
+            this.rbtParkingYes.Size = new System.Drawing.Size(58, 29);
+            this.rbtParkingYes.TabIndex = 6;
+            this.rbtParkingYes.TabStop = true;
+            this.rbtParkingYes.Text = "Yes";
+            this.rbtParkingYes.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.rbtDeliveryNo);
+            this.groupBox1.Controls.Add(this.rbtDeliveryYes);
+            this.groupBox1.Location = new System.Drawing.Point(13, 480);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(379, 49);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(29, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 25);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Delivery";
             // 
             // rbtDeliveryNo
             // 
             this.rbtDeliveryNo.AutoSize = true;
-            this.rbtDeliveryNo.Location = new System.Drawing.Point(296, 488);
+            this.rbtDeliveryNo.Location = new System.Drawing.Point(284, 14);
             this.rbtDeliveryNo.Name = "rbtDeliveryNo";
             this.rbtDeliveryNo.Size = new System.Drawing.Size(57, 29);
             this.rbtDeliveryNo.TabIndex = 9;
@@ -271,50 +281,81 @@ namespace DesktopApplication
             this.rbtDeliveryNo.Text = "No";
             this.rbtDeliveryNo.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // rbtDeliveryYes
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Name";
+            this.rbtDeliveryYes.AutoSize = true;
+            this.rbtDeliveryYes.Location = new System.Drawing.Point(164, 14);
+            this.rbtDeliveryYes.Name = "rbtDeliveryYes";
+            this.rbtDeliveryYes.Size = new System.Drawing.Size(58, 29);
+            this.rbtDeliveryYes.TabIndex = 8;
+            this.rbtDeliveryYes.TabStop = true;
+            this.rbtDeliveryYes.Text = "Yes";
+            this.rbtDeliveryYes.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // label11
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 122);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 25);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "City";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(0, 712);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(265, 25);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Select a restuarant from the box";
             // 
-            // label3
+            // label10
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 188);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 25);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Street";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(6, 641);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(256, 23);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Select a restuarant from the box";
             // 
-            // label4
+            // label9
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 250);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 25);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Postcode";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(13, 565);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(192, 25);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "All fields must be filled";
             // 
-            // label5
+            // btnDeleteRestaurant
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 309);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 25);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Street Number";
+            this.btnDeleteRestaurant.BackColor = System.Drawing.Color.LightCyan;
+            this.btnDeleteRestaurant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDeleteRestaurant.Location = new System.Drawing.Point(275, 702);
+            this.btnDeleteRestaurant.Name = "btnDeleteRestaurant";
+            this.btnDeleteRestaurant.Size = new System.Drawing.Size(166, 44);
+            this.btnDeleteRestaurant.TabIndex = 18;
+            this.btnDeleteRestaurant.Text = "Delete";
+            this.btnDeleteRestaurant.UseVisualStyleBackColor = false;
+            this.btnDeleteRestaurant.Click += new System.EventHandler(this.btnDeleteRestaurant_Click);
+            // 
+            // btnUpdateRestaurant
+            // 
+            this.btnUpdateRestaurant.BackColor = System.Drawing.Color.LightCyan;
+            this.btnUpdateRestaurant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUpdateRestaurant.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdateRestaurant.Location = new System.Drawing.Point(362, 629);
+            this.btnUpdateRestaurant.Name = "btnUpdateRestaurant";
+            this.btnUpdateRestaurant.Size = new System.Drawing.Size(79, 44);
+            this.btnUpdateRestaurant.TabIndex = 17;
+            this.btnUpdateRestaurant.Text = "Update";
+            this.btnUpdateRestaurant.UseVisualStyleBackColor = false;
+            this.btnUpdateRestaurant.Click += new System.EventHandler(this.btnUpdateRestaurant_Click);
+            // 
+            // btnAddRestaurant
+            // 
+            this.btnAddRestaurant.BackColor = System.Drawing.Color.LightCyan;
+            this.btnAddRestaurant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddRestaurant.Location = new System.Drawing.Point(275, 546);
+            this.btnAddRestaurant.Name = "btnAddRestaurant";
+            this.btnAddRestaurant.Size = new System.Drawing.Size(166, 44);
+            this.btnAddRestaurant.TabIndex = 1;
+            this.btnAddRestaurant.Text = "Add";
+            this.btnAddRestaurant.UseVisualStyleBackColor = false;
+            this.btnAddRestaurant.Click += new System.EventHandler(this.btnAddRestaurant_Click);
             // 
             // label6
             // 
@@ -325,93 +366,98 @@ namespace DesktopApplication
             this.label6.TabIndex = 14;
             this.label6.Text = "Phone Number";
             // 
-            // label7
+            // label5
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 434);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 25);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Parking";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(27, 309);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(127, 25);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Street Number";
             // 
-            // label8
+            // label4
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 488);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 25);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Delivery";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(27, 250);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 25);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Postcode";
             // 
-            // btnAddRestaurant
+            // label3
             // 
-            this.btnAddRestaurant.BackColor = System.Drawing.Color.LightCyan;
-            this.btnAddRestaurant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAddRestaurant.Location = new System.Drawing.Point(297, 549);
-            this.btnAddRestaurant.Name = "btnAddRestaurant";
-            this.btnAddRestaurant.Size = new System.Drawing.Size(116, 44);
-            this.btnAddRestaurant.TabIndex = 1;
-            this.btnAddRestaurant.Text = "Add";
-            this.btnAddRestaurant.UseVisualStyleBackColor = false;
-            this.btnAddRestaurant.Click += new System.EventHandler(this.btnAddRestaurant_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 188);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 25);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Street";
             // 
-            // lbxRestaurants
+            // label2
             // 
-            this.lbxRestaurants.FormattingEnabled = true;
-            this.lbxRestaurants.ItemHeight = 20;
-            this.lbxRestaurants.Location = new System.Drawing.Point(501, 19);
-            this.lbxRestaurants.Name = "lbxRestaurants";
-            this.lbxRestaurants.Size = new System.Drawing.Size(675, 764);
-            this.lbxRestaurants.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 25);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "City";
             // 
-            // btnUpdateRestaurant
+            // label1
             // 
-            this.btnUpdateRestaurant.BackColor = System.Drawing.Color.LightCyan;
-            this.btnUpdateRestaurant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUpdateRestaurant.Location = new System.Drawing.Point(297, 627);
-            this.btnUpdateRestaurant.Name = "btnUpdateRestaurant";
-            this.btnUpdateRestaurant.Size = new System.Drawing.Size(116, 44);
-            this.btnUpdateRestaurant.TabIndex = 17;
-            this.btnUpdateRestaurant.Text = "Update";
-            this.btnUpdateRestaurant.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(27, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Name";
             // 
-            // btnDeleteRestaurant
+            // txbPhone
             // 
-            this.btnDeleteRestaurant.BackColor = System.Drawing.Color.LightCyan;
-            this.btnDeleteRestaurant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDeleteRestaurant.Location = new System.Drawing.Point(297, 702);
-            this.btnDeleteRestaurant.Name = "btnDeleteRestaurant";
-            this.btnDeleteRestaurant.Size = new System.Drawing.Size(116, 44);
-            this.btnDeleteRestaurant.TabIndex = 18;
-            this.btnDeleteRestaurant.Text = "Delete";
-            this.btnDeleteRestaurant.UseVisualStyleBackColor = false;
+            this.txbPhone.Location = new System.Drawing.Point(177, 369);
+            this.txbPhone.Name = "txbPhone";
+            this.txbPhone.Size = new System.Drawing.Size(177, 31);
+            this.txbPhone.TabIndex = 5;
             // 
-            // label9
+            // txbStreetNumber
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 556);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(192, 25);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "All fields must be filled";
+            this.txbStreetNumber.Location = new System.Drawing.Point(177, 303);
+            this.txbStreetNumber.Name = "txbStreetNumber";
+            this.txbStreetNumber.Size = new System.Drawing.Size(177, 31);
+            this.txbStreetNumber.TabIndex = 4;
             // 
-            // label10
+            // txbPostCode
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 637);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(265, 25);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Select a restuarant from the box";
+            this.txbPostCode.Location = new System.Drawing.Point(177, 247);
+            this.txbPostCode.Name = "txbPostCode";
+            this.txbPostCode.Size = new System.Drawing.Size(177, 31);
+            this.txbPostCode.TabIndex = 3;
             // 
-            // label11
+            // txbStreet
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 712);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(265, 25);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Select a restuarant from the box";
+            this.txbStreet.Location = new System.Drawing.Point(177, 182);
+            this.txbStreet.Name = "txbStreet";
+            this.txbStreet.Size = new System.Drawing.Size(177, 31);
+            this.txbStreet.TabIndex = 2;
+            // 
+            // cbxCity
+            // 
+            this.cbxCity.FormattingEnabled = true;
+            this.cbxCity.Items.AddRange(new object[] {
+            "Eindhoven",
+            "Amsterdam",
+            "Rotterdam",
+            "The Hague"});
+            this.cbxCity.Location = new System.Drawing.Point(177, 114);
+            this.cbxCity.Name = "cbxCity";
+            this.cbxCity.Size = new System.Drawing.Size(177, 33);
+            this.cbxCity.TabIndex = 1;
+            // 
+            // txbName
+            // 
+            this.txbName.Location = new System.Drawing.Point(177, 53);
+            this.txbName.Name = "txbName";
+            this.txbName.Size = new System.Drawing.Size(177, 31);
+            this.txbName.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -427,6 +473,10 @@ namespace DesktopApplication
             this.tabRestuarants.ResumeLayout(false);
             this.groupBoxAddRestaurant.ResumeLayout(false);
             this.groupBoxAddRestaurant.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -466,5 +516,8 @@ namespace DesktopApplication
         private System.Windows.Forms.TextBox txbStreet;
         private System.Windows.Forms.ComboBox cbxCity;
         private System.Windows.Forms.TextBox txbName;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnSelect;
     }
 }
