@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using RestaurantReviews.Models.Persistence;
 
 namespace UnitTests.Persistence
 {
@@ -30,7 +31,7 @@ namespace UnitTests.Persistence
         {
             foreach (User u in users)
             {
-                if(user.Id == u.Id)
+                if (user.Id == u.Id)
                 {
                     users.Remove(u);
                     return true;
@@ -38,13 +39,6 @@ namespace UnitTests.Persistence
             }
             return false;
         }
-
-        public List<User> FindAll()
-        {
-            return users;
-        }
-
-    
 
         public User FindUserByEmail(string email)
         {
@@ -55,23 +49,35 @@ namespace UnitTests.Persistence
                     return user;
                 }
             }
-
             return null;
+        }
+
+        public List<User> FindAll()
+        {
+            if(users.Count != 0)
+            {
+                return users;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public bool SaveUser(User user)
         {
-            if (user.LastName != "")
+           if(user.LastName == "")
+            {
+                return false;
+            }
+            else
             {
                 user.Id = 1;
                 users.Add(user);
                 return true;
             }
-            else
-            {
-                return false;
-            }                           
-         }
-       
+        }
     }
+
+       
 }

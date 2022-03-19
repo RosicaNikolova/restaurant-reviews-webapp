@@ -9,8 +9,8 @@ namespace DesktopApplication
         User user;
      
         UserManager userManager = new UserManager(new UserRepository());
-        RestaurantManager restaurantManager = new RestaurantManager();
-        ReviewManager reviewManager = new ReviewManager();
+        RestaurantManager restaurantManager = new RestaurantManager(new RestaurantRepository());
+        ReviewManager reviewManager = new ReviewManager(new ReviewRepository());
         public MainForm()
         {
             InitializeComponent();

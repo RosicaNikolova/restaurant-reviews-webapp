@@ -11,11 +11,11 @@ namespace RestaurantReviews.Pages
     public class MyreviewsModel : PageModel
     {
         public List<Review> reviews = new List<Review>();
-        ReviewManager reviewManager = new ReviewManager();
+        ReviewManager reviewManager = new ReviewManager(new ReviewRepository());
 
         public IActionResult OnGet()
         {
-            ReviewManager reviewManager = new ReviewManager();
+           
             try
             {
                 reviews = reviewManager.GetAllReviews();

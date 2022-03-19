@@ -15,7 +15,6 @@ namespace RestaurantReviews.Models
         
         public bool SaveUser(User user);
 
-
         public bool DeleteUser(User user);
         
     }

@@ -43,16 +43,14 @@ namespace UnitTests
         }
 
 
-
         [TestMethod]
         [ExpectedException(typeof(FindUsersException))]
         public void FindAllUsersFailsTest()
         {
-            List<User> users = new List<User>() { new User { Id = 1, FirstName = "Rositsa" }, new User { Id = 2, FirstName = "John" } };
-            FakeUserRepository fakeRepo = new FakeUserRepository(null);
+            
+            FakeUserRepository fakeRepo = new FakeUserRepository(new List<User>());
             UserManager userManager = new UserManager(fakeRepo);
             List<User> foundUsers = userManager.FindAllUsers();
-            CollectionAssert.AreEqual(users, foundUsers);
         }
 
 

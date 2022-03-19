@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using RestaurantReviews.Models.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace RestaurantReviews.Models
 {
-    public class ReviewRepository
+    public class ReviewRepository : IReviewRepository
     {
+
+       
         public List<Review> FindReviewsForRestaurant(int id)
         {
             try

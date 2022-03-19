@@ -235,13 +235,19 @@ nav {
 
 .card_r_name {
     font-size: 1.7vw;
-    letter-spacing: 1.5px
+    letter-spacing: 1.5px;
+    text-decoration: none;
 }
 
-.card_content p {
-    font-size: 1.2vw;
-    margin-top: 1vw;
+a {
+    text-decoration: none;
+    color: #1E1E35;
 }
+
+    .card_content p {
+        font-size: 1.2vw;
+        margin-top: 1vw;
+    }
 
 .card_picture_div {
     height: 17vw;
