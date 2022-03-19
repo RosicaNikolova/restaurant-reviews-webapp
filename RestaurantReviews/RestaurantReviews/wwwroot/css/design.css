@@ -1,7 +1,7 @@
 
 
 body {
-    background-color: #F2E9E4;
+    background-color: #EFE7E6;
     margin: 0;
 }
 
@@ -184,7 +184,7 @@ nav {
         border: 1px;
         border-style: outset;
         box-shadow: 0px 0px 44px 8px rgba(0,0,0,0.35);
-        background-color: #F2F2F5;
+        background-color: #EDF2FA;
     }
 
 .restaurant_card {
@@ -269,14 +269,21 @@ nav {
     padding: 30px;
     justify-content: space-evenly;
     margin-bottom: 30px;
+    color: #F2E9E4;
+    border-radius: 10px;
 }
 
 
 .restaurnat_info_wrapper {
-    background-color: #DDC7BB;
     font-size: 1.5vw;
     padding: 30px;
     margin-bottom: 40px;
+    color: #1E1E35;
+    border: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #D8C4C0;
+    box-shadow: 0px 0px 44px 8px rgba(0,0,0,0.35);
 }
 
 .hero_image img {
@@ -285,7 +292,6 @@ nav {
 }
 
 .hero_name {
-    background-color: aqua;
     font-size: 3vw;
 }
 
@@ -305,9 +311,15 @@ nav {
 }
 
 .review_wrapper {
-    background-color: pink;
     padding: 20px;
     margin-bottom: 30px;
+    color: #555977;
+    border: 1px;
+    border-style: solid;
+    border-color: grey;
+    border-radius: 15px;
+    background-color: white;
+}
 }
 
 .review_header {
@@ -339,23 +351,25 @@ nav {
     font-size: 1.8vw;
     padding-left: 20px;
     margin-bottom: 20px;
-    background-color: royalblue;
+    color: #555977;
 }
 
 
 .edit-button {
     background-color: #DDC7BB;
-    color: #1E1E35;
+    color: #555977;
     padding: 10px 30px;
     text-align: center;
     text-decoration: none;
     font-size: 1.1vw;
     transition-duration: 0.5s;
+    border-style: solid;
+    border-radius: 5px;
+    border: 2px;
 }
 
     .edit-button:hover {
-        background-color: #A2D0EE;
-        color: #F2F2F5;
+        background-color: #EFE7E6;
     }
 
 
@@ -578,12 +592,16 @@ nav {
 
 form {
     padding: 10px;
-    border: 1px solid #555977;
+    border: 1px solid white;
     width: 40%;
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+    background-color: #D8C4C0;
+    color:white;
+    border-radius: 15px;
+    
 }
 
 .container label {
@@ -592,7 +610,6 @@ form {
 
 .login_heading {
     font-size: 2.3vw;
-    color: #1E1E35;
     margin: 0;
     text-align: center;
     margin-bottom: 20px;
@@ -616,38 +633,39 @@ input[type=text], input[type=password] {
     justify-content: space-evenly;
 }
 
-    .login_buttons input {
-        background-color: #A2D0EE;
-        color: white;
+.login_buttons input {
+        background-color: #F2F2F5;
+        color: #B58F86;
         padding: 14px 20px;
         margin: 8px 0;
         border: none;
         cursor: pointer;
         width: 20%;
         font-size: 1vw;
-    }
+}
 
-    .login_buttons button {
-        background-color: #A2D0EE;
-        color: white;
+.login_buttons button {
+        background-color: #F2F2F5;
+        color: #B58F86;
         padding: 14px 20px;
         margin: 8px 0;
         border: none;
         cursor: pointer;
         width: 20%;
         font-size: 1vw;
-    }
+}
         /* Add a hover effect for buttons */
         .login_buttons input:hover {
             opacity: 0.8;
         }
 
-    .login_buttons button:hover {
+.login_buttons button:hover {
         opacity: 0.8;
-    }
+}
 
 /* Add padding to containers */
 .container {
     padding: 16px;
     padding-bottom: 0px;
 }
+

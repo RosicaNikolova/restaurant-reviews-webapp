@@ -13,6 +13,7 @@ namespace RestaurantReviews.Models
         public ScoreException(string message) : base(message)
         {
         }
+    }
 
        
 }

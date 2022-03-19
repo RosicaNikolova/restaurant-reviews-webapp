@@ -17,7 +17,7 @@ namespace RestaurantReviews.Pages
             {
                 RestaurantManager restaurantManager = new RestaurantManager();
                 restaurants = restaurantManager.GetAllRestaurants();
-                return new RedirectToPageResult("Home");
+                return Page();
             }
             catch (RestaurantException)
             {
