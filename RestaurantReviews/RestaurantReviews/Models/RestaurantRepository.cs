@@ -107,7 +107,7 @@ namespace RestaurantReviews.Models
             }
             catch (Exception)
             {
-                return -1;
+                throw new ScoreException();
             }
         }
 
@@ -145,10 +145,10 @@ namespace RestaurantReviews.Models
             }
             catch (Exception)
             {
-                return -1;
+                throw new ScoreException();
             }
-           
-           
+
+
         }
 
         public bool SaveRestaurant(Restaurant restaurant)
@@ -205,7 +205,7 @@ namespace RestaurantReviews.Models
             }
             catch (Exception)
             {
-                return false;
+                throw new Exception();
             }
         }
 

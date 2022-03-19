@@ -47,27 +47,23 @@ namespace DesktopApplication
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(lbxUsers.SelectedIndex != -1)
+            try
             {
                 object selectedUser = lbxUsers.SelectedItem;
                 User user = ((User)selectedUser);
-                try
-                {
-                    userManager.DeleteUser(user);
-                }
-                catch (DelteUserException)
-                {
-                    MessageBox.Show("Unable to delete user");
-                }
-                
-                DisplayUsers();
+                userManager.DeleteUser(user);
                 errorMessageDelete.Text = "";
+                DisplayUsers();
+
             }
-            else
+            catch (DelteUserException)
+            {
+                MessageBox.Show("Unable to delete user");
+            }
+            catch (Exception)
             {
                 errorMessageDelete.Text = "Please, select a user";
             }
-            
 
         }
 
@@ -90,9 +86,16 @@ namespace DesktopApplication
         private void DisplayRestaurants()
         {
             lbxRestaurants.Items.Clear();
-            foreach (Restaurant restaurant in restaurantManager.GetAllRestaurants())
+            try
             {
-                lbxRestaurants.Items.Add(restaurant);
+                foreach (Restaurant restaurant in restaurantManager.GetAllRestaurants())
+                {
+                    lbxRestaurants.Items.Add(restaurant);
+                }
+            }
+            catch (RestaurantException)
+            {
+                MessageBox.Show("Unable to get all restaurants");
             }
         }
 
@@ -145,10 +148,17 @@ namespace DesktopApplication
                 int number;
                 if (int.TryParse(txbStreetNumber.Text, out number))
                 {
-                    restaurantManager.CreateNewRestaurant(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery);
-                    DisplayRestaurants();
-                    ClearTextBoxes();
-                    MessageBox.Show("Restaurant successfully added");
+                    try
+                    {
+                        restaurantManager.CreateNewRestaurant(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery);
+                        DisplayRestaurants();
+                        ClearTextBoxes();
+                        MessageBox.Show("Restaurant successfully added");
+                    }
+                    catch (RestaurantException)
+                    {
+                        MessageBox.Show("Unable to add restaurant");
+                    }
                 }
                 else
                 {
@@ -184,10 +194,17 @@ namespace DesktopApplication
 
                 if (int.TryParse(txbStreetNumber.Text, out number))
                 {
-                    restaurantManager.UpdateRestaurantInfo(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery, restaurant);
-                    DisplayRestaurants();
-                    ClearTextBoxes();
-                    MessageBox.Show("Restaurant successfully updated");
+                    try
+                    {
+                        restaurantManager.UpdateRestaurantInfo(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery, restaurant);
+                        DisplayRestaurants();
+                        ClearTextBoxes();
+                        MessageBox.Show("Restaurant successfully updated");
+                    }
+                    catch (RestaurantException)
+                    {
+                        MessageBox.Show("Unable to update restaurant");
+                    }
                 }
                 else
                 {
@@ -202,69 +219,84 @@ namespace DesktopApplication
         }
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            object selectedRestaurant = lbxRestaurants.SelectedItem;
-            Restaurant restaurant = ((Restaurant)selectedRestaurant);
-            ShowFieldsToBeEddited(restaurant);
+            try
+            {
+                object selectedRestaurant = lbxRestaurants.SelectedItem;
+                Restaurant restaurant = ((Restaurant)selectedRestaurant);
+                ShowFieldsToBeEddited(restaurant);
+            }
+            catch(Exception)
+            {
+               MessageBox.Show("Unable to select restaurant");
+            }
         }
 
 
         private void ShowFieldsToBeEddited(Restaurant restaurant)
         {
-            txbName.Text = restaurant.Name;
-            txbStreet.Text = restaurant.Street;
-            txbStreetNumber.Text = restaurant.StreetNumber.ToString();
-            txbPostCode.Text = restaurant.PostCode;
-            txbPhone.Text = restaurant.PhoneNumber;
+            try
+            {
+                txbName.Text = restaurant.Name;
+                txbStreet.Text = restaurant.Street;
+                txbStreetNumber.Text = restaurant.StreetNumber.ToString();
+                txbPostCode.Text = restaurant.PostCode;
+                txbPhone.Text = restaurant.PhoneNumber;
 
-            if(restaurant.HasParking == "Yes")
-            {
-                rbtParkingYes.Checked = true;
-                rbtParkingNo.Checked = false;
-            }
-            else
-            {
-                rbtParkingYes.Checked = false;
-                rbtParkingNo.Checked = true;
-            }
+                if (restaurant.HasParking == "Yes")
+                {
+                    rbtParkingYes.Checked = true;
+                    rbtParkingNo.Checked = false;
+                }
+                else
+                {
+                    rbtParkingYes.Checked = false;
+                    rbtParkingNo.Checked = true;
+                }
 
-            if (restaurant.HasDelivery == "Yes")
-            {
-                rbtDeliveryYes.Checked = true;
-                rbtParkingNo.Checked = false;
-            }
-            else
-            {
-                rbtDeliveryYes.Checked = false;
-                rbtDeliveryNo.Checked = true;
-            }
+                if (restaurant.HasDelivery == "Yes")
+                {
+                    rbtDeliveryYes.Checked = true;
+                    rbtParkingNo.Checked = false;
+                }
+                else
+                {
+                    rbtDeliveryYes.Checked = false;
+                    rbtDeliveryNo.Checked = true;
+                }
 
-            cbxCity.SelectedItem = restaurant.City;
+                cbxCity.SelectedItem = restaurant.City;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to display restaurant");
+            }
+           
         }
 
         private void btnDeleteRestaurant_Click(object sender, EventArgs e)
-        {
-            if(lbxRestaurants.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please, select a restaurant to be deleted!");
-            }
-            else
-            {
-                object selectedRestaurant = lbxRestaurants.SelectedItem;
-                Restaurant restaurant = ((Restaurant)selectedRestaurant);
-                restaurantManager.DeleteRestaurant(restaurant);
-                DisplayRestaurants();
-            }
+        { 
+                try
+                {
+                    object selectedRestaurant = lbxRestaurants.SelectedItem;
+                    Restaurant restaurant = ((Restaurant)selectedRestaurant);
+                    restaurantManager.DeleteRestaurant(restaurant);
+                    DisplayRestaurants();
+                }
+                catch (RestaurantException)
+                {
+                    MessageBox.Show("Unable to delete restaurant");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Please, select a restaurant to be deleted!");
+                }
+            
            
         }
 
         private void btnDeleteReview_Click(object sender, EventArgs e)
         {
-            if(lbxReviews.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please, select a review to be deleted!");
-            }
-            else
-            {
+           
                 object selectedReview = lbxReviews.SelectedItem;
                 Review review = ((Review)selectedReview);
                 try
@@ -277,8 +309,12 @@ namespace DesktopApplication
                 {
                     MessageBox.Show("Unable to delete review");
                 }
+                catch (Exception)
+                {
+                    MessageBox.Show("Please, select a review to be deleted!");
+                }
                 
-            }
+            
         }
     }
 }
