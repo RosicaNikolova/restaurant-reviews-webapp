@@ -15,7 +15,7 @@ namespace RestaurantReviews.Pages
         
         public IActionResult OnGet(int id)
         {
-            RestaurantManager restaurantManager = new RestaurantManager();
+            RestaurantManager restaurantManager = new RestaurantManager(new RestaurantRepository());
             ReviewManager reviewManager = new ReviewManager();
 
             try {

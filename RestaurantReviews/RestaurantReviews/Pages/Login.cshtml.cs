@@ -23,7 +23,7 @@ namespace RestaurantReviews.Pages
 
         public IActionResult OnPost()
         {
-            LoginManager loginManager = new LoginManager();
+            LoginManager loginManager = new LoginManager(new UserRepository());
 
             if (ModelState.IsValid)
             {

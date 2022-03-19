@@ -7,7 +7,13 @@ namespace RestaurantReviews.Models
 {
     public class RegistrationManager
     {
-        UserRepository userRepository = new UserRepository();
+
+        private IUserRepository userRepository;
+
+        public RegistrationManager(IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
 
         public User Register(string email, string password, string firstName, string lastName)
         {
@@ -36,12 +42,5 @@ namespace RestaurantReviews.Models
                 throw new RegistrationException("User with this e-mail already exists.");
             }
         }
-
-        //public User UserExists(string email)
-        //{
-        //    User user = userRepository.FindUserByEmail(email);
-        //    return user;
-
-        //}
     }
 }

@@ -7,7 +7,8 @@ namespace DesktopApplication
     public partial class MainForm : Form
     {
         User user;
-        UserManager userManager = new UserManager();
+     
+        UserManager userManager = new UserManager(new UserRepository());
         RestaurantManager restaurantManager = new RestaurantManager();
         ReviewManager reviewManager = new ReviewManager();
         public MainForm()
@@ -67,7 +68,7 @@ namespace DesktopApplication
             lbxUsers.Items.Clear();
             try
             {
-                foreach (User user in userManager.findAllUsers())
+                foreach (User user in userManager.FindAllUsers())
                 {
                     lbxUsers.Items.Add(user);
                 }

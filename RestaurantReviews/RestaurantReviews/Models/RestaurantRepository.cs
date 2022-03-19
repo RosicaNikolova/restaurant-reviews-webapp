@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantReviews.Models
 {
-    public class RestaurantRepository
+    public class RestaurantRepository : IRestaurantRepository
     {
         public List<Restaurant> GetRestuarants()
         {

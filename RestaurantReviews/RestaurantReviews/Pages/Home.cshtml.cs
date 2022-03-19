@@ -15,7 +15,7 @@ namespace RestaurantReviews.Pages
         {
             try
             {
-                RestaurantManager restaurantManager = new RestaurantManager();
+                RestaurantManager restaurantManager = new RestaurantManager(new RestaurantRepository());
                 restaurants = restaurantManager.GetAllRestaurants();
                 return Page();
             }

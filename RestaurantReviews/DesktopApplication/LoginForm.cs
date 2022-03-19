@@ -13,7 +13,7 @@ namespace DesktopApplication
 {
     public partial class LoginForm : Form
     {
-        LoginManager loginManager = new LoginManager();
+        LoginManager loginManager = new LoginManager(new UserRepository());
         public LoginForm()
         {
             InitializeComponent();

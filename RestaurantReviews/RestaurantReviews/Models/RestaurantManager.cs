@@ -7,7 +7,12 @@ namespace RestaurantReviews.Models
 {
     public class RestaurantManager
     {
-        RestaurantRepository restaurantRepository = new RestaurantRepository();
+        IRestaurantRepository restaurantRepository;
+
+        public RestaurantManager(IRestaurantRepository repository)
+        {
+            this.restaurantRepository = repository;
+        }
 
         public List<Restaurant> GetAllRestaurants()
         {

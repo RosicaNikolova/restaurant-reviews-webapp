@@ -7,7 +7,12 @@ namespace RestaurantReviews.Models
 {
     public class LoginManager
     {
-        UserRepository userRepository = new UserRepository();
+        private IUserRepository userRepository;
+
+        public LoginManager(IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
 
         public User Login(string email, string password)
         {

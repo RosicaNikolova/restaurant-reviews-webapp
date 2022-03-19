@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantReviews.Models
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         public User FindUser(string email, string password)
         {
@@ -72,7 +72,7 @@ namespace RestaurantReviews.Models
             }
 
         }
-        public List<User> findAll()
+        public List<User> FindAll()
         {
             try
             {

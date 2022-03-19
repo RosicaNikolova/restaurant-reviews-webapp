@@ -7,13 +7,18 @@ namespace RestaurantReviews.Models
 {
     public class UserManager
     {
-        UserRepository userRepository = new UserRepository();
+        private IUserRepository userRepository;
 
-        public User findUser(string email, string password)
+        public UserManager(IUserRepository repository)
+        {
+            this.userRepository = repository;
+        }
+
+        public User FindUser(string email, string password)
         {
             User user = userRepository.FindUser(email, password);
-           
-            if(user == null)
+
+            if (user == null)
             {
                 throw new LoginException();
             }
@@ -21,7 +26,7 @@ namespace RestaurantReviews.Models
             {
                 return user;
             }
-             
+
 
             //if (userRepository.FindUser(email, password) != null)
             //{
@@ -33,9 +38,9 @@ namespace RestaurantReviews.Models
             //}
         }
 
-        public List<User> findAllUsers()
+        public List<User> FindAllUsers()
         {
-            List<User> users = userRepository.findAll();
+            List<User> users = userRepository.FindAll();
             if (users != null)
             {
                 return users;
@@ -43,14 +48,12 @@ namespace RestaurantReviews.Models
             else
             {
                 throw new FindUsersException();
-            }
-
-           
+            }     
         }
 
         //public void CreateUser(string email, string password, string firstName, string lastName)
         //{
-        //    if(userRepository.FindUser(email, password) != null)
+        //    if (userRepository.FindUser(email, password) != null)
         //    {
         //        throw new UserExistsException("User already exists");
         //    }

@@ -23,7 +23,7 @@ namespace RestaurantReviews.Pages
 
         public IActionResult OnPost()
         {
-            RegistrationManager registrationManager = new RegistrationManager();
+            RegistrationManager registrationManager = new RegistrationManager(new UserRepository());
 
             if (ModelState.IsValid)
             {
