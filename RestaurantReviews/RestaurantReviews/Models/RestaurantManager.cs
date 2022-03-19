@@ -97,7 +97,7 @@ namespace RestaurantReviews.Models
                 restaurant.HasDelivery = delivery;
                 restaurantRepository.UpdateRestaurant(restaurant);
             }
-            catch (Exception)
+            catch (RestaurantException)
             {
                 throw new RestaurantException();
             }

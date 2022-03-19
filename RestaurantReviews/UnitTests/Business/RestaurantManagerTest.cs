@@ -6,124 +6,58 @@ using UnitTests.Persistence;
 namespace UnitTests
 {
     [TestClass]
-    public class UserManagerTest
+    public class RestaurantManagerTest
     {
         [TestMethod]
-        public void FindUserTest()
+        public void FindRestaurantTest()
         {
-            User userCreated = new User();
-            userCreated.Email = "rosica@gmail.com";
-            userCreated.Password = "123abv";
-            userCreated.Id = 1;
-            FakeUserRepository fakeRepo = new FakeUserRepository(new List <User> { userCreated});
+            Restaurant restCreated = new Restaurant();
+            restCreated.Name = "Pizzeria";
+            restCreated.Id = 1;
+            FakeRestaurantRepository fakeRepo = new FakeRestaurantRepository(new List <Restaurant> { restCreated});
 
-            UserManager userManager = new UserManager(fakeRepo);
-            User foundUser = userManager.FindUser("rosica@gmail.com", "123abv");
-            Assert.AreEqual(1, foundUser.Id);
-
-            //public User FindUser(string email, string password)
-            //{
-            //    User user = userRepository.FindUser(email, password);
-
-            //    if (user == null)
-            //    {
-            //        throw new LoginException();
-            //    }
-            //    else
-            //    {
-            //        return user;
-            //    }
-
-
-            //}
+            RestaurantManager restaurantManager = new RestaurantManager(fakeRepo);
+            Restaurant foundRestaurant = restaurantManager.GetRestaurant(1);
+            Assert.AreEqual(restCreated.Id, foundRestaurant.Id);
+            
         }
 
         [TestMethod]
-        [ExpectedException(typeof(LoginException))]
-        public void FindUserFailsTest()
-        {         
-            FakeUserRepository fakeRepo = new FakeUserRepository(new List<User> ());
+        [ExpectedException(typeof(RestaurantException))]
+        public void FindRestaurantFailsTest()
+        {
+            Restaurant restCreated = new Restaurant();
+            restCreated.Name = "Pizzeria";
+            restCreated.Id = 1;
+            FakeRestaurantRepository fakeRepo = new FakeRestaurantRepository(new List<Restaurant>());
 
-            UserManager userManager = new UserManager(fakeRepo);
-            User foundUser = userManager.FindUser("rosica@gmail.com", "123abv"); 
+            RestaurantManager restaurantManager = new RestaurantManager(fakeRepo);
+            Restaurant foundRestaurant = restaurantManager.GetRestaurant(1);
+            
         }
-
-
-        //public List<User> FindAllUsers()
-        //{
-        //    List<User> users = userRepository.FindAll();
-        //    if (users != null)
-        //    {
-        //        return users;
-        //    }
-        //    else
-        //    {
-        //        throw new FindUsersException();
-        //    }
-        //}
-
-
 
         [TestMethod]
-        public void FindAllUsersTest()
+        public void FindAllRestaurantsTest()
         {
-            List<User> users = new List<User>() { new User { Id = 1, FirstName = "Rositsa" } , new  User { Id = 2, FirstName = "John" } };
-            FakeUserRepository fakeRepo = new FakeUserRepository(users);
-            UserManager userManager = new UserManager(fakeRepo);
-            List<User> foundUsers = userManager.FindAllUsers();
-            CollectionAssert.AreEqual(users, foundUsers);
+            List<Restaurant> restaurants = new List<Restaurant>() { new Restaurant { Id = 1, Name = "Pizzeria" } , new  Restaurant { Id = 2, Name = "Mexican Dream" } };
+            FakeRestaurantRepository fakeRepo = new FakeRestaurantRepository(restaurants);
+
+            RestaurantManager restaurantManager = new RestaurantManager(fakeRepo);
+            List<Restaurant> foundRestaurants = restaurantManager.GetAllRestaurants();
+            CollectionAssert.AreEqual(restaurants, foundRestaurants);
         }
-
-
 
         [TestMethod]
-        [ExpectedException(typeof(FindUsersException))]
-        public void FindAllUsersFailsTest()
-        {
-            List<User> users = new List<User>() { new User { Id = 1, FirstName = "Rositsa" }, new User { Id = 2, FirstName = "John" } };
-            FakeUserRepository fakeRepo = new FakeUserRepository(null);
-            UserManager userManager = new UserManager(fakeRepo);
-            List<User> foundUsers = userManager.FindAllUsers();
-            CollectionAssert.AreEqual(users, foundUsers);
+        [ExpectedException(typeof(RestaurantException))]
+        public void FindAllRestaurantsFailsTest()
+        { 
+            FakeRestaurantRepository fakeRepo = new FakeRestaurantRepository(new List<Restaurant>());
+            RestaurantManager restaurantManager = new RestaurantManager(fakeRepo);
+            restaurantManager.GetAllRestaurants();
         }
 
 
-        [TestMethod]
-        public void DeleteUsersTest()
-        {
-            User userCreated = new User();
-            userCreated.Email = "rosica@gmail.com";
-            userCreated.Password = "123abv";
-            userCreated.Id = 1;
-            FakeUserRepository fakeRepo = new FakeUserRepository(new List<User> { userCreated });
-            UserManager userManager = new UserManager(fakeRepo);
-            userManager.DeleteUser(userCreated);     
-        }
-
-
-        [TestMethod]
-        [ExpectedException(typeof(DelteUserException))]
-        public void DeleteUsersFailsTest()
-        {
-            User userCreated = new User();
-            userCreated.Email = "rosica@gmail.com";
-            userCreated.Password = "123abv";
-            userCreated.Id = 1;
-            FakeUserRepository fakeRepo = new FakeUserRepository(new List<User>());
-           
-            UserManager userManager = new UserManager(fakeRepo);
-            userManager.DeleteUser(userCreated);
-  
-        }
-
-
-        //public void DeleteUser(User user)
-        //{
-        //    if (!userRepository.DeleteUser(user))
-        //    {
-        //        throw new DelteUserException();
-        //    }
-        //}
+        
 
     }
 }

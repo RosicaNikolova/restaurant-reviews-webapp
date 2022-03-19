@@ -205,7 +205,7 @@ namespace RestaurantReviews.Models
             }
             catch (Exception)
             {
-                throw new Exception();
+                throw new RestaurantException();
             }
         }
 
