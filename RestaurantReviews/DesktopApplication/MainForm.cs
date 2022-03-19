@@ -1,10 +1,5 @@
 ﻿using RestaurantReviews.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace DesktopApplication
@@ -29,17 +24,17 @@ namespace DesktopApplication
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(TabControl.SelectedTab == tabUsers)
+            if (TabControl.SelectedTab == tabUsers)
             {
                 DisplayUsers();
                 errorMessageDelete.Text = "";
             }
-            else if(TabControl.SelectedTab == tabRestuarants)
+            else if (TabControl.SelectedTab == tabRestuarants)
             {
                 DisplayRestaurants();
                 ClearTextBoxes();
             }
-            else if(TabControl.SelectedTab == tabManageReviews)
+            else if (TabControl.SelectedTab == tabManageReviews)
             {
                 DisplayReviews();
             }
@@ -70,7 +65,7 @@ namespace DesktopApplication
         private void DisplayUsers()
         {
             lbxUsers.Items.Clear();
-            try 
+            try
             {
                 foreach (User user in userManager.findAllUsers())
                 {
@@ -132,91 +127,79 @@ namespace DesktopApplication
 
         private void btnAddRestaurant_Click(object sender, EventArgs e)
         {
-            if(txbName.Text != string.Empty && cbxCity.SelectedIndex != -1 && txbStreet.Text != string.Empty && txbStreetNumber.Text != string.Empty && txbPostCode.Text != string.Empty && txbPhone.Text != string.Empty && (rbtDeliveryNo.Checked || rbtDeliveryYes.Checked) && (rbtParkingNo.Checked || rbtParkingYes.Checked))
-            {
-                string has_delivery = "Yes";
-                string has_pakring = "Yes";
+            //if(txbName.Text != string.Empty && cbxCity.SelectedIndex != -1 && txbStreet.Text != string.Empty && txbStreetNumber.Text != string.Empty && txbPostCode.Text != string.Empty && txbPhone.Text != string.Empty && (rbtDeliveryNo.Checked || rbtDeliveryYes.Checked) && (rbtParkingNo.Checked || rbtParkingYes.Checked))
+            //{
 
-                if (rbtDeliveryNo.Checked)
-                {
-                    has_delivery = "No";
-                }
-                if (rbtParkingNo.Checked)
-                {
-                    has_pakring = "No";
-                }
-                int number;
-                if (int.TryParse(txbStreetNumber.Text, out number))
-                {
-                    try
-                    {
-                        restaurantManager.CreateNewRestaurant(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery);
-                        DisplayRestaurants();
-                        ClearTextBoxes();
-                        MessageBox.Show("Restaurant successfully added");
-                    }
-                    catch (RestaurantException)
-                    {
-                        MessageBox.Show("Unable to add restaurant");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Street Number must be a digit!");
-                }
-            }
-            else
+            string has_delivery = "Yes";
+            string has_pakring = "Yes";
+
+            if (rbtDeliveryNo.Checked)
             {
-                MessageBox.Show("All fileds must be filled!");
+                has_delivery = "No";
             }
-        }
+            if (rbtParkingNo.Checked)
+            {
+                has_pakring = "No";
+            }
+            //int number;
+            try
+            {
+                restaurantManager.CreateNewRestaurant(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery);
+                DisplayRestaurants();
+                ClearTextBoxes();
+                MessageBox.Show("Restaurant successfully added");
+            }
+            catch (RestaurantException)
+            {
+                MessageBox.Show("Unable to add restaurant");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Entered data is invalid (Street number must be a digit!).");
+            }
+        }           
+            //}
+            //else
+            //{
+            //    MessageBox.Show("All fileds must be filled!");
+            //}
+        
 
         private void btnUpdateRestaurant_Click(object sender, EventArgs e)
         {
-            object selectedRestaurant = lbxRestaurants.SelectedItem;
-            Restaurant restaurant = ((Restaurant)selectedRestaurant);
+            string has_delivery = "Yes";
+            string has_pakring = "Yes";
 
-            if (txbName.Text != string.Empty && cbxCity.SelectedIndex != -1 && txbStreet.Text != string.Empty && txbStreetNumber.Text != string.Empty && txbPostCode.Text != string.Empty && txbPhone.Text != string.Empty && (rbtDeliveryNo.Checked || rbtDeliveryYes.Checked) && (rbtParkingNo.Checked || rbtParkingYes.Checked))
+            if (rbtDeliveryNo.Checked)
             {
-                string has_delivery = "Yes";
-                string has_pakring = "Yes";
-
-                if (rbtDeliveryNo.Checked)
-                {
-                    has_delivery = "No";
-                }
-                if (rbtParkingNo.Checked)
-                {
-                    has_pakring = "No";
-                }
-
-                int number;
-
-                if (int.TryParse(txbStreetNumber.Text, out number))
-                {
-                    try
-                    {
-                        restaurantManager.UpdateRestaurantInfo(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery, restaurant);
-                        DisplayRestaurants();
-                        ClearTextBoxes();
-                        MessageBox.Show("Restaurant successfully updated");
-                    }
-                    catch (RestaurantException)
-                    {
-                        MessageBox.Show("Unable to update restaurant");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Street Number must be a digit!");
-                }
+                has_delivery = "No";
             }
-            else
+            if (rbtParkingNo.Checked)
             {
-                MessageBox.Show("All fileds must be filled!");
+                has_pakring = "No";
             }
+
+            try
+            {
+                object selectedRestaurant = lbxRestaurants.SelectedItem;
+                Restaurant restaurant = ((Restaurant)selectedRestaurant);
+                restaurantManager.UpdateRestaurantInfo(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery, restaurant);
+                DisplayRestaurants();
+                ClearTextBoxes();
+                MessageBox.Show("Restaurant successfully updated");
+
+            }
+            catch (RestaurantException)
+            {
+                MessageBox.Show("Unable to update restaurant");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("All fileds must be filled! Street Number must be a digit.");
+            }          
 
         }
+     
         private void btnSelect_Click(object sender, EventArgs e)
         {
             try
@@ -275,44 +258,42 @@ namespace DesktopApplication
 
         private void btnDeleteRestaurant_Click(object sender, EventArgs e)
         { 
-                try
-                {
-                    object selectedRestaurant = lbxRestaurants.SelectedItem;
-                    Restaurant restaurant = ((Restaurant)selectedRestaurant);
-                    restaurantManager.DeleteRestaurant(restaurant);
-                    DisplayRestaurants();
-                }
-                catch (RestaurantException)
-                {
-                    MessageBox.Show("Unable to delete restaurant");
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Please, select a restaurant to be deleted!");
-                }
-            
-           
+            try
+            {
+                object selectedRestaurant = lbxRestaurants.SelectedItem;
+                Restaurant restaurant = ((Restaurant)selectedRestaurant);
+                restaurantManager.DeleteRestaurant(restaurant);
+                DisplayRestaurants();
+            }
+            catch (RestaurantException)
+            {
+                MessageBox.Show("Unable to delete restaurant");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please, select a restaurant to be deleted!");
+            }         
         }
 
         private void btnDeleteReview_Click(object sender, EventArgs e)
         {
            
-                object selectedReview = lbxReviews.SelectedItem;
-                Review review = ((Review)selectedReview);
-                try
-                {
-                    reviewManager.DeleteReview(review);
-                    DisplayReviews();
-                    MessageBox.Show("Restaurant deleted successfully");
-                }
-                catch (ReviewException)
-                {
-                    MessageBox.Show("Unable to delete review");
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Please, select a review to be deleted!");
-                }
+           try
+           {
+              object selectedReview = lbxReviews.SelectedItem;
+              Review review = ((Review)selectedReview);
+              reviewManager.DeleteReview(review);
+              DisplayReviews();
+              MessageBox.Show("Restaurant deleted successfully");
+           }
+           catch (ReviewException)
+           {
+              MessageBox.Show("Unable to delete review");
+           }
+           catch (Exception)
+           {
+              MessageBox.Show("Please, select a review to be deleted!");
+           }
                 
             
         }
