@@ -181,8 +181,8 @@ nav {
     .restaurant_list li {
         margin-bottom: 60px;
         color: #1E1E35;
-        border: 1px;
-        border-style: outset;
+        border-style: solid;
+        border-color: #A2D0EE;
         box-shadow: 0px 0px 44px 8px rgba(0,0,0,0.35);
         background-color: #EDF2FA;
     }
@@ -322,7 +322,7 @@ a {
     color: #555977;
     border: 1px;
     border-style: solid;
-    border-color: grey;
+    border-color: #A2D0EE;
     border-radius: 15px;
     background-color: white;
 }
@@ -362,7 +362,7 @@ a {
 
 
 .edit-button {
-    background-color: #DDC7BB;
+    background-color: #A2D0EE;
     color: #555977;
     padding: 10px 30px;
     text-align: center;
@@ -373,14 +373,116 @@ a {
     border-radius: 5px;
     border: 2px;
 }
-
-    .edit-button:hover {
-        background-color: #EFE7E6;
+    .edit-button:hover {   
+        background-color: #EFE7E6;   
     }
 
 
 /*1 rem = 16px*/
 /*1 em = */
+
+/*Add Review page*/
+
+.add_review_form_container{
+    text-align: center;
+}
+
+.form_headline {
+    font-size: 1.5vw;
+    text-align: center;
+    margin: 3vw auto;
+    color: #555977;
+}
+
+
+body {
+    background-color: #EFE7E6;
+    margin: 0;
+}
+
+.field_headline {
+    margin: 10px auto;
+    font-size: 1.3vw;
+}
+
+.field_container {
+    margin-bottom: 2vw;
+}
+
+.form {
+    max-width: 50%;
+    width: 100%;
+    margin: 10px auto;
+    padding: 20px;
+    border: solid 2px;
+    background-color: white;
+    box-shadow: #e6e6e6 0 0 4px;
+    border-color: #A2D0EE;
+    border-radius: 10px;
+    color: #555977;
+}
+
+/* Style the input container */
+.input-container {
+    display: flex;
+    width: 100%;
+}
+
+option {
+    font-size: 1vw;
+}
+
+
+
+
+/* Style the form icons */
+i {
+    padding: 10px;
+    background: #A2D0EE;
+    color: #1E1E35;
+    width: 70px;
+    text-align: center;
+    font-size: 28px;
+    border-style: solid;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-color: #A2D0EE;
+}
+
+/* Style the input fields */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    outline: none;
+    border-style: solid;
+    border-color: #A2D0EE;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+    .input-field:focus {
+        border: 2px solid #A2D0EE;
+    }
+
+/* Set a style for the submit button */
+.btn {
+    background-color: #A2D0EE;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 1vw;
+    letter-spacing: 0.2vw;
+    border-radius: 5px;
+}
+
+    .btn:hover {
+        opacity: 4;
+    }
+
 
 
 @media (max-width: 2776px) {

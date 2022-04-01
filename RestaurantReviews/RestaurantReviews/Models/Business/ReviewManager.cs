@@ -45,5 +45,15 @@ namespace RestaurantReviews.Models
                 throw new ReviewException();
             }
         }
+
+        public void AddReview(string authorFirstName, string authorLastName, string restaurantName, double foodScore, double serviceScore, double athmosphereScore, string comment)
+        {
+
+        }
+
+        public void Update()
+        {
+
+        }
     }
 }

@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - My spot</title>
 
-    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/css/design.css" />
     <link rel="icon" href="~/pic/Wave Painting Logo Template (1).png">
 </head>
 <body>
-        <div class="page-wrapper">
-            <nav>
-                <a asp-page="/Home">
-                    <img class="logo_nav" src="pic/Wave_Painting_Logo_Template__1_-removebg-preview.png" alt="Logo">
-                </a>
-                <ul class="navigation_menu">
-                    <li><a asp-page="/AddReview">Add Review</a></li>
-                    <li><a asp-page="/Myreviews">My Reviews</a></li>
-                    <li><a asp-page="/Myprofile">Profile</a></li>
-                    <li><a asp-page="/Landing_page">Logout</a></li>
-                </ul>
-            </nav>
-            @RenderBody()
-        </div>
-    
+    <div class="page-wrapper">
+        <nav>
+            <a asp-page="/Home">
+                <img class="logo_nav" src="pic/Wave_Painting_Logo_Template__1_-removebg-preview.png" alt="Logo">
+            </a>
+            <ul class="navigation_menu">
+                <li><a asp-page="/AddReview">Add Review</a></li>
+                <li><a asp-page="/Myreviews">My Reviews</a></li>
+                <li><a asp-page="/Myprofile">Profile</a></li>
+                <li><a asp-page="/Landing_page">Logout</a></li>
+            </ul>
+        </nav>
+        @RenderBody()
+    </div>
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - RestaurantReviews - <a asp-area="" asp-page="/Privacy">Privacy</a>
@@ -31,7 +31,8 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
+    <script src="https://kit.fontawesome.com/46a7b54c45.js" crossorigin="anonymous"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
