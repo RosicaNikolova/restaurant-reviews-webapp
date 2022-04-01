@@ -32,7 +32,7 @@
     </div>
     <div class="rest_info_characteristics">
         <p>Characteristics:  romantic, cosy, beautiful view</p>
-        <p>Cuisine:  Italian, grill, pizza</p>
+        <p>Cuisine:  @Model.restaurant.Cuisine.ToString()</p>
         <p>Address: @Model.restaurant.City, @Model.restaurant.Street @Model.restaurant.StreetNumber, @Model.restaurant.PostCode</p>
         <p class="last_item">Reservation: @Model.restaurant.PhoneNumber</p>
     </div>

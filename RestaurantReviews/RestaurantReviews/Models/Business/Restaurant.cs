@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantReviews.Models.Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace RestaurantReviews.Models
         public double Service_Score { get; set; }
         public double Price_Score { get; set; }
         public int NumberOfReviews { get; set; }
+        public CuisineType Cuisine { get; set; }
 
         public override string ToString()
         {

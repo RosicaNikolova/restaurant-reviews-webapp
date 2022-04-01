@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using RestaurantReviews.Models.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace RestaurantReviews.Models
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     List<Restaurant> restaurants = new List<Restaurant>();
-                    string sql = "select restaurant_id, name, city, street, postcode, street_number, phone, is_parking_available, is_delivery_available from restaurant order by restaurant_id;";
+                    string sql = "select restaurant_id, name, city, street, postcode, street_number, phone, is_parking_available, is_delivery_available, cuisine_type from restaurant order by restaurant_id;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                     conn.Open();
@@ -33,6 +34,7 @@ namespace RestaurantReviews.Models
                         restaurant.PhoneNumber = dateReader.GetString("phone");
                         restaurant.HasParking = dateReader.GetString("is_parking_available");
                         restaurant.HasDelivery = dateReader.GetString("is_delivery_available");
+                        restaurant.Cuisine = (CuisineType)Enum.Parse(typeof(CuisineType), dateReader.GetString("cuisine_type"));
                         restaurants.Add(restaurant);
                     }
                     return restaurants;
@@ -50,7 +52,7 @@ namespace RestaurantReviews.Models
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     Restaurant restaurant = null;
-                    string sql = "select restaurant_id, name, city, street, postcode, street_number, phone, is_parking_available, is_delivery_available from restaurant where restaurant_id=@restaurant_id;";
+                    string sql = "select restaurant_id, name, city, street, postcode, street_number, phone, is_parking_available, is_delivery_available, cuisine_type from restaurant where restaurant_id=@restaurant_id;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                     cmd.Parameters.AddWithValue("restaurant_id", id);
@@ -70,7 +72,7 @@ namespace RestaurantReviews.Models
                         restaurant.PhoneNumber = dateReader.GetString("phone");
                         restaurant.HasParking = dateReader.GetString("is_parking_available");
                         restaurant.HasDelivery = dateReader.GetString("is_delivery_available");
-
+                        restaurant.Cuisine = (CuisineType)Enum.Parse(typeof(CuisineType), dateReader.GetString("cuisine_type"));
                     }
                     return restaurant;
                 }

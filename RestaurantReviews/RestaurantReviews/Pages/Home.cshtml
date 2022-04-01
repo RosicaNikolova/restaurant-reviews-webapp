@@ -23,10 +23,11 @@
                             <h2 class="card_r_name"> <a asp-page="/Restaurant" asp-route-id="@rest.Id"> @rest.Name</a></h2>
                             <div class="card_ratings">
                                 <div>
+                                    @rest.NumberOfReviews reviews
                                     Food: @rest.Food_Score
                                 </div>
                                 <div>
-                                    @rest.NumberOfReviews reviews
+                                    Food: @rest.Food_Score
                                 </div>
                                 <div>
                                     Price: @rest.Price_Score
@@ -40,7 +41,7 @@
                                 Characteristics:  romantic, cozy, beautiful view
                             </p>
                             <p>
-                                Cuisine:  Italian, grill, pizza
+                                Cuisine:  @rest.Cuisine.ToString()
                             </p>
 
                         </div>
