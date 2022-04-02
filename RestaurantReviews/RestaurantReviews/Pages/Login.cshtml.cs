@@ -40,32 +40,44 @@ namespace RestaurantReviews.Pages
                     return Page();
                 }
 
-                string id = user.Id.ToString();
-                List<Claim> claims = new List<Claim>();
-
-                claims.Add(new Claim("id", id));
-
-                if(user.Roles == Role.ADMIN)
+                if (user.Roles == Role.ADMIN)
                 {
-                    claims.Add(new Claim(ClaimTypes.Role, "admin"));
+                    ViewData["Message"] = "Wellcome Admin! You can login to the desktop application";
+                    return Page();
                 }
                 else
                 {
-                    claims.Add(new Claim(ClaimTypes.Role, "user"));
-                }
+                    string id = user.Id.ToString();
+                    List<Claim> claims = new List<Claim>();
 
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity));
+                    claims.Add(new Claim("id", id));
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity));
 
 
-                if(!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                {
-                    return Redirect(returnUrl);
+                    if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToPage("Home");
+                    }
                 }
-                else
-                {
-                    return RedirectToPage("Home");
-                }
+               
+              
+
+                //if(user.Roles == Role.ADMIN)
+                //{
+                //    claims.Add(new Claim(ClaimTypes.Role, "admin"));
+                //}
+                //else
+                //{
+                //    claims.Add(new Claim(ClaimTypes.Role, "user"));
+                //}
+
+
+
                 //User user = new User();
                 //try
                 //{
