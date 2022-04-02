@@ -54,7 +54,6 @@ namespace RestaurantReviews.Pages
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity));
 
-
                     if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
