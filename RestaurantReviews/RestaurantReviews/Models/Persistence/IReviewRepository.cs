@@ -11,7 +11,7 @@ namespace RestaurantReviews.Models.Persistence
         public List<Review> FindReviewsForRestaurant(int id);
         public List<Review> GetAll();
         public bool DeleteReview(Review review);
-       
+        public List<Review> GetReviewsForUser(int id);
     }
 
 }

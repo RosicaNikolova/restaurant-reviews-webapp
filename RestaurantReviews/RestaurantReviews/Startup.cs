@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,13 +25,22 @@ namespace RestaurantReviews
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/Landing_page", "");
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
+                options =>
+                {
+                    options.LoginPath = new PathString("/Login");
+                    options.AccessDeniedPath = new PathString("/AccessDenied");
+                }
+                );
+
             services.AddRazorPages();
 
-                services.AddMvc().AddRazorPagesOptions(options =>
-                {
-                    options.Conventions.AddPageRoute("/Landing_page", "");
-                });
-           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +61,9 @@ namespace RestaurantReviews
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //tell we want to use authentication
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -27,6 +27,17 @@ namespace RestaurantReviews.Models
             return reviews;
         }
 
+        public List<Review> GetReviewsForUser(int id)
+        {
+            List<Review> reviews = reviewRepository.GetReviewsForUser(id);
+            if (reviews == null)
+            {
+                throw new RestaurantException();
+            }
+
+            return reviews;
+        }
+
         public List<Review> GetAllReviews()
         {
 
