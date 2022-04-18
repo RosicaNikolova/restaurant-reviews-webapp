@@ -1,4 +1,6 @@
-﻿using RestaurantReviews.Models;
+﻿
+using ClassLibrary.Business;
+using ClassLibrary.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -44,6 +46,11 @@ namespace UnitTests.Persistence
         public int GetNumberOfReviews(int id)
         {
             return 6;
+        }
+
+        public int GetRestuarantIdByName(string name)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Restaurant> GetRestuarants()

@@ -275,21 +275,18 @@
           }
         }
       },
-      "RestaurantReviews/1.0.0": {
+      "ClassLibrary/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "MySql.Data": "8.0.28"
         },
         "compile": {
-          "bin/placeholder/RestaurantReviews.dll": {}
+          "bin/placeholder/ClassLibrary.dll": {}
         },
         "runtime": {
-          "bin/placeholder/RestaurantReviews.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+          "bin/placeholder/ClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -862,15 +859,15 @@
         "version.txt"
       ]
     },
-    "RestaurantReviews/1.0.0": {
+    "ClassLibrary/1.0.0": {
       "type": "project",
-      "path": "../RestaurantReviews/RestaurantReviews.csproj",
-      "msbuildProject": "../RestaurantReviews/RestaurantReviews.csproj"
+      "path": "../ClassLibrary/ClassLibrary.csproj",
+      "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "RestaurantReviews >= 1.0.0"
+      "ClassLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -905,8 +902,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\RestaurantReviews\\RestaurantReviews.csproj": {
-              "projectPath": "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\RestaurantReviews\\RestaurantReviews.csproj"
+            "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\ClassLibrary\\ClassLibrary.csproj": {
+              "projectPath": "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\ClassLibrary\\ClassLibrary.csproj"
             }
           }
         }

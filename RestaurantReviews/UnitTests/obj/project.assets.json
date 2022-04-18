@@ -1909,10 +1909,24 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "ClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "MySql.Data": "8.0.28"
+        },
+        "compile": {
+          "bin/placeholder/ClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary.dll": {}
+        }
+      },
       "RestaurantReviews/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "ClassLibrary": "1.0.0",
           "MySql.Data": "8.0.28"
         },
         "compile": {
@@ -6906,6 +6920,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "ClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary/ClassLibrary.csproj",
+      "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
+    },
     "RestaurantReviews/1.0.0": {
       "type": "project",
       "path": "../RestaurantReviews/RestaurantReviews.csproj",
@@ -6914,6 +6933,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "ClassLibrary >= 1.0.0",
       "MSTest.TestAdapter >= 2.2.3",
       "MSTest.TestFramework >= 2.2.3",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
@@ -6953,6 +6973,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\ClassLibrary\\ClassLibrary.csproj": {
+              "projectPath": "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\ClassLibrary\\ClassLibrary.csproj"
+            },
             "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\RestaurantReviews\\RestaurantReviews.csproj": {
               "projectPath": "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\RestaurantReviews\\RestaurantReviews.csproj"
             }

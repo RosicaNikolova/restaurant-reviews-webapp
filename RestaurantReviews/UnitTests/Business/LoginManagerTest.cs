@@ -1,5 +1,6 @@
+using ClassLibrary.Business;
+using ClassLibrary.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestaurantReviews.Models;
 using System.Collections.Generic;
 using UnitTests.Persistence;
 

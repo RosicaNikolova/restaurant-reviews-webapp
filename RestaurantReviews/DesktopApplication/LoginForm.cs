@@ -1,4 +1,4 @@
-﻿using RestaurantReviews.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassLibrary;
+using ClassLibrary.Business;
+using ClassLibrary.Exceptions;
+using ClassLibrary.Persistence;
 
 namespace DesktopApplication
 {

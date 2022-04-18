@@ -2,10 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClassLibrary.Business;
+using ClassLibrary.Exceptions;
+using ClassLibrary.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RestaurantReviews.Models;
+
 
 namespace RestaurantReviews.Pages
 {
@@ -23,7 +26,9 @@ namespace RestaurantReviews.Pages
             }
             catch (RestaurantException)
             {
-                return Page();
+                ViewData["Error_message"] = "An error occured while adding the content of this page. Please, try again.";
+                return new RedirectToPageResult("Error");
+
             }
 
         }

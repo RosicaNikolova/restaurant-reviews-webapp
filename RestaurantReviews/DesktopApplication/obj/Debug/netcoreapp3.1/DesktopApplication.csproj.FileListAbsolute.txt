@@ -35,3 +35,4 @@ C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\D
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\DesktopApplication\obj\Debug\netcoreapp3.1\DesktopApplication.dll
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\DesktopApplication\obj\Debug\netcoreapp3.1\DesktopApplication.pdb
 C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\DesktopApplication\obj\Debug\netcoreapp3.1\DesktopApplication.genruntimeconfig.cache
+C:\Users\Rositsa\source\repos\restaurant_reviews_rositsa_wad\RestaurantReviews\DesktopApplication\obj\Debug\netcoreapp3.1\DesktopApplication.Properties.Resources.resources

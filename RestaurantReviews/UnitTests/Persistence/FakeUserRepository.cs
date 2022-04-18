@@ -1,8 +1,10 @@
-﻿using RestaurantReviews.Models;
+﻿
+using ClassLibrary.Business;
+using ClassLibrary.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using RestaurantReviews.Models.Persistence;
+
 
 namespace UnitTests.Persistence
 {

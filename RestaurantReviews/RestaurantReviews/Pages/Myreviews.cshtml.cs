@@ -2,10 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClassLibrary.Business;
+using ClassLibrary.Exceptions;
+using ClassLibrary.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RestaurantReviews.Models;
+
 
 namespace RestaurantReviews.Pages
 {
@@ -24,10 +27,13 @@ namespace RestaurantReviews.Pages
                 reviews = reviewManager.GetReviewsForUser(id);
                 return Page();
             }
-            catch (RestaurantException)
+            catch (DataBaseException)
             {
-                return new RedirectToPageResult("Home");
+                @ViewData["Error_message"] = "An error occured while loading your reviews. Please, try again.";
+                return new RedirectToPageResult("Error");
             }
+
+          
         }
     }
 }

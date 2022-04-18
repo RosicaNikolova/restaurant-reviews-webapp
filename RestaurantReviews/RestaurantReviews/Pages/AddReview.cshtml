@@ -12,35 +12,35 @@
 <h6 class="form_headline">Your review helps people find the best places</h6>
 
 <div class="add_review_form_container">
-    <form class="form">
+    <form class="form" method="post">
         <div class="field_container">
             <div class="field_headline">Restaurant name:</div>
+            <span asp-validation-for="createdReview.RestaurantName"></span> <br />
             <div class="input-container">
-
                 <i class="fa-solid fa-utensils"></i>
 
-                <select class="input-field">
-                    
+                <select class="input-field" asp-for="createdReview.RestaurantName">
+
                     @{
                         foreach (var restaurant in Model.restaurants)
                         {
-                            <option value="restaurantName">@restaurant.Name</option>
+                            <option value="@restaurant.Name">@restaurant.Name</option>
                         }
-
                     }
                 </select>
             </div>
         </div>
         <div class="field_container">
             <div class="field_headline">Food score:</div>
+            <span asp-validation-for="createdReview.FoodScore"></span> <br />
             <div class="input-container">
                 <i class="fa-solid fa-burger"></i>
-                <select class="input-field">
+                <select class="input-field" asp-for="createdReview.FoodScore">
                     <option value="select">Select score</option>
                     @{
                         for (int i = 1; i <= 10; i++)
                         {
-                            <option value="score">@i</option>
+                            <option value="@i">@i</option>
                         }
                     }
                 </select>
@@ -48,15 +48,16 @@
         </div>
         <div class="field_container">
             <div class="field_headline">Service score:</div>
+            <span asp-validation-for="createdReview.ServiceScore"></span> <br />
             <div class="input-container">
                 <i class="fa-solid fa-bell-concierge"></i>
 
-                <select class="input-field">
+                <select class="input-field" asp-for="createdReview.ServiceScore">
                     <option value="select">Select score</option>
                     @{
                         for (int i = 1; i <= 10; i++)
                         {
-                            <option value="score">@i</option>
+                            <option value="@i">@i</option>
                         }
                     }
                 </select>
@@ -64,15 +65,16 @@
         </div>
         <div class="field_container">
             <div class="field_headline">Price range:</div>
+            <span asp-validation-for="createdReview.PriceScore"></span> <br />
             <div class="input-container">
                 <i class="fa-solid fa-coins"></i>
 
-                <select class="input-field">
+                <select class="input-field" asp-for="createdReview.PriceScore">
                     <option value="select">Select score</option>
                     @{
                         for (int i = 1; i <= 10; i++)
                         {
-                            <option value="score">@i</option>
+                            <option value="@i">@i</option>
                         }
                     }
                 </select>
@@ -81,14 +83,16 @@
 
         <div class="field_container">
             <div class="field_headline">Comment:</div>
+            <span asp-validation-for="createdReview.Comment"></span> <br />
             <div class="input-container">
                 <i class="fa-solid fa-comment-dots"></i>
-
                 <textarea class="input-field" rows="5" placeholder="Write your comment here..."></textarea>
-
             </div>
         </div>
-        <button type="submit" class="btn">Submit</button>
+        <input type="submit" class="btn" value="Submit" />
 
     </form>
+
+
+    <div> @ViewData["Error_message"] </div>
 </div>

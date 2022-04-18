@@ -4,11 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using ClassLibrary.Business;
+using ClassLibrary.Exceptions;
+using ClassLibrary.Persistence;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RestaurantReviews.Models;
+
 
 namespace RestaurantReviews.Pages
 {
@@ -29,42 +32,47 @@ namespace RestaurantReviews.Pages
 
             if (ModelState.IsValid)
             {
-                User user;
                 try
                 {
-                    user = loginManager.Login(Login.Email, Login.Password);
-                }
-                catch (LoginException)
-                {
-                    ViewData["Message"] = "Invalid credentials";
-                    return Page();
-                }
-
-                if (user.Roles == Role.ADMIN)
-                {
-                    ViewData["Message"] = "Wellcome Admin! You can login to the desktop application";
-                    return Page();
-                }
-                else
-                {
-                    string id = user.Id.ToString();
-                    List<Claim> claims = new List<Claim>();
-
-                    claims.Add(new Claim("id", id));
-                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity));
-
-                    if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    User user = loginManager.Login(Login.Email, Login.Password);
+                    if (user != null)
                     {
-                        return Redirect(returnUrl);
+                        if (user.Roles == Role.ADMIN)
+                        {
+                            ViewData["Message"] = "Wellcome Admin! You can login to the desktop application";
+                            return Page();
+                        }
+                        else
+                        {
+                            string id = user.Id.ToString();
+                            List<Claim> claims = new List<Claim>();
+
+                            claims.Add(new Claim("id", id));
+                            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                            HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity));
+
+                            if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                            {
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                return RedirectToPage("Home");
+                            }
+                        }
                     }
                     else
                     {
-                        return RedirectToPage("Home");
+                        ViewData["Message"] = "Invalid credentials";
+                        return Page();
                     }
                 }
+                catch (DataBaseException)
+                {
+                    ViewData["Error_message"] = "An error occured while loggin in. Please, try again.";
+                    return new RedirectToPageResult("Error");
+                }
                
-              
 
                 //if(user.Roles == Role.ADMIN)
                 //{

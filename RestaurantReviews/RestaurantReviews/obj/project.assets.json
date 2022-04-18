@@ -274,6 +274,19 @@
             "rid": "win"
           }
         }
+      },
+      "ClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "MySql.Data": "8.0.28"
+        },
+        "compile": {
+          "bin/placeholder/ClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -845,10 +858,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary/ClassLibrary.csproj",
+      "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "ClassLibrary >= 1.0.0",
       "MySql.Data >= 8.0.28"
     ]
   },
@@ -883,7 +902,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\ClassLibrary\\ClassLibrary.csproj": {
+              "projectPath": "C:\\Users\\Rositsa\\source\\repos\\restaurant_reviews_rositsa_wad\\RestaurantReviews\\ClassLibrary\\ClassLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
