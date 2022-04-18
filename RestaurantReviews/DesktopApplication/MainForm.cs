@@ -1,5 +1,8 @@
-﻿using RestaurantReviews.Models;
+﻿using ClassLibrary.Business;
+using ClassLibrary.Exceptions;
+using ClassLibrary.Persistence;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace DesktopApplication
@@ -11,6 +14,7 @@ namespace DesktopApplication
         UserManager userManager = new UserManager(new UserRepository());
         RestaurantManager restaurantManager = new RestaurantManager(new RestaurantRepository());
         ReviewManager reviewManager = new ReviewManager(new ReviewRepository());
+        DiscountManager discountManager = new DiscountManager(new DiscountRepository());
         public MainForm()
         {
             InitializeComponent();
@@ -299,6 +303,50 @@ namespace DesktopApplication
             
         }
 
-        
+        private void cmbxDiscountType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbxNames.Items.Clear();
+            if(cmbxDiscountType.SelectedIndex == 0)
+            {
+                List<User> users = new List<User>();
+                users = userManager.FindAllUsers();
+                foreach (User user in users)
+                {
+                    cmbxNames.Items.Add(user);
+                }
+            }
+            else if(cmbxDiscountType.SelectedIndex == 1)
+            {
+                List<Restaurant> restaurants = new List<Restaurant>();
+                restaurants = restaurantManager.GetAllRestaurants();
+                foreach (Restaurant restaurant in restaurants)
+                {
+                    cmbxNames.Items.Add(restaurant);
+                }
+            }
+        }
+
+        private void btnAddDiscountRestaurant_Click(object sender, EventArgs e)
+        {
+            if(cmbxDiscountType.SelectedIndex != -1 && cmbxNames.SelectedIndex != -1)
+            {
+                if(cmbxDiscountType.SelectedIndex == 1)
+                {
+                    object selectedUser = cmbxNames.SelectedItem;
+                    User user = ((User)selectedUser);
+                    discountManager.CreateUserDiscount(user);
+                }
+                else if(cmbxDiscountType.SelectedIndex == 2)
+                {
+                    object selectedRestaurant = cmbxNames.SelectedItem;
+                    Restaurant restaurant = ((Restaurant)selectedRestaurant);
+                    discountManager.CreateRestaurantDiscount(restaurant);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please, select a customer or a restaurant");
+            }
+        }
     }
 }

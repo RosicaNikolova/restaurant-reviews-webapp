@@ -70,24 +70,19 @@ namespace DesktopApplication
             this.btnDeleteReview = new System.Windows.Forms.Button();
             this.lbxReviews = new System.Windows.Forms.ListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.grbxDiscountDetails = new System.Windows.Forms.GroupBox();
+            this.grbxDiscountsOverview = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rbtCustomers = new System.Windows.Forms.RadioButton();
+            this.rbtRestaurants = new System.Windows.Forms.RadioButton();
+            this.lbxDiscounts = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.btnAddDiscountRestaurant = new System.Windows.Forms.Button();
             this.cmbxDiscountType = new System.Windows.Forms.ComboBox();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.cmbxNames = new System.Windows.Forms.ComboBox();
-            this.lbxDiscounts = new System.Windows.Forms.ListBox();
             this.lblRestDisc = new System.Windows.Forms.Label();
-            this.grbxDiscountsOverview = new System.Windows.Forms.GroupBox();
-            this.rbtActive = new System.Windows.Forms.RadioButton();
-            this.rbtInactive = new System.Windows.Forms.RadioButton();
-            this.grbxDiscountDetails = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.rbtRestaurants = new System.Windows.Forms.RadioButton();
-            this.rbtCustomers = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.TabControl.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tabRestuarants.SuspendLayout();
@@ -96,10 +91,9 @@ namespace DesktopApplication
             this.groupBox1.SuspendLayout();
             this.tabManageReviews.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.grbxDiscountsOverview.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -550,89 +544,19 @@ namespace DesktopApplication
             this.tabPage1.Text = "Discounts";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // grbxDiscountDetails
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.MintCream;
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.btnAddDiscountRestaurant);
-            this.groupBox3.Controls.Add(this.cmbxDiscountType);
-            this.groupBox3.Controls.Add(this.dtpStartDate);
-            this.groupBox3.Controls.Add(this.cmbxNames);
-            this.groupBox3.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.groupBox3.Location = new System.Drawing.Point(35, 88);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(473, 398);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Create Discount";
-            // 
-            // btnAddDiscountRestaurant
-            // 
-            this.btnAddDiscountRestaurant.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnAddDiscountRestaurant.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddDiscountRestaurant.ForeColor = System.Drawing.Color.Honeydew;
-            this.btnAddDiscountRestaurant.Location = new System.Drawing.Point(216, 318);
-            this.btnAddDiscountRestaurant.Name = "btnAddDiscountRestaurant";
-            this.btnAddDiscountRestaurant.Size = new System.Drawing.Size(239, 40);
-            this.btnAddDiscountRestaurant.TabIndex = 4;
-            this.btnAddDiscountRestaurant.Text = "Create";
-            this.btnAddDiscountRestaurant.UseVisualStyleBackColor = false;
-            // 
-            // cmbxDiscountType
-            // 
-            this.cmbxDiscountType.FormattingEnabled = true;
-            this.cmbxDiscountType.Items.AddRange(new object[] {
-            "Customer",
-            "Restaurant"});
-            this.cmbxDiscountType.Location = new System.Drawing.Point(216, 48);
-            this.cmbxDiscountType.Name = "cmbxDiscountType";
-            this.cmbxDiscountType.Size = new System.Drawing.Size(108, 28);
-            this.cmbxDiscountType.TabIndex = 3;
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.Location = new System.Drawing.Point(216, 215);
-            this.dtpStartDate.MinDate = new System.DateTime(2022, 4, 6, 0, 0, 0, 0);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(239, 28);
-            this.dtpStartDate.TabIndex = 2;
-            // 
-            // cmbxNames
-            // 
-            this.cmbxNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbxNames.FormattingEnabled = true;
-            this.cmbxNames.Location = new System.Drawing.Point(216, 122);
-            this.cmbxNames.Name = "cmbxNames";
-            this.cmbxNames.Size = new System.Drawing.Size(239, 28);
-            this.cmbxNames.TabIndex = 1;
-            // 
-            // lbxDiscounts
-            // 
-            this.lbxDiscounts.FormattingEnabled = true;
-            this.lbxDiscounts.ItemHeight = 20;
-            this.lbxDiscounts.Location = new System.Drawing.Point(23, 116);
-            this.lbxDiscounts.Name = "lbxDiscounts";
-            this.lbxDiscounts.Size = new System.Drawing.Size(521, 264);
-            this.lbxDiscounts.TabIndex = 5;
-            // 
-            // lblRestDisc
-            // 
-            this.lblRestDisc.AutoSize = true;
-            this.lblRestDisc.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblRestDisc.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.lblRestDisc.Location = new System.Drawing.Point(467, 28);
-            this.lblRestDisc.Name = "lblRestDisc";
-            this.lblRestDisc.Size = new System.Drawing.Size(170, 34);
-            this.lblRestDisc.TabIndex = 0;
-            this.lblRestDisc.Text = "Discounts";
+            this.grbxDiscountDetails.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.grbxDiscountDetails.Location = new System.Drawing.Point(35, 522);
+            this.grbxDiscountDetails.Name = "grbxDiscountDetails";
+            this.grbxDiscountDetails.Size = new System.Drawing.Size(1061, 282);
+            this.grbxDiscountDetails.TabIndex = 8;
+            this.grbxDiscountDetails.TabStop = false;
+            this.grbxDiscountDetails.Text = "DiscountDetails";
             // 
             // grbxDiscountsOverview
             // 
             this.grbxDiscountsOverview.BackColor = System.Drawing.Color.DarkGreen;
-            this.grbxDiscountsOverview.Controls.Add(this.groupBox5);
             this.grbxDiscountsOverview.Controls.Add(this.groupBox4);
             this.grbxDiscountsOverview.Controls.Add(this.lbxDiscounts);
             this.grbxDiscountsOverview.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -644,81 +568,16 @@ namespace DesktopApplication
             this.grbxDiscountsOverview.TabStop = false;
             this.grbxDiscountsOverview.Text = "Discounts Overview";
             // 
-            // rbtActive
+            // groupBox4
             // 
-            this.rbtActive.AutoSize = true;
-            this.rbtActive.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtActive.ForeColor = System.Drawing.Color.Transparent;
-            this.rbtActive.Location = new System.Drawing.Point(16, 18);
-            this.rbtActive.Name = "rbtActive";
-            this.rbtActive.Size = new System.Drawing.Size(89, 24);
-            this.rbtActive.TabIndex = 6;
-            this.rbtActive.TabStop = true;
-            this.rbtActive.Text = "Active";
-            this.rbtActive.UseVisualStyleBackColor = true;
-            // 
-            // rbtInactive
-            // 
-            this.rbtInactive.AutoSize = true;
-            this.rbtInactive.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtInactive.ForeColor = System.Drawing.Color.Transparent;
-            this.rbtInactive.Location = new System.Drawing.Point(16, 53);
-            this.rbtInactive.Name = "rbtInactive";
-            this.rbtInactive.Size = new System.Drawing.Size(108, 24);
-            this.rbtInactive.TabIndex = 7;
-            this.rbtInactive.TabStop = true;
-            this.rbtInactive.Text = "Inactive";
-            this.rbtInactive.UseVisualStyleBackColor = true;
-            // 
-            // grbxDiscountDetails
-            // 
-            this.grbxDiscountDetails.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.grbxDiscountDetails.Location = new System.Drawing.Point(419, 522);
-            this.grbxDiscountDetails.Name = "grbxDiscountDetails";
-            this.grbxDiscountDetails.Size = new System.Drawing.Size(677, 282);
-            this.grbxDiscountDetails.TabIndex = 8;
-            this.grbxDiscountDetails.TabStop = false;
-            this.grbxDiscountDetails.Text = "DiscountDetails";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 51);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(202, 20);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Customer/Restaurant:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 125);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(124, 20);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Select name:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 210);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(160, 20);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Select start date:";
-            // 
-            // rbtRestaurants
-            // 
-            this.rbtRestaurants.AutoSize = true;
-            this.rbtRestaurants.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rbtRestaurants.ForeColor = System.Drawing.Color.Transparent;
-            this.rbtRestaurants.Location = new System.Drawing.Point(18, 18);
-            this.rbtRestaurants.Name = "rbtRestaurants";
-            this.rbtRestaurants.Size = new System.Drawing.Size(144, 24);
-            this.rbtRestaurants.TabIndex = 8;
-            this.rbtRestaurants.TabStop = true;
-            this.rbtRestaurants.Text = "Restaurants";
-            this.rbtRestaurants.UseVisualStyleBackColor = true;
+            this.groupBox4.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.groupBox4.Controls.Add(this.rbtCustomers);
+            this.groupBox4.Controls.Add(this.rbtRestaurants);
+            this.groupBox4.Location = new System.Drawing.Point(279, 17);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(168, 84);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
             // 
             // rbtCustomers
             // 
@@ -733,27 +592,107 @@ namespace DesktopApplication
             this.rbtCustomers.Text = "Customers";
             this.rbtCustomers.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // rbtRestaurants
             // 
-            this.groupBox4.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.groupBox4.Controls.Add(this.rbtCustomers);
-            this.groupBox4.Controls.Add(this.rbtRestaurants);
-            this.groupBox4.Location = new System.Drawing.Point(190, 26);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(168, 84);
-            this.groupBox4.TabIndex = 10;
-            this.groupBox4.TabStop = false;
+            this.rbtRestaurants.AutoSize = true;
+            this.rbtRestaurants.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rbtRestaurants.ForeColor = System.Drawing.Color.Transparent;
+            this.rbtRestaurants.Location = new System.Drawing.Point(18, 18);
+            this.rbtRestaurants.Name = "rbtRestaurants";
+            this.rbtRestaurants.Size = new System.Drawing.Size(144, 24);
+            this.rbtRestaurants.TabIndex = 8;
+            this.rbtRestaurants.TabStop = true;
+            this.rbtRestaurants.Text = "Restaurants";
+            this.rbtRestaurants.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // lbxDiscounts
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.groupBox5.Controls.Add(this.rbtInactive);
-            this.groupBox5.Controls.Add(this.rbtActive);
-            this.groupBox5.Location = new System.Drawing.Point(382, 26);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(162, 83);
-            this.groupBox5.TabIndex = 11;
-            this.groupBox5.TabStop = false;
+            this.lbxDiscounts.FormattingEnabled = true;
+            this.lbxDiscounts.ItemHeight = 20;
+            this.lbxDiscounts.Location = new System.Drawing.Point(23, 116);
+            this.lbxDiscounts.Name = "lbxDiscounts";
+            this.lbxDiscounts.Size = new System.Drawing.Size(521, 264);
+            this.lbxDiscounts.TabIndex = 5;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.MintCream;
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.btnAddDiscountRestaurant);
+            this.groupBox3.Controls.Add(this.cmbxDiscountType);
+            this.groupBox3.Controls.Add(this.cmbxNames);
+            this.groupBox3.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox3.ForeColor = System.Drawing.Color.DarkGreen;
+            this.groupBox3.Location = new System.Drawing.Point(35, 88);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(473, 398);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Create Discount";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 125);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(124, 20);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Select name:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 51);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(202, 20);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Customer/Restaurant:";
+            // 
+            // btnAddDiscountRestaurant
+            // 
+            this.btnAddDiscountRestaurant.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnAddDiscountRestaurant.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddDiscountRestaurant.ForeColor = System.Drawing.Color.Honeydew;
+            this.btnAddDiscountRestaurant.Location = new System.Drawing.Point(216, 318);
+            this.btnAddDiscountRestaurant.Name = "btnAddDiscountRestaurant";
+            this.btnAddDiscountRestaurant.Size = new System.Drawing.Size(239, 40);
+            this.btnAddDiscountRestaurant.TabIndex = 4;
+            this.btnAddDiscountRestaurant.Text = "Create";
+            this.btnAddDiscountRestaurant.UseVisualStyleBackColor = false;
+            this.btnAddDiscountRestaurant.Click += new System.EventHandler(this.btnAddDiscountRestaurant_Click);
+            // 
+            // cmbxDiscountType
+            // 
+            this.cmbxDiscountType.FormattingEnabled = true;
+            this.cmbxDiscountType.Items.AddRange(new object[] {
+            "Customer",
+            "Restaurant"});
+            this.cmbxDiscountType.Location = new System.Drawing.Point(216, 48);
+            this.cmbxDiscountType.Name = "cmbxDiscountType";
+            this.cmbxDiscountType.Size = new System.Drawing.Size(108, 28);
+            this.cmbxDiscountType.TabIndex = 3;
+            this.cmbxDiscountType.SelectedIndexChanged += new System.EventHandler(this.cmbxDiscountType_SelectedIndexChanged);
+            // 
+            // cmbxNames
+            // 
+            this.cmbxNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxNames.FormattingEnabled = true;
+            this.cmbxNames.Location = new System.Drawing.Point(216, 122);
+            this.cmbxNames.Name = "cmbxNames";
+            this.cmbxNames.Size = new System.Drawing.Size(239, 28);
+            this.cmbxNames.TabIndex = 1;
+            // 
+            // lblRestDisc
+            // 
+            this.lblRestDisc.AutoSize = true;
+            this.lblRestDisc.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblRestDisc.ForeColor = System.Drawing.Color.DarkSeaGreen;
+            this.lblRestDisc.Location = new System.Drawing.Point(467, 28);
+            this.lblRestDisc.Name = "lblRestDisc";
+            this.lblRestDisc.Size = new System.Drawing.Size(170, 34);
+            this.lblRestDisc.TabIndex = 0;
+            this.lblRestDisc.Text = "Discounts";
             // 
             // MainForm
             // 
@@ -776,13 +715,11 @@ namespace DesktopApplication
             this.tabManageReviews.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.grbxDiscountsOverview.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -831,7 +768,6 @@ namespace DesktopApplication
         private System.Windows.Forms.Button btnDeleteReview;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ComboBox cmbxDiscountType;
-        private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.ComboBox cmbxNames;
         private System.Windows.Forms.Label lblRestDisc;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -839,12 +775,8 @@ namespace DesktopApplication
         private System.Windows.Forms.ListBox lbxDiscounts;
         private System.Windows.Forms.GroupBox grbxDiscountDetails;
         private System.Windows.Forms.GroupBox grbxDiscountsOverview;
-        private System.Windows.Forms.RadioButton rbtInactive;
-        private System.Windows.Forms.RadioButton rbtActive;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton rbtCustomers;
         private System.Windows.Forms.RadioButton rbtRestaurants;
