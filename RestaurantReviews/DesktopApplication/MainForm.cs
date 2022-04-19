@@ -371,9 +371,9 @@ namespace DesktopApplication
                 txbDiscountName.Text = restaurantDiscount.Name;
                 txbDiscountAmount.Text = restaurantDiscount.CalculatedDiscount.ToString() + "%";
                 txbSpeacialDish.Text = speacialDiscountedDish.DishName;
-                txbReguralPrice.Text = speacialDiscountedDish.Price.ToString();
+                txbReguralPrice.Text = Math.Round(speacialDiscountedDish.Price, 2).ToString() + "€";
                 txbRestaurantNameDiscount.Text = restaurantManager.GetRestaurantName(speacialDiscountedDish.RestaurantId);
-                txbPriceWithDiscount.Text = restaurantDiscount.ApplyDiscount(speacialDiscountedDish.Price).ToString();
+                txbPriceWithDiscount.Text = restaurantDiscount.ApplyDiscount(speacialDiscountedDish.Price).ToString() + "€";
             }
             else if(discount is UserDiscount)
             {

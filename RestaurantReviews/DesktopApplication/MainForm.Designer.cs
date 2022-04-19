@@ -576,7 +576,7 @@ namespace DesktopApplication
             this.grbxDiscountDetails.Size = new System.Drawing.Size(1061, 282);
             this.grbxDiscountDetails.TabIndex = 8;
             this.grbxDiscountDetails.TabStop = false;
-            this.grbxDiscountDetails.Text = "DiscountDetails";
+            this.grbxDiscountDetails.Text = "Discount Details";
             // 
             // txbPriceWithDiscount
             // 
