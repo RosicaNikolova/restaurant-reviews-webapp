@@ -101,12 +101,12 @@ namespace ClassLibrary.Persistence
 
         public List<Review> GetAll()
         {
-            try
-            {
+            //try
+            //{
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     List<Review> reviews = new List<Review>();
-                    string sql = "select review_id, r.date, r.comment, r.food_score, r.service_score, r.athmosphere_score, u.first_name, u.last_name, rest.name from reviews as r join user as u on r.user_id = u.id join restaurant as rest on r.restaurant_id = rest.restaurant_id";
+                    string sql = "select * from reviews as r join user as u on r.user_id = u.id join restaurant as rest on r.restaurant_id = rest.restaurant_id";
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -118,7 +118,15 @@ namespace ClassLibrary.Persistence
                         Review review = new Review();
                         review.Id = dateReader.GetInt32("review_id");
                         review.Date = (DateTime)dateReader.GetMySqlDateTime("date");
+                    try
+                    {
                         review.Comment = dateReader.GetString("comment");
+                    }
+                    catch (Exception)
+                    {
+                        review.Comment = "";
+                    }
+                   
                         review.FoodScore = dateReader.GetInt32("food_score");
                         review.ServiceScore = dateReader.GetInt32("service_score");
                         review.PriceScore = dateReader.GetInt32("athmosphere_score");
@@ -130,11 +138,11 @@ namespace ClassLibrary.Persistence
                     }
                     return reviews;
                 }
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    return null;
+            //}
         }
 
         public bool DeleteReview(Review review)
@@ -159,9 +167,9 @@ namespace ClassLibrary.Persistence
 
         public bool CreateReview(Review review, int authorId, int restaurantId)
         {
-            //try
-            //{
-                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+        try
+        {
+            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     string sql = "insert into reviews (date, comment, food_score, service_score, athmosphere_score, user_id, restaurant_id) values(@date, @comment, @food_score, @service_score, @athmosphere_score, @user_id, @restaurant_id);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -186,13 +194,13 @@ namespace ClassLibrary.Persistence
                     }
                    
                 }
-            //}
-            //catch (Exception)
-            //{
-            //    throw new Exception();
-            //}
-
         }
+        catch (Exception)
+        {
+            throw new Exception();
+        }
+
+    }
 
     }
 }

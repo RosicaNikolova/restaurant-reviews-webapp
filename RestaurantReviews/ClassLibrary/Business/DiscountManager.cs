@@ -34,5 +34,19 @@ namespace ClassLibrary.Business
             discountRepository.CreateDiscountForRestaurant(restaurantDiscount);
 
         }
+
+        public List<Discount> GetAllDiscounts()
+        {
+            List<Discount> discounts = new List<Discount>();
+            discounts = discountRepository.GetAllDiscounts();
+            return discounts;
+        }
+
+        public SpeacialDish GetSpeshialDish(int restauratnId)
+        {
+            SpeacialDish speacialDish = new SpeacialDish();
+            speacialDish = discountRepository.GetSpeshialDish(restauratnId);
+            return speacialDish;
+        }
     }
 }

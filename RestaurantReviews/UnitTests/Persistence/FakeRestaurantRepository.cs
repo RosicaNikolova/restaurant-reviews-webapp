@@ -43,9 +43,19 @@ namespace UnitTests.Persistence
             return null;
         }
 
+        public List<Restaurant> GetAllRestaurantsEligibleForDiscount()
+        {
+            throw new NotImplementedException();
+        }
+
         public int GetNumberOfReviews(int id)
         {
             return 6;
+        }
+
+        public string GetRestaurantName(int restaurantId)
+        {
+            throw new NotImplementedException();
         }
 
         public int GetRestuarantIdByName(string name)

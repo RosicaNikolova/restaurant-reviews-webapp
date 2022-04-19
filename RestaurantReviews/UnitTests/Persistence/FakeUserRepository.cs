@@ -79,6 +79,16 @@ namespace UnitTests.Persistence
                 return true;
             }
         }
+
+        public string GetNameOfUser(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> GetUsersEligibleForDiscount()
+        {
+            throw new NotImplementedException();
+        }
     }
 
        

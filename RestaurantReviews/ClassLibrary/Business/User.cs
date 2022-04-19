@@ -32,7 +32,7 @@ namespace ClassLibrary.Business
 
         public override string ToString()
         {
-            return $"{this.FirstName}, {this.LastName}";
+            return $"{this.FirstName} {this.LastName}";
         }
     }
 }

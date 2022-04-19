@@ -23,5 +23,7 @@ namespace ClassLibrary.Persistence
         
         public bool Delete(Restaurant restaurant);
         public int GetRestuarantIdByName(string name);
+        string GetRestaurantName(int restaurantId);
+        List<Restaurant> GetAllRestaurantsEligibleForDiscount();
     }
 }

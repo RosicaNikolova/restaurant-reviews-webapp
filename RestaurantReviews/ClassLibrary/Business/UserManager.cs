@@ -78,5 +78,18 @@ namespace ClassLibrary.Business
                 throw new DelteUserException();
             }
         }
+
+        public string GetNameOfUser(int userId)
+        {
+            string userName = userRepository.GetNameOfUser(userId);
+            return userName;
+        }
+
+        public List<User> FindAllUsersEligibleForDiscount()
+        {
+            List<User> users = new List<User>();
+            users = userRepository.GetUsersEligibleForDiscount();
+            return users;
+        }
     }
 }

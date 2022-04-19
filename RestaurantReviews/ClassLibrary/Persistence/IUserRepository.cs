@@ -17,6 +17,7 @@ namespace ClassLibrary.Persistence
         public bool SaveUser(User user);
 
         public bool DeleteUser(User user);
-        
+        string GetNameOfUser(int userId);
+        List<User> GetUsersEligibleForDiscount();
     }
 }

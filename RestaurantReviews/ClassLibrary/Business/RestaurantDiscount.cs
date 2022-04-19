@@ -35,5 +35,17 @@ namespace ClassLibrary.Business
         }
 
         public int RestaurantId { get; set; }
+        public override string ToString()
+        {
+            return $"{this.Name} - {this.CalculatedDiscount}%, Restaurant Id: {this.RestaurantId}";
+        }
+
+        public double ApplyDiscount(double price)
+        {
+            double newPrice = 0.0;
+            newPrice = price - (this.CalculatedDiscount / 100.0 * price);
+            newPrice = Math.Round(newPrice, 2);
+            return newPrice;
+        }
     }
 }

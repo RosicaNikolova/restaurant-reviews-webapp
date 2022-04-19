@@ -25,7 +25,7 @@ namespace ClassLibrary.Business
 
         public override string ToString()
         {
-            return $"{this.Name}, Address: {this.City}, {this.Street} {this.StreetNumber}, {this.PostCode}";
+            return $"{this.Name}";
         }
     }
 

@@ -255,10 +255,69 @@ namespace ClassLibrary.Persistence
             }
             catch (Exception)
             {
-                throw new Exception();
+                throw new DataBaseException();
             }
         }
 
+        public string GetRestaurantName(int restaurantId)
+        {
+            //try
+            //{
+                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+                {
+                    string sql = "Select name from restaurant where restaurant_id=@restaurant_id";
 
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("restaurant_id", restaurantId);
+
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    string restaurantName = string.Empty;
+
+                    while (dateReader.Read())
+                    {
+                        restaurantName = dateReader.GetString("name");
+                    }
+
+                    return restaurantName;
+                }
+               
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
+        }
+
+        public List<Restaurant> GetAllRestaurantsEligibleForDiscount()
+        {
+        //    try
+        //    {
+                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+                {
+                    List<Restaurant> restaurants = new List<Restaurant>();
+                    string sql = "SELECT * FROM restaurant where restaurant_id not in (select id_restaurant from discounts where id_restaurant is not null and isActive = 1)";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        Restaurant restaurant = new Restaurant();
+                        restaurant.Id = dateReader.GetInt32("restaurant_id");
+                        restaurant.Name = dateReader.GetString("name");
+                        restaurants.Add(restaurant);
+                    }
+                    return restaurants;
+                }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
+        }
     }
 }

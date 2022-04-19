@@ -14,6 +14,7 @@ namespace ClassLibrary.Persistence
         public void CreateDiscountForRestaurant(RestaurantDiscount restaurantDiscount);
 
         public void CreateDiscountForUser(UserDiscount userDiscount);
-
+        List<Discount> GetAllDiscounts();
+        SpeacialDish GetSpeshialDish(int restauratnId);
     }
 }

@@ -12,6 +12,10 @@ namespace ClassLibrary.Business
            if(numberOfReviews <= 100)
             {
                 discountAmonut = numberOfReviews / 2;
+                if(discountAmonut == 0)
+                {
+                    discountAmonut = 1;
+                }
             }
             else
             {
@@ -21,5 +25,12 @@ namespace ClassLibrary.Business
         }
 
         public int UserId { get; set; }
+
+     
+
+        public override string ToString()
+        {
+            return $"{this.Name} - {this.CalculatedDiscount}%, User Id: {this.UserId}";
+        }
     }
 }

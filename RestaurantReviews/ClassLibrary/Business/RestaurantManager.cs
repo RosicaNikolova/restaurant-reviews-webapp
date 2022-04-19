@@ -116,5 +116,19 @@ namespace ClassLibrary.Business
                 throw new RestaurantException();
             }
         }
+
+        public string GetRestaurantName(int restaurantId)
+        {
+            string restaurantName = restaurantRepository.GetRestaurantName(restaurantId);
+            return restaurantName;
+        }
+
+        public List<Restaurant> FindAllRestaurantsEligibleForDiscount()
+        {
+            List<Restaurant> restaurants = new List<Restaurant>();
+            restaurants = restaurantRepository.GetAllRestaurantsEligibleForDiscount();
+            return restaurants;
+
+        }
     }
 }

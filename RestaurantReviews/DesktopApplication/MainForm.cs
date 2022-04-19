@@ -43,6 +43,10 @@ namespace DesktopApplication
             {
                 DisplayReviews();
             }
+            else if(TabControl.SelectedTab == tabDiscounts)
+            {
+                UpdateDiscountList();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -104,10 +108,10 @@ namespace DesktopApplication
             lbxReviews.Items.Clear();
             try
             {
-                foreach (Review review in reviewManager.GetAllReviews())
+                List<Review> reviews = reviewManager.GetAllReviews();
+                foreach (Review review in reviews)
                 {
                     lbxReviews.Items.Add(review);
-                    lbxReviews.Items.Add(Environment.NewLine);
                 }
             }
             catch (RestaurantException)
@@ -132,8 +136,7 @@ namespace DesktopApplication
 
         private void btnAddRestaurant_Click(object sender, EventArgs e)
         {
-            //if(txbName.Text != string.Empty && cbxCity.SelectedIndex != -1 && txbStreet.Text != string.Empty && txbStreetNumber.Text != string.Empty && txbPostCode.Text != string.Empty && txbPhone.Text != string.Empty && (rbtDeliveryNo.Checked || rbtDeliveryYes.Checked) && (rbtParkingNo.Checked || rbtParkingYes.Checked))
-            //{
+            
 
             string has_delivery = "Yes";
             string has_pakring = "Yes";
@@ -146,7 +149,7 @@ namespace DesktopApplication
             {
                 has_pakring = "No";
             }
-            //int number;
+         
             try
             {
                 restaurantManager.CreateNewRestaurant(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery);
@@ -163,11 +166,7 @@ namespace DesktopApplication
                 MessageBox.Show("Entered data is invalid (Street number must be a digit!).");
             }
         }           
-            //}
-            //else
-            //{
-            //    MessageBox.Show("All fileds must be filled!");
-            //}
+            
         
 
         private void btnUpdateRestaurant_Click(object sender, EventArgs e)
@@ -200,7 +199,7 @@ namespace DesktopApplication
             }
             catch (Exception)
             {
-                MessageBox.Show("All fileds must be filled! Street Number must be a digit.");
+                MessageBox.Show("All fileds must be filled! (Street Number must be a digit.)");
             }          
 
         }
@@ -298,9 +297,7 @@ namespace DesktopApplication
            catch (Exception)
            {
               MessageBox.Show("Please, select a review to be deleted!");
-           }
-                
-            
+           }   
         }
 
         private void cmbxDiscountType_SelectedIndexChanged(object sender, EventArgs e)
@@ -309,7 +306,7 @@ namespace DesktopApplication
             if(cmbxDiscountType.SelectedIndex == 0)
             {
                 List<User> users = new List<User>();
-                users = userManager.FindAllUsers();
+                users = userManager.FindAllUsersEligibleForDiscount();
                 foreach (User user in users)
                 {
                     cmbxNames.Items.Add(user);
@@ -318,7 +315,7 @@ namespace DesktopApplication
             else if(cmbxDiscountType.SelectedIndex == 1)
             {
                 List<Restaurant> restaurants = new List<Restaurant>();
-                restaurants = restaurantManager.GetAllRestaurants();
+                restaurants = restaurantManager.FindAllRestaurantsEligibleForDiscount();
                 foreach (Restaurant restaurant in restaurants)
                 {
                     cmbxNames.Items.Add(restaurant);
@@ -330,13 +327,13 @@ namespace DesktopApplication
         {
             if(cmbxDiscountType.SelectedIndex != -1 && cmbxNames.SelectedIndex != -1)
             {
-                if(cmbxDiscountType.SelectedIndex == 1)
+                if(cmbxDiscountType.SelectedIndex == 0)
                 {
                     object selectedUser = cmbxNames.SelectedItem;
                     User user = ((User)selectedUser);
                     discountManager.CreateUserDiscount(user);
                 }
-                else if(cmbxDiscountType.SelectedIndex == 2)
+                else if(cmbxDiscountType.SelectedIndex == 1)
                 {
                     object selectedRestaurant = cmbxNames.SelectedItem;
                     Restaurant restaurant = ((Restaurant)selectedRestaurant);
@@ -347,6 +344,69 @@ namespace DesktopApplication
             {
                 MessageBox.Show("Please, select a customer or a restaurant");
             }
+            UpdateDiscountList();
+        }
+
+        private void UpdateDiscountList()
+        {
+            lbxDiscounts.Items.Clear();
+            List<Discount> discounts = new List<Discount>();
+            discounts = discountManager.GetAllDiscounts();
+            foreach (Discount discount in discounts)
+            {
+                lbxDiscounts.Items.Add(discount);
+            }
+        }
+
+        private void lbxDiscounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            object obj = lbxDiscounts.SelectedItem;
+            Discount discount = ((Discount)obj);
+            if(discount is RestaurantDiscount)
+            {
+                RestaurantDiscount restaurantDiscount = ((RestaurantDiscount)discount);
+                SpeacialDish speacialDiscountedDish = new SpeacialDish();
+                speacialDiscountedDish = discountManager.GetSpeshialDish(restaurantDiscount.RestaurantId);
+                ShowFieldsForRestaurant();
+                txbDiscountName.Text = restaurantDiscount.Name;
+                txbDiscountAmount.Text = restaurantDiscount.CalculatedDiscount.ToString() + "%";
+                txbSpeacialDish.Text = speacialDiscountedDish.DishName;
+                txbReguralPrice.Text = speacialDiscountedDish.Price.ToString();
+                txbRestaurantNameDiscount.Text = restaurantManager.GetRestaurantName(speacialDiscountedDish.RestaurantId);
+                txbPriceWithDiscount.Text = restaurantDiscount.ApplyDiscount(speacialDiscountedDish.Price).ToString();
+            }
+            else if(discount is UserDiscount)
+            {
+                UserDiscount userDiscount = ((UserDiscount)discount);
+                HideFieldsForRestaurant();
+                txbDiscountName.Text = userDiscount.Name;
+                txbDiscountAmount.Text = userDiscount.CalculatedDiscount.ToString() + "%";
+                txbRestaurantNameDiscount.Text = userManager.GetNameOfUser(userDiscount.UserId);
+            }
+        }
+
+        private void HideFieldsForRestaurant()
+        {
+            txbSpeacialDish.Hide();
+            lblSpeacialdish.Hide();
+            lblForName.Text = "Customer";
+            txbPriceWithDiscount.Hide();
+            lblPriceWithDiscount.Hide();
+            lblReguralPrice.Hide();
+            txbReguralPrice.Hide();
+        }
+
+        private void ShowFieldsForRestaurant()
+        {
+            txbSpeacialDish.Show();
+            lblSpeacialdish.Show();
+            lblReguralPrice.Show();
+            txbPriceWithDiscount.Show();
+            lblPriceWithDiscount.Show();
+            txbReguralPrice.Show();
+
+            lblForName.Text = "Restaurant";
+
         }
     }
 }
