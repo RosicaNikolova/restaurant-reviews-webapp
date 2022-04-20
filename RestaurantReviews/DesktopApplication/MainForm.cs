@@ -86,7 +86,6 @@ namespace DesktopApplication
             catch (Exception)
             {
                 MessageBox.Show("An error occured while loading the users. Please, contact the support");
-
             }
         }
 
@@ -202,7 +201,7 @@ namespace DesktopApplication
                 ClearTextBoxes();
                 MessageBox.Show("Restaurant successfully updated");
             }
-            catch (RestaurantException)
+            catch (RestaurantInfoException)
             {
                 MessageBox.Show("Unable to update restaurant. Check the entered information again.");
             }
@@ -268,9 +267,8 @@ namespace DesktopApplication
             }
             catch (Exception)
             {
-                MessageBox.Show("Unable to display restaurant");
+                MessageBox.Show("Unable to display restaurant info");
             }
-
         }
 
         private void btnDeleteRestaurant_Click(object sender, EventArgs e)
@@ -357,7 +355,6 @@ namespace DesktopApplication
                 catch (Exception)
                 {
                     MessageBox.Show("An error occured while loading the restaurants. Please, contact the support");
-
                 }
 
             }
@@ -508,9 +505,7 @@ namespace DesktopApplication
             txbPriceWithDiscount.Show();
             lblPriceWithDiscount.Show();
             txbReguralPrice.Show();
-
             lblForName.Text = "Restaurant";
-
         }
     }
 }

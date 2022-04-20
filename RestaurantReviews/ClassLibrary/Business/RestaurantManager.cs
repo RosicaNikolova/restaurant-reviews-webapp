@@ -85,7 +85,7 @@ namespace ClassLibrary.Business
             }
             catch (Exception)
             {
-                throw new RestaurantException();
+                throw new RestaurantInfoException();
             }
         }
 
