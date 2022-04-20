@@ -22,16 +22,16 @@
             <span asp-validation-for="review.ServiceScore"></span> <br />
             <div class="input-container">
                 <i class="fa-solid fa-utensils"></i>
-                <input asp-for="review.ServiceScore" type="text" value="@Model.review.ServiceScore" required/>
+                <input  asp-for="review.ServiceScore" type="text" value="@Model.review.ServiceScore" required/>
             </div>
         </div>
 
         <div class="field_container">
-            <div class="field_headline">At:</div>
+            <div class="field_headline">Price Score:</div>
             <span asp-validation-for="review.PriceScore"></span> <br />
             <div class="input-container">
                 <i class="fa-solid fa-utensils"></i>
-                <input asp-for="review.PriceScore" type="text" value="@Model.review.PriceScore" required/>
+                <input  asp-for="review.PriceScore" type="text" value="@Model.review.PriceScore" required/>
             </div>
         </div>
 
@@ -45,11 +45,8 @@
         </div>
         <input type="submit" class="btn" value="Submit" />
 
-
-
-
     </form>
 
 
-    <div> @ViewData["Error_message"] </div>
+    @*<div> @ViewData["Error_message"] </div>*@
 </div>
