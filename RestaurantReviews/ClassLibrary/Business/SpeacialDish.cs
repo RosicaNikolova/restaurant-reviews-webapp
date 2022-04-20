@@ -10,5 +10,6 @@ namespace ClassLibrary.Business
         public string DishName{ get; set; }
         public double Price { get; set; }
         public int RestaurantId { get; set; }
+        public string RestaurnatName { get; set; }
     }
 }

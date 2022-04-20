@@ -4,3 +4,27 @@
     ViewData["Title"] = "My profile";
     Layout = "_Layout";
 }
+
+<div class="form_container">
+    <form>
+        <div class="container">
+            <h2 class="login_heading">Edit Profile</h2>
+            <label for="uname">E-mail:</label>
+            <input type="text" name="uname" required value="rosica.nikolova@gmail.com">
+
+            <label for="psw">Password:</label>
+            <input type="password" name="psw" required value="secret">
+
+            <label for="psw">First Name:</label>
+            <input type="text" name="psw" required value="Rositsa">
+
+            <label for="psw">Last Name:</label>
+            <input type="text" name="psw" required value="Nikolova">
+
+        </div>
+        <div class="edit_profile_buttons">
+            <input type="submit" value="Save" class="loginbtn">
+            <input type="reset" class="cancelbtn" value="Cancel">
+        </div>
+    </form>
+</div>

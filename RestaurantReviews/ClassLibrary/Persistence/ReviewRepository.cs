@@ -34,7 +34,15 @@ namespace ClassLibrary.Persistence
                         Review review = new Review();
                         review.Id = dateReader.GetInt32("review_id");
                         review.Date = (DateTime)dateReader.GetMySqlDateTime("date");
-                        review.Comment = dateReader.GetString("comment");
+                        try
+                        {
+                            review.Comment = dateReader.GetString("comment");
+                        }
+                        catch (Exception)
+                        {
+                            review.Comment = "";
+                        }
+                  
                         review.FoodScore = dateReader.GetInt32("food_score");
                         review.ServiceScore = dateReader.GetInt32("service_score");
                         review.PriceScore = dateReader.GetInt32("athmosphere_score");

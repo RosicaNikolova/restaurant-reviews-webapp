@@ -326,7 +326,7 @@ a {
     border-radius: 15px;
     background-color: white;
 }
-}
+
 
 .review_header {
     display: flex;
@@ -422,7 +422,7 @@ body {
     color: #555977;
 }
 
-/* Style the input container */
+
 .input-container {
     display: flex;
     width: 100%;
@@ -449,7 +449,7 @@ i {
     border-color: #A2D0EE;
 }
 
-/* Style the input fields */
+
 .input-field {
     width: 100%;
     padding: 12px;
@@ -465,7 +465,7 @@ i {
         border: 2px solid #A2D0EE;
     }
 
-/* Set a style for the submit button */
+
 .btn {
     background-color: #A2D0EE;
     color: white;
@@ -691,7 +691,7 @@ i {
 
 
 /* Login form */
-/* Bordered form */
+
 
 .form_container {
     display: block;
@@ -706,10 +706,9 @@ form {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    background-color: #D8C4C0;
-    color:white;
+    background-color: #A2D0EE;
+    color: white;
     border-radius: 15px;
-    
 }
 
 .container label {
@@ -741,28 +740,28 @@ input[type=text], input[type=password] {
     justify-content: space-evenly;
 }
 
-.login_buttons input {
+    .login_buttons input {
         background-color: #F2F2F5;
-        color: #B58F86;
+        color: #1E1E35;
         padding: 14px 20px;
         margin: 8px 0;
         border: none;
         cursor: pointer;
         width: 20%;
         font-size: 1vw;
-}
+    }
 
-.login_buttons button {
+    .login_buttons button {
         background-color: #F2F2F5;
-        color: #B58F86;
+        color: #1E1E35;
         padding: 14px 20px;
         margin: 8px 0;
         border: none;
         cursor: pointer;
         width: 20%;
         font-size: 1vw;
-}
-        /* Add a hover effect for buttons */
+    }
+        
         .login_buttons input:hover {
             opacity: 0.8;
         }
@@ -771,9 +770,32 @@ input[type=text], input[type=password] {
         opacity: 0.8;
 }
 
-/* Add padding to containers */
+
 .container {
     padding: 16px;
     padding-bottom: 0px;
 }
 
+
+/*Edit my color-profile page*/
+
+.edit_profile_buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+    .edit_profile_buttons input {
+        background-color: #F2F2F5;
+        color: #1E1E35;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        font-size: 1vw;
+    }
+
+
+        .edit_profile_buttons input:hover {
+            opacity: 0.8;
+        }
