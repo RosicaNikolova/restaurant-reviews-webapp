@@ -10,7 +10,7 @@ namespace ClassLibrary.Persistence
     {
         public List<Review> FindReviewsForRestaurant(int id);
         public List<Review> GetAll();
-        public bool DeleteReview(Review review);
+        public void DeleteReview(Review review);
         public List<Review> GetReviewsForUser(int id);
         public bool CreateReview(Review review, int authorId, int RestaurantId);
         Review GetReviewById(int id);

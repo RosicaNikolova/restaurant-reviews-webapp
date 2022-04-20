@@ -29,16 +29,14 @@ namespace RestaurantReviews.Pages
             }
             catch(DataBaseException)
             {
-                ViewData["Error_message"] = "An error occured while registration. Please, try again.";
+                ViewData["Error_message"] = "An error occured while loading the page. Please, try again.";
                 return new RedirectToPageResult("Error");
             }
             catch (Exception)
             {
-                ViewData["Error_message"] = "An error occured while registration. Please, try again.";
+                ViewData["Error_message"] = "An error occured while loading the page. Please, try again.";
                 return new RedirectToPageResult("Error");
-            }
-
-            
+            } 
         }
     }
 }

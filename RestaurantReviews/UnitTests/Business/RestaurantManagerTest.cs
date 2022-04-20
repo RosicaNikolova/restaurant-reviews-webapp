@@ -67,8 +67,6 @@ namespace UnitTests
             restaurant.Name = "Pizzeria";
             restaurantManager.DeleteRestaurant(restaurant);
             //CollectionAssert.
-
-
         }
         
 

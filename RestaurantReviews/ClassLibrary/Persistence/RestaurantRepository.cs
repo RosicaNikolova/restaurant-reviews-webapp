@@ -152,8 +152,6 @@ namespace ClassLibrary.Persistence
             {
                 throw new DataBaseException();
             }
-
-
         }
 
         public bool SaveRestaurant(Restaurant restaurant)

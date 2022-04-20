@@ -72,10 +72,8 @@ namespace ClassLibrary.Business
 
         public void DeleteReview(Review review)
         {
-            if (!reviewRepository.DeleteReview(review))
-            {
-                throw new ReviewException();
-            }
+            reviewRepository.DeleteReview(review);
+            
         }
 
         public void AddReview(int authorId,string restaurantName, double foodScore, double serviceScore, double priceScore, string comment)
@@ -87,19 +85,9 @@ namespace ClassLibrary.Business
             review.ServiceScore = serviceScore;
             review.PriceScore = priceScore;
             review.Comment = comment;
-
             RestaurantManager restaurantManager = new RestaurantManager(new RestaurantRepository());
-           
-            int restaurantId = restaurantManager.GetIdByName(restaurantName);
-            if(restaurantId != -1)
-            {
-                reviewRepository.CreateReview(review, authorId, restaurantId);
-            }
-            else
-            {
-                throw new Exception();
-            }
-
+            int restaurantId = restaurantManager.GetIdByName(restaurantName);           
+            reviewRepository.CreateReview(review, authorId, restaurantId);
         }
     }
 }

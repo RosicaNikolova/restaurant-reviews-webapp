@@ -18,55 +18,39 @@ namespace ClassLibrary.Business
 
         public List<Restaurant> GetAllRestaurants()
         {
-            
             List<Restaurant> restaurants = restaurantRepository.GetRestuarants();
-            if(restaurants == null)
-            {
-                throw new RestaurantException();
-            }
-            else
-            {
-                foreach (Restaurant restaurant in restaurants)
-                {
-                    try
-                    {
-                        restaurant.Food_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "food_score");
-                        restaurant.Service_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "service_score");
-                        restaurant.Price_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "athmosphere_score");
-                        restaurant.NumberOfReviews = restaurantRepository.GetNumberOfReviews(restaurant.Id);
-                    }
-
-                    catch (ScoreException)
-                    {
-                        throw new RestaurantException();
-                    }
-                }
-
-                return restaurants;
-            }
-        }
-
-        public Restaurant GetRestaurant(int id)
-        {
-            Restaurant restaurant = restaurantRepository.FindRestaurant(id);
-            if(restaurant != null)
+            foreach (Restaurant restaurant in restaurants)
             {
                 restaurant.Food_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "food_score");
                 restaurant.Service_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "service_score");
                 restaurant.Price_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "athmosphere_score");
                 restaurant.NumberOfReviews = restaurantRepository.GetNumberOfReviews(restaurant.Id);
+            }
 
+            return restaurants;
+        }
+
+        public Restaurant GetRestaurant(int id)
+        {
+            Restaurant restaurant = restaurantRepository.FindRestaurant(id);
+            if (restaurant != null)
+            {
+                restaurant.Food_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "food_score");
+                restaurant.Service_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "service_score");
+                restaurant.Price_Score = restaurantRepository.GetScoreForRestaurant(restaurant.Id, "athmosphere_score");
+                restaurant.NumberOfReviews = restaurantRepository.GetNumberOfReviews(restaurant.Id);
                 return restaurant;
             }
             else
             {
-                throw new RestaurantException();
-            } 
+                return null;
+            }
         }
 
         public int GetIdByName(string restaurantName)
         {
-            return restaurantRepository.GetRestuarantIdByName(restaurantName);
+            int id = restaurantRepository.GetRestuarantIdByName(restaurantName);
+            return id;
         }
 
         public void CreateNewRestaurant(string name, string city, string street, string postcode, int streetNumber, string phone, string parking, string delivery)
@@ -80,14 +64,10 @@ namespace ClassLibrary.Business
             restaurant.PhoneNumber = phone;
             restaurant.HasParking = parking;
             restaurant.HasDelivery = delivery;
-
-            if (!restaurantRepository.SaveRestaurant(restaurant))
-            {
-                throw new RestaurantException();
-            }
+            restaurantRepository.SaveRestaurant(restaurant);
         }
 
-      
+
 
         public void UpdateRestaurantInfo(string name, string city, string street, string postcode, int streetNumber, string phone, string parking, string delivery, Restaurant restaurant)
         {
@@ -103,7 +83,7 @@ namespace ClassLibrary.Business
                 restaurant.HasDelivery = delivery;
                 restaurantRepository.UpdateRestaurant(restaurant);
             }
-            catch (RestaurantException)
+            catch (Exception)
             {
                 throw new RestaurantException();
             }
@@ -112,7 +92,7 @@ namespace ClassLibrary.Business
         public void DeleteRestaurant(Restaurant restaurant)
         {
             restaurantRepository.Delete(restaurant);
-            
+
         }
 
         public string GetRestaurantName(int restaurantId)

@@ -17,7 +17,7 @@ namespace UnitTests.Persistence
             this.restaurants = restaurants;
         }
 
-        public bool Delete(Restaurant restaurant)
+        public void Delete(Restaurant restaurant)
         {
             restaurants.Remove(restaurant);
         }

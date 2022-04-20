@@ -10,7 +10,7 @@ namespace DesktopApplication
     public partial class MainForm : Form
     {
         User user;
-     
+
         UserManager userManager = new UserManager(new UserRepository());
         RestaurantManager restaurantManager = new RestaurantManager(new RestaurantRepository());
         ReviewManager reviewManager = new ReviewManager(new ReviewRepository());
@@ -43,7 +43,7 @@ namespace DesktopApplication
             {
                 DisplayReviews();
             }
-            else if(TabControl.SelectedTab == tabDiscounts)
+            else if (TabControl.SelectedTab == tabDiscounts)
             {
                 UpdateDiscountList();
             }
@@ -92,14 +92,16 @@ namespace DesktopApplication
             lbxRestaurants.Items.Clear();
             try
             {
-                foreach (Restaurant restaurant in restaurantManager.GetAllRestaurants())
+                List<Restaurant> restaurants = new List<Restaurant>();
+
+                foreach (Restaurant restaurant in restaurants)
                 {
                     lbxRestaurants.Items.Add(restaurant);
                 }
             }
-            catch (RestaurantException)
+            catch (DataBaseException)
             {
-                MessageBox.Show("Unable to get all restaurants");
+                MessageBox.Show("An error occured. Please contact the support");
             }
         }
 
@@ -136,8 +138,6 @@ namespace DesktopApplication
 
         private void btnAddRestaurant_Click(object sender, EventArgs e)
         {
-            
-
             string has_delivery = "Yes";
             string has_pakring = "Yes";
 
@@ -149,7 +149,6 @@ namespace DesktopApplication
             {
                 has_pakring = "No";
             }
-         
             try
             {
                 restaurantManager.CreateNewRestaurant(txbName.Text, cbxCity.SelectedItem.ToString(), txbStreet.Text, txbPostCode.Text, Convert.ToInt32(txbStreetNumber.Text), txbPhone.Text, has_pakring, has_delivery);
@@ -157,17 +156,17 @@ namespace DesktopApplication
                 ClearTextBoxes();
                 MessageBox.Show("Restaurant successfully added");
             }
-            catch (RestaurantException)
+            catch (DataBaseException)
             {
-                MessageBox.Show("Unable to add restaurant");
+                MessageBox.Show("An error occured while creating the restaurant. Please, contact the support");
             }
             catch (Exception)
             {
                 MessageBox.Show("Entered data is invalid (Street number must be a digit!).");
             }
-        }           
-            
-        
+        }
+
+
 
         private void btnUpdateRestaurant_Click(object sender, EventArgs e)
         {
@@ -191,19 +190,22 @@ namespace DesktopApplication
                 DisplayRestaurants();
                 ClearTextBoxes();
                 MessageBox.Show("Restaurant successfully updated");
-
             }
             catch (RestaurantException)
             {
-                MessageBox.Show("Unable to update restaurant");
+                MessageBox.Show("Unable to update restaurant. Check the entered information again.");
+            }
+            catch (DataBaseException)
+            {
+                MessageBox.Show("An error occured while updating the information. Please, contact the support");
             }
             catch (Exception)
             {
                 MessageBox.Show("All fileds must be filled! (Street Number must be a digit.)");
-            }          
+            }
 
         }
-     
+
         private void btnSelect_Click(object sender, EventArgs e)
         {
             try
@@ -212,9 +214,9 @@ namespace DesktopApplication
                 Restaurant restaurant = ((Restaurant)selectedRestaurant);
                 ShowFieldsToBeEddited(restaurant);
             }
-            catch(Exception)
+            catch (Exception)
             {
-               MessageBox.Show("Unable to select restaurant");
+                MessageBox.Show("Unable to select restaurant");
             }
         }
 
@@ -257,11 +259,11 @@ namespace DesktopApplication
             {
                 MessageBox.Show("Unable to display restaurant");
             }
-           
+
         }
 
         private void btnDeleteRestaurant_Click(object sender, EventArgs e)
-        { 
+        {
             try
             {
                 object selectedRestaurant = lbxRestaurants.SelectedItem;
@@ -271,69 +273,97 @@ namespace DesktopApplication
             }
             catch (DataBaseException)
             {
-                MessageBox.Show("An error occured while deleting the restaurant.");
+                MessageBox.Show("An error occured while deleting the restaurant. Please, contact the support.");
             }
             catch (Exception)
             {
                 MessageBox.Show("Please, select a restaurant to be deleted!");
-            }         
+            }
         }
 
         private void btnDeleteReview_Click(object sender, EventArgs e)
         {
-           
-           try
-           {
-              object selectedReview = lbxReviews.SelectedItem;
-              Review review = ((Review)selectedReview);
-              reviewManager.DeleteReview(review);
-              DisplayReviews();
-              MessageBox.Show("Restaurant deleted successfully");
-           }
-           catch (ReviewException)
-           {
-              MessageBox.Show("Unable to delete review");
-           }
-           catch (Exception)
-           {
-              MessageBox.Show("Please, select a review to be deleted!");
-           }   
+
+            try
+            {
+                object selectedReview = lbxReviews.SelectedItem;
+                Review review = ((Review)selectedReview);
+                reviewManager.DeleteReview(review);
+                DisplayReviews();
+                MessageBox.Show("Restaurant deleted successfully");
+            }
+            catch (ReviewException)
+            {
+                MessageBox.Show("Unable to delete review");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please, select a review to be deleted!");
+            }
         }
 
         private void cmbxDiscountType_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbxNames.Items.Clear();
-            if(cmbxDiscountType.SelectedIndex == 0)
+            if (cmbxDiscountType.SelectedIndex == 0)
             {
-                List<User> users = new List<User>();
-                users = userManager.FindAllUsersEligibleForDiscount();
-                foreach (User user in users)
+                try
                 {
-                    cmbxNames.Items.Add(user);
+                    List<User> users = new List<User>();
+                    users = userManager.FindAllUsersEligibleForDiscount();
+                    foreach (User user in users)
+                    {
+                        cmbxNames.Items.Add(user);
+                    }
                 }
+                catch (DataBaseException)
+                {
+                    MessageBox.Show("An error occured while loading the customers. Please, contact the support");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error occured while loading the customers. Please, contact the support");
+
+                }
+
             }
-            else if(cmbxDiscountType.SelectedIndex == 1)
+            else if (cmbxDiscountType.SelectedIndex == 1)
             {
-                List<Restaurant> restaurants = new List<Restaurant>();
-                restaurants = restaurantManager.FindAllRestaurantsEligibleForDiscount();
-                foreach (Restaurant restaurant in restaurants)
+                try
                 {
-                    cmbxNames.Items.Add(restaurant);
+                    List<Restaurant> restaurants = new List<Restaurant>();
+                    restaurants = restaurantManager.FindAllRestaurantsEligibleForDiscount();
+                    foreach (Restaurant restaurant in restaurants)
+                    {
+                        cmbxNames.Items.Add(restaurant);
+                    }
                 }
+                catch (DataBaseException)
+                {
+                    MessageBox.Show("An error occured while loading the restaurants. Please, contact the support");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error occured while loading the restaurants. Please, contact the support");
+
+                }
+
             }
         }
 
         private void btnAddDiscountRestaurant_Click(object sender, EventArgs e)
         {
-            if(cmbxDiscountType.SelectedIndex != -1 && cmbxNames.SelectedIndex != -1)
+            if (cmbxDiscountType.SelectedIndex != -1 && cmbxNames.SelectedIndex != -1)
             {
-                if(cmbxDiscountType.SelectedIndex == 0)
+                if (cmbxDiscountType.SelectedIndex == 0)
                 {
                     object selectedUser = cmbxNames.SelectedItem;
                     User user = ((User)selectedUser);
                     discountManager.CreateUserDiscount(user);
                 }
-                else if(cmbxDiscountType.SelectedIndex == 1)
+                else if (cmbxDiscountType.SelectedIndex == 1)
                 {
                     object selectedRestaurant = cmbxNames.SelectedItem;
                     Restaurant restaurant = ((Restaurant)selectedRestaurant);
@@ -362,26 +392,51 @@ namespace DesktopApplication
         {
             object obj = lbxDiscounts.SelectedItem;
             Discount discount = ((Discount)obj);
-            if(discount is RestaurantDiscount)
+            if (discount is RestaurantDiscount)
             {
-                RestaurantDiscount restaurantDiscount = ((RestaurantDiscount)discount);
-                SpeacialDish speacialDiscountedDish = new SpeacialDish();
-                speacialDiscountedDish = discountManager.GetSpeshialDish(restaurantDiscount.RestaurantId);
-                ShowFieldsForRestaurant();
-                txbDiscountName.Text = restaurantDiscount.Name;
-                txbDiscountAmount.Text = restaurantDiscount.CalculatedDiscount.ToString() + "%";
-                txbSpeacialDish.Text = speacialDiscountedDish.DishName;
-                txbReguralPrice.Text = Math.Round(speacialDiscountedDish.Price, 2).ToString() + "€";
-                txbRestaurantNameDiscount.Text = restaurantManager.GetRestaurantName(speacialDiscountedDish.RestaurantId);
-                txbPriceWithDiscount.Text = restaurantDiscount.ApplyDiscount(speacialDiscountedDish.Price).ToString() + "€";
+                try
+                {
+                    RestaurantDiscount restaurantDiscount = ((RestaurantDiscount)discount);
+                    SpeacialDish speacialDiscountedDish = new SpeacialDish();
+                    speacialDiscountedDish = discountManager.GetSpeshialDish(restaurantDiscount.RestaurantId);
+                    ShowFieldsForRestaurant();
+                    txbDiscountName.Text = restaurantDiscount.Name;
+                    txbDiscountAmount.Text = restaurantDiscount.CalculatedDiscount.ToString() + "%";
+                    txbSpeacialDish.Text = speacialDiscountedDish.DishName;
+                    txbReguralPrice.Text = Math.Round(speacialDiscountedDish.Price, 2).ToString() + "€";
+                    txbRestaurantNameDiscount.Text = restaurantManager.GetRestaurantName(speacialDiscountedDish.RestaurantId);
+                    txbPriceWithDiscount.Text = restaurantDiscount.ApplyDiscount(speacialDiscountedDish.Price).ToString() + "€";
+                }
+                catch (DataBaseException)
+                {
+                    MessageBox.Show("An error occured while loading the discount. Please, contact the support.");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error occured while loading the discount. Please, contact the support.");
+
+                }
             }
-            else if(discount is UserDiscount)
+            else if (discount is UserDiscount)
             {
-                UserDiscount userDiscount = ((UserDiscount)discount);
-                HideFieldsForRestaurant();
-                txbDiscountName.Text = userDiscount.Name;
-                txbDiscountAmount.Text = userDiscount.CalculatedDiscount.ToString() + "%";
-                txbRestaurantNameDiscount.Text = userManager.GetNameOfUser(userDiscount.UserId);
+                try
+                {
+                    UserDiscount userDiscount = ((UserDiscount)discount);
+                    HideFieldsForRestaurant();
+                    txbDiscountName.Text = userDiscount.Name;
+                    txbDiscountAmount.Text = userDiscount.CalculatedDiscount.ToString() + "%";
+                    txbRestaurantNameDiscount.Text = userManager.GetNameOfUser(userDiscount.UserId);
+                }
+                catch (DataBaseException)
+                {
+                    MessageBox.Show("An error occured while loading the discount. Please, contact the support.");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error occured while loading the discount. Please, contact the support.");
+                }
             }
         }
 

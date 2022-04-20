@@ -33,6 +33,11 @@ namespace RestaurantReviews.Pages
                 ViewData["Error_message"] = "An error occured while loading the restaurants. Please, try again.";
                 return new RedirectToPageResult("Error");
             }
+            catch (Exception)
+            {
+                ViewData["Error_message"] = "An error occured while loading the restaurants. Please, try again.";
+                return new RedirectToPageResult("Error");
+            }
             
         }
 
@@ -47,6 +52,12 @@ namespace RestaurantReviews.Pages
                 {
                     reviewManager.AddReview(userId, createdReview.RestaurantName, createdReview.FoodScore, createdReview.ServiceScore, createdReview.PriceScore, createdReview.Comment);
                     return new RedirectToPageResult("Myreviews");
+                }
+               
+                catch (DataBaseException)
+                {
+                    ViewData["Error_message"] = "An error occured while adding your review. Please, try again.";
+                    return new RedirectToPageResult("Error");
                 }
                 catch (Exception)
                 {

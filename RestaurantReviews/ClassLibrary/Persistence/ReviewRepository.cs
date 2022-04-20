@@ -1,7 +1,6 @@
 ﻿using ClassLibrary.Business;
 using ClassLibrary.Exceptions;
 using MySql.Data.MySqlClient;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -153,7 +152,7 @@ namespace ClassLibrary.Persistence
             }
         }
 
-        public bool DeleteReview(Review review)
+        public void DeleteReview(Review review)
         {
             try
             {
@@ -164,7 +163,6 @@ namespace ClassLibrary.Persistence
                     cmd.Parameters.AddWithValue("review_id", review.Id);
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    return true;
                 }
             }
             catch (Exception)

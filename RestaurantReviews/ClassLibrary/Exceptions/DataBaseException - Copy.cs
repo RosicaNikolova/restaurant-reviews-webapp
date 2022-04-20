@@ -14,6 +14,14 @@ namespace ClassLibrary.Exceptions
         {
         }
 
-        
+        public RestaurantException(string message, Exception innerException) : base(message, innerException)
+        {
+
+        }
+
+        protected RestaurantException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+
+        }
     }
 }
