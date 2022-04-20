@@ -1,0 +1,55 @@
+﻿@page
+@model RestaurantReviews.Pages.EditReviewModel
+@{
+}
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<div class="add_review_form_container">
+    <form class="form" method="post">
+        <div class="field_container">
+            <div class="field_headline">Food score:</div>
+            <span asp-validation-for="review.FoodScore"></span> <br />
+            <div class="input-container">
+                <i class="fa-solid fa-utensils"></i>
+                <input asp-for="review.FoodScore" type="text" value="@Model.review.FoodScore" required />
+            </div>
+        </div>
+
+        <div class="field_container">
+            <div class="field_headline">Service Score:</div>
+            <span asp-validation-for="review.ServiceScore"></span> <br />
+            <div class="input-container">
+                <i class="fa-solid fa-utensils"></i>
+                <input asp-for="review.ServiceScore" type="text" value="@Model.review.ServiceScore" required/>
+            </div>
+        </div>
+
+        <div class="field_container">
+            <div class="field_headline">At:</div>
+            <span asp-validation-for="review.PriceScore"></span> <br />
+            <div class="input-container">
+                <i class="fa-solid fa-utensils"></i>
+                <input asp-for="review.PriceScore" type="text" value="@Model.review.PriceScore" required/>
+            </div>
+        </div>
+
+        <div class="field_container">
+            <div class="field_headline">Comment:</div>
+            <span asp-validation-for="review.Comment"></span> <br />
+            <div class="input-container">
+                <i class="fa-solid fa-comment-dots"></i>
+                <textarea asp-for="review.Comment" class="input-field" rows="5">@Model.review.Comment</textarea>
+            </div>
+        </div>
+        <input type="submit" class="btn" value="Submit" />
+
+
+
+
+    </form>
+
+
+    <div> @ViewData["Error_message"] </div>
+</div>

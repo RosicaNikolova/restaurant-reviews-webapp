@@ -4,27 +4,33 @@
     ViewData["Title"] = "My profile";
     Layout = "_Layout";
 }
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
 
 <div class="form_container">
-    <form>
+    <form method="post">
         <div class="container">
             <h2 class="login_heading">Edit Profile</h2>
-            <label for="uname">E-mail:</label>
-            <input type="text" name="uname" required value="rosica.nikolova@gmail.com">
+            <label asp-for="EditedUser.Email">E-mail:</label>
+            <span asp-validation-for="EditedUser.Email"></span>
+            <input type="text" asp-for="EditedUser.Email" required value="@Model.loggedUser.Email">
 
-            <label for="psw">Password:</label>
-            <input type="password" name="psw" required value="secret">
+            <label asp-for="EditedUser.Password">Password:</label>
+            <span asp-validation-for="EditedUser.Password"></span>
+            <input type="password" asp-for="EditedUser.Password" required value="@Model.loggedUser.Password">
 
-            <label for="psw">First Name:</label>
-            <input type="text" name="psw" required value="Rositsa">
+            <label asp-for="EditedUser.FirstName">First Name:</label>
+            <span asp-validation-for="EditedUser.FirstName"></span>
+            <input type="text" asp-for="EditedUser.FirstName" required value="@Model.loggedUser.FirstName">
 
-            <label for="psw">Last Name:</label>
-            <input type="text" name="psw" required value="Nikolova">
-
+            <label asp-for="EditedUser.LastName">Last Name:</label>
+            <span asp-validation-for="EditedUser.LastName"></span>
+            <input type="text" asp-for="EditedUser.LastName" required value="@Model.loggedUser.LastName">
         </div>
         <div class="edit_profile_buttons">
             <input type="submit" value="Save" class="loginbtn">
-            <input type="reset" class="cancelbtn" value="Cancel">
+          
         </div>
     </form>
 </div>

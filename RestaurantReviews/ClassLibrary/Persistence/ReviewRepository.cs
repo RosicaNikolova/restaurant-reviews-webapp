@@ -205,10 +205,75 @@ namespace ClassLibrary.Persistence
         }
         catch (Exception)
         {
-            throw new Exception();
+            throw new DataBaseException();
         }
 
     }
 
+        public Review GetReviewById(int id)
+        {
+            try
+            {
+                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+                {
+                    string sql = "select * from reviews where review_id=@review_id;";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("review_id", id);
+
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    Review review = new Review();
+
+                    while (dateReader.Read())
+                    {
+                        review.Id = dateReader.GetInt32("review_id");
+                        try
+                        {
+                            review.Comment = dateReader.GetString("comment");
+                        }
+                        catch (Exception)
+                        {
+                            review.Comment = "";
+                        }
+                        review.FoodScore = dateReader.GetInt32("food_score");
+                        review.ServiceScore = dateReader.GetInt32("service_score");
+                        review.PriceScore = dateReader.GetInt32("athmosphere_score");                      
+                    }
+                    return review;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+        public void UpdateReview(Review editedReview)
+        {
+
+            //try
+            //{
+                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+                {
+                    string sql = "update reviews set food_score=@food_score, service_score=@service_score, athmosphere_score=@athmosphere_score, comment=@comment where review_id=@id;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("food_score", editedReview.FoodScore);
+                    cmd.Parameters.AddWithValue("service_score", editedReview.ServiceScore);
+                    cmd.Parameters.AddWithValue("athmosphere_score", editedReview.PriceScore);
+                    cmd.Parameters.AddWithValue("comment", editedReview.Comment);
+                    cmd.Parameters.AddWithValue("id", editedReview.Id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
+
+        }
     }
 }

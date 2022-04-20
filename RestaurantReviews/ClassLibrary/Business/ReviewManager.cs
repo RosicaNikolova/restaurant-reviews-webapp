@@ -29,6 +29,25 @@ namespace ClassLibrary.Business
             return reviews;
         }
 
+        public void Update(double foodScore, double serviceScore, double priceScore, string comment, int id)
+        {
+            Review review = new Review();
+            review.FoodScore = foodScore;
+            review.ServiceScore = serviceScore;
+            review.PriceScore = priceScore;
+            review.Comment = comment;
+            review.Id = id;
+            reviewRepository.UpdateReview(review);
+        }
+
+        public Review GetReviewById(int id)
+        {
+            Review review = new Review();
+            review = reviewRepository.GetReviewById(id);
+            return review;
+
+        }
+
         public List<Review> GetReviewsForUser(int id)
         {
             List<Review> reviews = reviewRepository.GetReviewsForUser(id);
@@ -80,11 +99,6 @@ namespace ClassLibrary.Business
             {
                 throw new Exception();
             }
-
-        }
-
-        public void Update()
-        {
 
         }
     }

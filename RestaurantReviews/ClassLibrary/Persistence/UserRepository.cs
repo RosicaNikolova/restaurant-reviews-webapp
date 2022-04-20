@@ -213,6 +213,61 @@ namespace ClassLibrary.Persistence
             }
         }
 
+        public User FindUserById(int userId)
+        {
+            try
+            {
+                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+                {
+                    string sql = "select * from user where id=@id;";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("id", userId);
+                    conn.Open();
+                    User user = new User();
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+
+                    if (dateReader.Read())
+                    {
+                        user.Id = dateReader.GetInt32("id");
+                        user.Email = dateReader.GetString("email");
+                        user.FirstName = dateReader.GetString("first_name");
+                        user.LastName = dateReader.GetString("last_name");
+                        user.Password = dateReader.GetString("password");
+                    }
+                    return user;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+        public void UpdateUser(User user)
+        {
+            try
+            {
+                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+                {
+                    string sql = "update user set email=@email, password=@password, first_name=@first_name, last_name=@last_name where id=@id;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("email", user.Email);
+                    cmd.Parameters.AddWithValue("password", user.Password);
+                    cmd.Parameters.AddWithValue("first_name", user.FirstName);
+                    cmd.Parameters.AddWithValue("last_name", user.LastName);
+                    cmd.Parameters.AddWithValue("id", user.Id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                   
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
 
 
 

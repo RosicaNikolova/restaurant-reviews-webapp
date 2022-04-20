@@ -17,8 +17,6 @@ namespace RestaurantReviews.Pages
         public User Register { get; set; }
 
 
-
-
         public void OnGet()
         {
 

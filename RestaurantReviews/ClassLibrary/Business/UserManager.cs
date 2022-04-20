@@ -41,6 +41,8 @@ namespace ClassLibrary.Business
             //}
         }
 
+       
+
         public List<User> FindAllUsers()
         {
             List<User> users = userRepository.FindAll();
@@ -91,5 +93,24 @@ namespace ClassLibrary.Business
             users = userRepository.GetUsersEligibleForDiscount();
             return users;
         }
+
+        public User FindUserById(int userId)
+        {
+            User user = new User();
+            user = userRepository.FindUserById(userId);
+            return user;
+        }
+
+        public void UpdateUser(string email, string password, string firstName, string lastName, int userId)
+        {
+            User user = new User();
+            user.Email = email;
+            user.Password = password;
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Id = userId;
+            userRepository.UpdateUser(user);
+        }
+
     }
 }

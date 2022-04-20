@@ -25,7 +25,7 @@
             <p class="review_comment">
                 @review.Comment
             </p>
-            <a href="" class="edit-button">Edit</a>
+            <a asp-page="/EditReview" asp-route-id="@review.Id" class="edit-button">Edit</a>
         </li>
     }
 
