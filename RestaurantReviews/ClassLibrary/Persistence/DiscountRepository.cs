@@ -94,8 +94,8 @@ namespace ClassLibrary.Persistence
 
         public void CreateDiscountForUser(UserDiscount userDiscount)
         {
-            //try
-            //{
+            try
+            {
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     string sql = "insert into discounts (name_discount, calculated_discount, isActive, id_user, type_discount) values (@name_discount,@calculated_discount,@isActive,@id_user, @type_discount)";
@@ -107,13 +107,12 @@ namespace ClassLibrary.Persistence
                     cmd.Parameters.AddWithValue("type_discount", "Customer");
                     conn.Open();
                     cmd.ExecuteNonQuery();
-
                 }
-            //}
-            //catch (Exception)
-            //{
-            //    throw new DataBaseException();
-            //}
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
         }
 
         public List<Discount> GetAllDiscounts()

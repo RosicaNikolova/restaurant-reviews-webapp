@@ -103,7 +103,7 @@ namespace ClassLibrary.Persistence
             }
             catch (Exception)
             {
-                return null;
+                throw new DataBaseException();
             }
         }
 

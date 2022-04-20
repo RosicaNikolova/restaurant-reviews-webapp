@@ -69,7 +69,12 @@ namespace RestaurantReviews.Pages
                 }
                 catch (DataBaseException)
                 {
-                    ViewData["Error_message"] = "An error occured while loggin in. Please, try again.";
+                    ViewData["Error_message"] = "An error occured while logging in. Please, try again.";
+                    return new RedirectToPageResult("Error");
+                }
+                catch (Exception)
+                {
+                    ViewData["Error_message"] = "An error occured while logging in. Please, try again.";
                     return new RedirectToPageResult("Error");
                 }
                

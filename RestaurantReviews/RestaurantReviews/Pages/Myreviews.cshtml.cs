@@ -19,21 +19,24 @@ namespace RestaurantReviews.Pages
         ReviewManager reviewManager = new ReviewManager(new ReviewRepository());
 
         public IActionResult OnGet()
-        {
-            int id = Convert.ToInt32(User.FindFirst("id").Value);
-
+        {          
             try
             {
+                int id = Convert.ToInt32(User.FindFirst("id").Value);
                 reviews = reviewManager.GetReviewsForUser(id);
                 return Page();
             }
             catch (DataBaseException)
             {
-                @ViewData["Error_message"] = "An error occured while loading your reviews. Please, try again.";
+                ViewData["Error_message"] = "An error occured while loading your reviews. Please, try again.";
                 return new RedirectToPageResult("Error");
             }
-
-          
+            catch (Exception)
+            {
+                ViewData["Error_message"] = "An error occured while loading your reviews. Please, try again.";
+                return new RedirectToPageResult("Error");
+            }
+ 
         }
     }
 }

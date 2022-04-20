@@ -42,7 +42,7 @@ namespace ClassLibrary.Persistence
                         {
                             review.Comment = "";
                         }
-                  
+
                         review.FoodScore = dateReader.GetInt32("food_score");
                         review.ServiceScore = dateReader.GetInt32("service_score");
                         review.PriceScore = dateReader.GetInt32("athmosphere_score");
@@ -56,7 +56,7 @@ namespace ClassLibrary.Persistence
             }
             catch (Exception)
             {
-                return null;
+                throw new DataBaseException();
             }
         }
 
@@ -81,14 +81,14 @@ namespace ClassLibrary.Persistence
                         Review review = new Review();
                         review.Id = dateReader.GetInt32("review_id");
                         review.Date = (DateTime)dateReader.GetMySqlDateTime("date");
-                    try
-                    {
-                        review.Comment = dateReader.GetString("comment");
-                    }
-                    catch (Exception)
-                    {
-                        review.Comment = "";
-                    }
+                        try
+                        {
+                            review.Comment = dateReader.GetString("comment");
+                        }
+                        catch (Exception)
+                        {
+                            review.Comment = "";
+                        }
                         review.FoodScore = dateReader.GetInt32("food_score");
                         review.ServiceScore = dateReader.GetInt32("service_score");
                         review.PriceScore = dateReader.GetInt32("athmosphere_score");
@@ -100,17 +100,17 @@ namespace ClassLibrary.Persistence
                     }
                     return reviews;
                 }
-        }
+            }
             catch (Exception)
             {
                 throw new DataBaseException();
             }
-}
+        }
 
         public List<Review> GetAll()
         {
-            //try
-            //{
+            try
+            {
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     List<Review> reviews = new List<Review>();
@@ -126,15 +126,15 @@ namespace ClassLibrary.Persistence
                         Review review = new Review();
                         review.Id = dateReader.GetInt32("review_id");
                         review.Date = (DateTime)dateReader.GetMySqlDateTime("date");
-                    try
-                    {
-                        review.Comment = dateReader.GetString("comment");
-                    }
-                    catch (Exception)
-                    {
-                        review.Comment = "";
-                    }
-                   
+                        try
+                        {
+                            review.Comment = dateReader.GetString("comment");
+                        }
+                        catch (Exception)
+                        {
+                            review.Comment = "";
+                        }
+
                         review.FoodScore = dateReader.GetInt32("food_score");
                         review.ServiceScore = dateReader.GetInt32("service_score");
                         review.PriceScore = dateReader.GetInt32("athmosphere_score");
@@ -146,11 +146,11 @@ namespace ClassLibrary.Persistence
                     }
                     return reviews;
                 }
-            //}
-            //catch (Exception)
-            //{
-            //    return null;
-            //}
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
         }
 
         public bool DeleteReview(Review review)
@@ -169,15 +169,15 @@ namespace ClassLibrary.Persistence
             }
             catch (Exception)
             {
-                return false;
+                throw new DataBaseException();
             }
         }
 
         public bool CreateReview(Review review, int authorId, int restaurantId)
         {
-        try
-        {
-            using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+            try
+            {
+                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     string sql = "insert into reviews (date, comment, food_score, service_score, athmosphere_score, user_id, restaurant_id) values(@date, @comment, @food_score, @service_score, @athmosphere_score, @user_id, @restaurant_id);";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -192,7 +192,7 @@ namespace ClassLibrary.Persistence
                     conn.Open();
 
                     int result = cmd.ExecuteNonQuery();
-                    if(result > 0)
+                    if (result > 0)
                     {
                         return true;
                     }
@@ -200,15 +200,15 @@ namespace ClassLibrary.Persistence
                     {
                         return false;
                     }
-                   
-                }
-        }
-        catch (Exception)
-        {
-            throw new DataBaseException();
-        }
 
-    }
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+
+        }
 
         public Review GetReviewById(int id)
         {
@@ -240,7 +240,7 @@ namespace ClassLibrary.Persistence
                         }
                         review.FoodScore = dateReader.GetInt32("food_score");
                         review.ServiceScore = dateReader.GetInt32("service_score");
-                        review.PriceScore = dateReader.GetInt32("athmosphere_score");                      
+                        review.PriceScore = dateReader.GetInt32("athmosphere_score");
                     }
                     return review;
                 }
@@ -254,8 +254,8 @@ namespace ClassLibrary.Persistence
         public void UpdateReview(Review editedReview)
         {
 
-            //try
-            //{
+            try
+            {
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     string sql = "update reviews set food_score=@food_score, service_score=@service_score, athmosphere_score=@athmosphere_score, comment=@comment where review_id=@id;";
@@ -268,11 +268,11 @@ namespace ClassLibrary.Persistence
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-            //}
-            //catch (Exception)
-            //{
-            //    throw new DataBaseException();
-            //}
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
 
         }
     }

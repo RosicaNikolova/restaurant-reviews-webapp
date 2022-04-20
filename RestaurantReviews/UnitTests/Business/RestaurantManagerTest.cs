@@ -19,8 +19,7 @@ namespace UnitTests
 
             RestaurantManager restaurantManager = new RestaurantManager(fakeRepo);
             Restaurant foundRestaurant = restaurantManager.GetRestaurant(1);
-            Assert.AreEqual(restCreated.Id, foundRestaurant.Id);
-            
+            Assert.AreEqual(restCreated.Id, foundRestaurant.Id); 
         }
 
         [TestMethod]
@@ -57,7 +56,20 @@ namespace UnitTests
             restaurantManager.GetAllRestaurants();
         }
 
+        [TestMethod]
+        public void DeleteRestaurant()
+        {
+            List<Restaurant> restaurants = new List<Restaurant>() { new Restaurant { Id = 1, Name = "Pizzeria" }, new Restaurant { Id = 2, Name = "Mexican Dream" } };
+            FakeRestaurantRepository fakeRepo = new FakeRestaurantRepository(restaurants);
+            RestaurantManager restaurantManager = new RestaurantManager(fakeRepo);
+            Restaurant restaurant = new Restaurant();
+            restaurant.Id = 1;
+            restaurant.Name = "Pizzeria";
+            restaurantManager.DeleteRestaurant(restaurant);
+            //CollectionAssert.
 
+
+        }
         
 
     }

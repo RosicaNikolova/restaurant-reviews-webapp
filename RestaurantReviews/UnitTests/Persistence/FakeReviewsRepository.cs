@@ -22,9 +22,9 @@ namespace UnitTests.Persistence
             throw new NotImplementedException();
         }
 
-        public bool DeleteReview(Review review)
+        public void DeleteReview(Review review)
         {
-            return reviews.Remove(review);
+            reviews.Remove(review);
         }
 
         public List<Review> FindReviewsForRestaurant(int id)
@@ -45,6 +45,11 @@ namespace UnitTests.Persistence
             return reviews;
         }
 
+        public Review GetReviewById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Review> GetReviewsForUser(int id)
         {
             List<Review> reviewsForUser = new List<Review>();
@@ -56,6 +61,11 @@ namespace UnitTests.Persistence
                 }
             }
             return reviewsForUser;
+        }
+
+        public void UpdateReview(Review review)
+        {
+            throw new NotImplementedException();
         }
     }
 }

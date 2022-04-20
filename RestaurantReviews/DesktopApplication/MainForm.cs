@@ -269,9 +269,9 @@ namespace DesktopApplication
                 restaurantManager.DeleteRestaurant(restaurant);
                 DisplayRestaurants();
             }
-            catch (RestaurantException)
+            catch (DataBaseException)
             {
-                MessageBox.Show("Unable to delete restaurant");
+                MessageBox.Show("An error occured while deleting the restaurant.");
             }
             catch (Exception)
             {

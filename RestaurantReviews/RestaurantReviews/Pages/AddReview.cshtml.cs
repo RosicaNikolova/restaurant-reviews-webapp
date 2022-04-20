@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClassLibrary.Business;
+using ClassLibrary.Exceptions;
 using ClassLibrary.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,10 +20,20 @@ namespace RestaurantReviews.Pages
 
         public List<Restaurant> restaurants = new List<Restaurant>();
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            RestaurantManager restaurantManager = new RestaurantManager(new RestaurantRepository());
-            restaurants = restaurantManager.GetAllRestaurants();
+            try
+            {
+                RestaurantManager restaurantManager = new RestaurantManager(new RestaurantRepository());
+                restaurants = restaurantManager.GetAllRestaurants();
+                return Page();
+            }
+            catch (DataBaseException)
+            {
+                ViewData["Error_message"] = "An error occured while loading the restaurants. Please, try again.";
+                return new RedirectToPageResult("Error");
+            }
+            
         }
 
 
@@ -35,12 +46,11 @@ namespace RestaurantReviews.Pages
                 try
                 {
                     reviewManager.AddReview(userId, createdReview.RestaurantName, createdReview.FoodScore, createdReview.ServiceScore, createdReview.PriceScore, createdReview.Comment);
-                    //ViewData["Error_message"] = "Your review has been submitted successfully";
                     return new RedirectToPageResult("Myreviews");
                 }
                 catch (Exception)
                 {
-                    ViewData["Error_message"] = "An error occured while adding the review. Please, try again.";
+                    ViewData["Error_message"] = "An error occured while adding your review. Please, try again.";
                     return new RedirectToPageResult("Error");
                 }
             }

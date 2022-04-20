@@ -44,13 +44,14 @@ namespace ClassLibrary.Persistence
             }
             catch (Exception)
             {
-                return null;
+                throw new DataBaseException();
             }
         }
 
         public Restaurant FindRestaurant(int id)
         {
-            try {
+            try
+            {
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     Restaurant restaurant = null;
@@ -78,11 +79,11 @@ namespace ClassLibrary.Persistence
                     }
                     return restaurant;
                 }
-               
+
             }
             catch (Exception)
             {
-                return null;
+                throw new DataBaseException();
             }
         }
 
@@ -111,7 +112,7 @@ namespace ClassLibrary.Persistence
             }
             catch (Exception)
             {
-                throw new ScoreException();
+                throw new DataBaseException();
             }
         }
 
@@ -149,7 +150,7 @@ namespace ClassLibrary.Persistence
             }
             catch (Exception)
             {
-                throw new ScoreException();
+                throw new DataBaseException();
             }
 
 
@@ -180,7 +181,7 @@ namespace ClassLibrary.Persistence
             }
             catch (Exception)
             {
-                return false;
+                throw new DataBaseException();
             }
         }
 
@@ -209,11 +210,11 @@ namespace ClassLibrary.Persistence
             }
             catch (Exception)
             {
-                throw new RestaurantException();
+                throw new DataBaseException();
             }
         }
 
-        public bool Delete(Restaurant restaurant)
+        public void Delete(Restaurant restaurant)
         {
             try
             {
@@ -224,12 +225,11 @@ namespace ClassLibrary.Persistence
                     cmd.Parameters.AddWithValue("restaurant_id", restaurant.Id);
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    return true;
                 }
             }
             catch (Exception)
             {
-                return false;
+                throw new DataBaseException();
             }
         }
 
@@ -245,7 +245,7 @@ namespace ClassLibrary.Persistence
                     conn.Open();
 
                     Object result = cmd.ExecuteScalar();
-                    if(result != null)
+                    if (result != null)
                     {
                         int resturantId = Convert.ToInt32(result);
                         return resturantId;
@@ -261,8 +261,8 @@ namespace ClassLibrary.Persistence
 
         public string GetRestaurantName(int restaurantId)
         {
-            //try
-            //{
+            try
+            {
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     string sql = "Select name from restaurant where restaurant_id=@restaurant_id";
@@ -282,18 +282,18 @@ namespace ClassLibrary.Persistence
 
                     return restaurantName;
                 }
-               
-            //}
-            //catch (Exception)
-            //{
-            //    throw new DataBaseException();
-            //}
+
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
         }
 
         public List<Restaurant> GetAllRestaurantsEligibleForDiscount()
         {
-        //    try
-        //    {
+            try
+            {
                 using (MySqlConnection conn = ConnectionFactory.CreateConnection())
                 {
                     List<Restaurant> restaurants = new List<Restaurant>();
@@ -313,11 +313,11 @@ namespace ClassLibrary.Persistence
                     }
                     return restaurants;
                 }
-            //}
-            //catch (Exception)
-            //{
-            //    throw new DataBaseException();
-            //}
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
         }
     }
 }

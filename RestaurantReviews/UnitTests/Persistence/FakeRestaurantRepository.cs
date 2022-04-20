@@ -12,7 +12,6 @@ namespace UnitTests.Persistence
 
         private List<Restaurant> restaurants;
 
-
         public FakeRestaurantRepository(List<Restaurant> restaurants)
         {
             this.restaurants = restaurants;
@@ -20,15 +19,7 @@ namespace UnitTests.Persistence
 
         public bool Delete(Restaurant restaurant)
         {
-            foreach (var r in restaurants)
-            {
-                if (r.Id == restaurant.Id)
-                {
-                    restaurants.Remove(r);
-                    return true;
-                }
-            }
-            return false;
+            restaurants.Remove(restaurant);
         }
 
         public Restaurant FindRestaurant(int id)

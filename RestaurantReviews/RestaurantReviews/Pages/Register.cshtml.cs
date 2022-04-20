@@ -47,6 +47,11 @@ namespace RestaurantReviews.Pages
                     ViewData["Error_message"] = "An error occured while registration. Please, try again.";
                     return new RedirectToPageResult("Error");
                 }
+                catch (Exception)
+                {
+                    ViewData["Error_message"] = "An error occured while registration. Please, try again.";
+                    return new RedirectToPageResult("Error");
+                }
             }
             else
             {

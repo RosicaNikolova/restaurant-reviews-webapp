@@ -8,8 +8,13 @@ namespace ClassLibrary.Business
     {
         public override int CalculateDiscount(int numberOfReviews)
         {
-            int discountAmonut = 0;
-           if(numberOfReviews <= 100)
+            int discountAmonut;
+
+            if(numberOfReviews <=0)
+            {
+                discountAmonut = 1;
+            }
+            else if(numberOfReviews <= 100)
             {
                 discountAmonut = numberOfReviews / 2;
                 if(discountAmonut == 0)
@@ -25,8 +30,6 @@ namespace ClassLibrary.Business
         }
 
         public int UserId { get; set; }
-
-     
 
         public override string ToString()
         {

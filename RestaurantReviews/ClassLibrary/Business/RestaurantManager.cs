@@ -111,10 +111,8 @@ namespace ClassLibrary.Business
 
         public void DeleteRestaurant(Restaurant restaurant)
         {
-            if (!restaurantRepository.Delete(restaurant))
-            {
-                throw new RestaurantException();
-            }
+            restaurantRepository.Delete(restaurant);
+            
         }
 
         public string GetRestaurantName(int restaurantId)

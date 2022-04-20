@@ -89,6 +89,16 @@ namespace UnitTests.Persistence
         {
             throw new NotImplementedException();
         }
+
+        public User FindUserById(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateUser(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 
        
