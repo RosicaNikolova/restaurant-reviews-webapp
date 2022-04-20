@@ -29,19 +29,30 @@ namespace DesktopApplication
             try
             {
                 user = loginManager.Login(txbEmail.Text, txbPassword.Text);
-                if(user.Roles == Role.USER)
+                if (user != null)
                 {
-                    MessageBox.Show("You can login in the website.");
+                    if (user.Roles == Role.USER)
+                    {
+                        MessageBox.Show("You can login in the website.");
+                    }
+                    else
+                    {
+                        MainForm mainForm = new MainForm(user);
+                        mainForm.Show();
+                    }
                 }
                 else
                 {
-                    MainForm mainForm = new MainForm(user);
-                    mainForm.Show();
+                    MessageBox.Show("Invalid credentials");
                 }
             }
-            catch (LoginException)
+            catch (DataBaseException)
             {
-                MessageBox.Show("Invalid crenetials. Please, try again");
+                MessageBox.Show("An error occured while logging in. Please, contact the support");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occured while logging in. Please, contact the support");
             }
         }
     }

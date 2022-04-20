@@ -58,7 +58,8 @@ namespace RestaurantReviews.Pages
             }
             catch (Exception)
             {
-                return Page();
+                ViewData["Error_message"] = "An error occured while updating your profile. Please contact the support.";
+                return new RedirectToPageResult("Error");
             }
         }
 

@@ -58,17 +58,15 @@ namespace DesktopApplication
                 userManager.DeleteUser(user);
                 errorMessageDelete.Text = "";
                 DisplayUsers();
-
             }
-            catch (DelteUserException)
+            catch (DataBaseException)
             {
-                MessageBox.Show("Unable to delete user");
+                MessageBox.Show("An error occured while deleting the user. Please, contact the support");
             }
             catch (Exception)
             {
                 errorMessageDelete.Text = "Please, select a user";
             }
-
         }
 
         private void DisplayUsers()
@@ -81,9 +79,14 @@ namespace DesktopApplication
                     lbxUsers.Items.Add(user);
                 }
             }
-            catch (FindUsersException)
+            catch (DataBaseException)
             {
-                MessageBox.Show("Unable to find users");
+                MessageBox.Show("An error occured while loading the users. Please, contact the support");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occured while loading the users. Please, contact the support");
+
             }
         }
 
@@ -101,7 +104,11 @@ namespace DesktopApplication
             }
             catch (DataBaseException)
             {
-                MessageBox.Show("An error occured. Please contact the support");
+                MessageBox.Show("An error occured while loading the restaurants. Please contact the support");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occured while loading the restaurants. Please contact the support");
             }
         }
 
@@ -116,9 +123,13 @@ namespace DesktopApplication
                     lbxReviews.Items.Add(review);
                 }
             }
-            catch (RestaurantException)
+            catch (DataBaseException)
             {
-                MessageBox.Show("Unable to display reviews.");
+                MessageBox.Show("An error occured while loading the reviews. Please contact the support");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occured while loading the restaurants. Please contact the support");
             }
         }
 
@@ -283,7 +294,6 @@ namespace DesktopApplication
 
         private void btnDeleteReview_Click(object sender, EventArgs e)
         {
-
             try
             {
                 object selectedReview = lbxReviews.SelectedItem;
@@ -292,9 +302,9 @@ namespace DesktopApplication
                 DisplayReviews();
                 MessageBox.Show("Restaurant deleted successfully");
             }
-            catch (ReviewException)
+            catch (DataBaseException)
             {
-                MessageBox.Show("Unable to delete review");
+                MessageBox.Show("An error occured while deleting the review. Please contact the support");
             }
             catch (Exception)
             {
@@ -359,32 +369,71 @@ namespace DesktopApplication
             {
                 if (cmbxDiscountType.SelectedIndex == 0)
                 {
-                    object selectedUser = cmbxNames.SelectedItem;
-                    User user = ((User)selectedUser);
-                    discountManager.CreateUserDiscount(user);
+                    try
+                    {
+                        object selectedUser = cmbxNames.SelectedItem;
+                        User user = ((User)selectedUser);
+                        discountManager.CreateUserDiscount(user);
+                    }
+                    catch (DataBaseException)
+                    {
+
+                        MessageBox.Show("An error occured while adding the discount. Please contact the support");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("An error occured while adding the discount. Please contact the support");
+
+                    }
+
                 }
                 else if (cmbxDiscountType.SelectedIndex == 1)
                 {
-                    object selectedRestaurant = cmbxNames.SelectedItem;
-                    Restaurant restaurant = ((Restaurant)selectedRestaurant);
-                    discountManager.CreateRestaurantDiscount(restaurant);
+                    try
+                    {
+                        object selectedRestaurant = cmbxNames.SelectedItem;
+                        Restaurant restaurant = ((Restaurant)selectedRestaurant);
+                        discountManager.CreateRestaurantDiscount(restaurant);
+                    }
+                    catch (DataBaseException)
+                    {
+
+                        MessageBox.Show("An error occured while adding the discount. Please contact the support");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("An error occured while adding the discount. Please contact the support");
+
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("Please, select a customer or a restaurant");
             }
+
             UpdateDiscountList();
         }
 
         private void UpdateDiscountList()
         {
-            lbxDiscounts.Items.Clear();
-            List<Discount> discounts = new List<Discount>();
-            discounts = discountManager.GetAllDiscounts();
-            foreach (Discount discount in discounts)
+            try
             {
-                lbxDiscounts.Items.Add(discount);
+                lbxDiscounts.Items.Clear();
+                List<Discount> discounts = new List<Discount>();
+                discounts = discountManager.GetAllDiscounts();
+                foreach (Discount discount in discounts)
+                {
+                    lbxDiscounts.Items.Add(discount);
+                }
+            }
+            catch (DataBaseException)
+            {
+                MessageBox.Show("An error occured while updating the discounts. Please contact the support");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occured while updating the discounts. Please contact the support");
             }
         }
 

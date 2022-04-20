@@ -18,16 +18,7 @@ namespace ClassLibrary.Business
         public User Login(string email, string password)
         {
             User user = userRepository.FindUser(email, password);
-
-            //if (user == null)
-            //{
-            //    throw new LoginException();
-            //}
-
-            return user;
-            
-
-            
+            return user;      
         }
 
     }

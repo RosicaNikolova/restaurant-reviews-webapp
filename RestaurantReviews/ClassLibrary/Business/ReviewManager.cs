@@ -22,10 +22,6 @@ namespace ClassLibrary.Business
         public List<Review> GetReviewsForRestaurant(int id)
         {
             List<Review> reviews = reviewRepository.FindReviewsForRestaurant(id);
-            if (reviews == null)
-            {
-                throw new RestaurantException();
-            }
             return reviews;
         }
 
@@ -51,11 +47,6 @@ namespace ClassLibrary.Business
         public List<Review> GetReviewsForUser(int id)
         {
             List<Review> reviews = reviewRepository.GetReviewsForUser(id);
-            //if (reviews == null)
-            //{
-            //    throw new RestaurantException();
-            //}
-
             return reviews;
         }
 
@@ -63,10 +54,6 @@ namespace ClassLibrary.Business
         {
 
             List<Review> reviews = reviewRepository.GetAll();
-            if (reviews == null)
-            {
-                throw new RestaurantException();
-            }
             return reviews;
         }
 

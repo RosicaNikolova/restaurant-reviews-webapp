@@ -27,7 +27,6 @@ namespace RestaurantReviews.Pages
 
         public IActionResult OnPost(string? returnUrl)
         {
-
             LoginManager loginManager = new LoginManager(new UserRepository());
 
             if (ModelState.IsValid)
@@ -76,40 +75,7 @@ namespace RestaurantReviews.Pages
                 {
                     ViewData["Error_message"] = "An error occured while logging in. Please, try again.";
                     return new RedirectToPageResult("Error");
-                }
-               
-
-                //if(user.Roles == Role.ADMIN)
-                //{
-                //    claims.Add(new Claim(ClaimTypes.Role, "admin"));
-                //}
-                //else
-                //{
-                //    claims.Add(new Claim(ClaimTypes.Role, "user"));
-                //}
-
-
-
-                //User user = new User();
-                //try
-                //{
-                //    user = loginManager.Login(Login.Email, Login.Password);
-                //    if(user.Roles == Role.ADMIN)
-                //    {
-                //        ViewData["Message"] = "Wellcome Admin! You can login to the desktop application";
-                //        return Page();
-                //    }
-                //    else
-                //    {
-                //        return new RedirectToPageResult("Home");
-                //    }
-
-                //}
-                //catch (LoginException)
-                //{
-                //    ViewData["Message"] = "Invalid credentials. Please, try again.";
-                //    return Page();
-                //}
+                }              
             }
             else
             {

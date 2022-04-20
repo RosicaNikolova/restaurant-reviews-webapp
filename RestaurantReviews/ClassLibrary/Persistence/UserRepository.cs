@@ -267,34 +267,5 @@ namespace ClassLibrary.Persistence
                 throw new DataBaseException();
             }
         }
-
-
-
-
-        //public List<User> FindAllReguralUsers()
-        //{
-        //    using (MySqlConnection conn = ConnectionFactory.CreateConnection())
-        //    {
-        //        List<User> users = new List<User>();
-        //        string sql = "select id, email, first_name, last_name, from user where role = 'USER' order by email;";
-        //        MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-        //        conn.Open();
-
-        //        MySqlDataReader dateReader = cmd.ExecuteReader();
-        //        while (dateReader.Read())
-        //        {
-        //            User user = new User();
-        //            user.Id = dateReader.GetInt32("id");
-        //            user.Email = dateReader.GetString("email");
-        //            user.FirstName = dateReader.GetString("first_name");
-        //            user.LastName = dateReader.GetString("last_name");
-        //            users.Add(user);
-        //        }
-        //        return users;
-        //    }
-        //}
-
-
     }
 }
