@@ -12,7 +12,6 @@ namespace ClassLibrary.Business
         {
             this.discountRepository = repo;
         }
-
         public void CreateUserDiscount(User user)
         {
             UserDiscount userDiscount = new UserDiscount();
@@ -32,7 +31,6 @@ namespace ClassLibrary.Business
             int reviewsForRestaurant = discountRepository.GetNumberOfReviewsForRestaurant(restaurant.Id);
             restaurantDiscount.CalculatedDiscount = restaurantDiscount.CalculateDiscount(reviewsForRestaurant);
             discountRepository.CreateDiscountForRestaurant(restaurantDiscount);
-
         }
 
         public List<Discount> GetAllDiscounts()
