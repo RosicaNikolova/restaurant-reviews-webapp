@@ -11,8 +11,6 @@ namespace ClassLibrary.Business
     {
 
         private IReviewRepository reviewRepository;
-
-
         public ReviewManager(IReviewRepository reviewRepository)
         {
             this.reviewRepository = reviewRepository;
@@ -33,6 +31,13 @@ namespace ClassLibrary.Business
             review.Comment = comment;
             review.Id = id;
             reviewRepository.UpdateReview(review);
+        }
+
+        public Review GetReviewByIdForUser(int id, int userId)
+        {
+            Review review = new Review();
+            review = reviewRepository.GetReviewByIdForUser(id, userId);
+            return review;
         }
 
         public Review GetReviewById(int id)

@@ -57,6 +57,18 @@ namespace UnitTests.Persistence
             return null;
         }
 
+        public Review GetReviewByIdForUser(int id, int userId)
+        {
+            foreach (Review review in reviews)
+            {
+                if(review.Id == id)
+                {
+                    return review;
+                }
+            }
+            return null;
+        }
+
         public List<Review> GetReviewsForUser(int id)
         {
             List<Review> reviewsForUser = new List<Review>();

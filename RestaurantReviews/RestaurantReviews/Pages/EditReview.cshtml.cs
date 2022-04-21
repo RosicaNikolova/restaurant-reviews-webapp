@@ -22,7 +22,8 @@ namespace RestaurantReviews.Pages
         {
             try
             {
-                review = reviewManager.GetReviewById(id);
+                int userId = Convert.ToInt32(User.FindFirst("id").Value);
+                review = reviewManager.GetReviewByIdForUser(id, userId);
                 return Page();
             }
             catch (DataBaseException)
@@ -39,21 +40,29 @@ namespace RestaurantReviews.Pages
 
         public IActionResult OnPost(int id)
         {
-            try
+            if (ModelState.IsValid)
             {
-                reviewManager.Update(review.FoodScore, review.ServiceScore, review.PriceScore, review.Comment, id);
+                try
+                {
+                    reviewManager.Update(review.FoodScore, review.ServiceScore, review.PriceScore, review.Comment, id);
+                    return Page();
+                }
+                catch (DataBaseException)
+                {
+                    ViewData["Error_message"] = "An error occured while updating the your review. Please, try again later.";
+                    return new RedirectToPageResult("Error");
+                }
+                catch (Exception)
+                {
+                    ViewData["Error_message"] = "An error occured while updating the your review. Please, try again later.";
+                    return new RedirectToPageResult("Error");
+                }
+            }
+            else
+            {
                 return Page();
             }
-            catch (DataBaseException)
-            {
-                ViewData["Error_message"] = "An error occured while updating the your review. Please, try again later.";
-                return new RedirectToPageResult("Error");
-            }
-            catch (Exception)
-            {
-                ViewData["Error_message"] = "An error occured while updating the your review. Please, try again later.";
-                return new RedirectToPageResult("Error");
-            }
+           
         }
     }
 }

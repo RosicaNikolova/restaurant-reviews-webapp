@@ -13,5 +13,6 @@ namespace ClassLibrary.Business
         public List<Review> GetAllReviews();
         public void DeleteReview(Review review);
         public void AddReview(int authorId, string restaurantName, double foodScore, double serviceScore, double priceScore, string comment);
+        public Review GetReviewByIdForUser(int id, int userId);
     }
 }

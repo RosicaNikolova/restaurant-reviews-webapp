@@ -264,5 +264,46 @@ namespace ClassLibrary.Persistence
             }
 
         }
+
+        public Review GetReviewByIdForUser(int id, int userId)
+        {
+            try
+            {
+                using (MySqlConnection conn = ConnectionFactory.CreateConnection())
+                {
+                    string sql = "select * from reviews where review_id=@review_id and user_id=@user_id;";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("review_id", id);
+                    cmd.Parameters.AddWithValue("user_id", userId);
+
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    Review review = new Review();
+
+                    while (dateReader.Read())
+                    {
+                        review.Id = dateReader.GetInt32("review_id");
+                        try
+                        {
+                            review.Comment = dateReader.GetString("comment");
+                        }
+                        catch (Exception)
+                        {
+                            review.Comment = "";
+                        }
+                        review.FoodScore = dateReader.GetInt32("food_score");
+                        review.ServiceScore = dateReader.GetInt32("service_score");
+                        review.PriceScore = dateReader.GetInt32("athmosphere_score");
+                    }
+                    return review;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
     }
 }

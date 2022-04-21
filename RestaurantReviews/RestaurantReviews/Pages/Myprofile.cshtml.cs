@@ -42,27 +42,32 @@ namespace RestaurantReviews.Pages
 
         public IActionResult OnPost()
         {
-            try
+            if (ModelState.IsValid)
             {
-                int userId = Convert.ToInt32(User.FindFirst("id").Value);
+                try
+                {
+                    int userId = Convert.ToInt32(User.FindFirst("id").Value);
 
-                userManager.UpdateUser(EditedUser.Email, EditedUser.Password, EditedUser.FirstName, EditedUser.LastName, userId);
-                loggedUser = EditedUser;
+                    userManager.UpdateUser(EditedUser.Email, EditedUser.Password, EditedUser.FirstName, EditedUser.LastName, userId);
+                    loggedUser = EditedUser;
+                    return Page();
+                }
+
+                catch (DataBaseException)
+                {
+                    ViewData["Error_message"] = "An error occured while updating your profile. Please contact the support.";
+                    return new RedirectToPageResult("Error");
+                }
+                catch (Exception)
+                {
+                    ViewData["Error_message"] = "An error occured while updating your profile. Please contact the support.";
+                    return new RedirectToPageResult("Error");
+                }
+            }
+            else
+            {
                 return Page();
             }
-
-            catch (DataBaseException)
-            {
-                ViewData["Error_message"] = "An error occured while updating your profile. Please contact the support.";
-                return new RedirectToPageResult("Error");
-            }
-            catch (Exception)
-            {
-                ViewData["Error_message"] = "An error occured while updating your profile. Please contact the support.";
-                return new RedirectToPageResult("Error");
-            }
         }
-
-
     }
 }

@@ -114,5 +114,19 @@ namespace UnitTests
             CollectionAssert.AreEqual(reviews, fakeRepo.reviews);
         }
 
+        [TestMethod]
+        public void GetReviewByIdForUserTest()
+        {
+            Review reviewCreated = new Review();
+            reviewCreated.Id = 1;
+            reviewCreated.FoodScore = 9;
+            List<Review> expectedReviews = new List<Review>();
+            expectedReviews.Add(reviewCreated);
+            FakeReviewRepository fakeRepo = new FakeReviewRepository(new List<Review> { reviewCreated });
+            ReviewManager reviewManager = new ReviewManager(fakeRepo);
+            Review actual = reviewManager.GetReviewByIdForUser(1, 1);
+            Assert.AreEqual(reviewCreated, actual);
+        }
+
     }
 }
