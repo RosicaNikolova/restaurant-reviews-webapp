@@ -10,7 +10,7 @@ namespace UnitTests.Persistence
     public class FakeReviewRepository : IReviewRepository
     {
 
-        private List<Review> reviews;
+        public List<Review> reviews;
 
         public FakeReviewRepository(List<Review> reviews)
         {
@@ -19,7 +19,7 @@ namespace UnitTests.Persistence
 
         public void CreateReview(Review review, int authorId, int RestaurantId)
         {
-            throw new NotImplementedException();
+            reviews.Add(review);
         }
 
         public void DeleteReview(Review review)
@@ -47,7 +47,14 @@ namespace UnitTests.Persistence
 
         public Review GetReviewById(int id)
         {
-            throw new NotImplementedException();
+            foreach (Review review in reviews)
+            {
+                if(review.Id == id)
+                {
+                    return review;
+                }
+            }
+            return null;
         }
 
         public List<Review> GetReviewsForUser(int id)
@@ -65,9 +72,16 @@ namespace UnitTests.Persistence
 
         public void UpdateReview(Review review)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < reviews.Count; i++)
+            {
+                if (reviews[i].Id == review.Id)
+                {
+                    reviews[i].Comment = review.Comment;
+                    reviews[i].FoodScore = review.FoodScore;
+                    reviews[i].ServiceScore = review.ServiceScore;
+                    reviews[i].PriceScore = review.PriceScore;
+                }
+            }
         }
-
-      
     }
 }

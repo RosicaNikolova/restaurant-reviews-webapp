@@ -60,7 +60,6 @@ namespace ClassLibrary.Business
         public void DeleteReview(Review review)
         {
             reviewRepository.DeleteReview(review);
-            
         }
 
         public void AddReview(int authorId,string restaurantName, double foodScore, double serviceScore, double priceScore, string comment)

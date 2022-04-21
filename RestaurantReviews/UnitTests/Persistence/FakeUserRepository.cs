@@ -1,5 +1,4 @@
-﻿
-using ClassLibrary.Business;
+﻿using ClassLibrary.Business;
 using ClassLibrary.Persistence;
 using System;
 using System.Collections.Generic;
@@ -31,7 +30,7 @@ namespace UnitTests.Persistence
 
         public void DeleteUser(User user)
         {
-           if (users.Contains(user))
+            if (users.Contains(user))
             {
                 users.Remove(user);
             }
@@ -41,7 +40,7 @@ namespace UnitTests.Persistence
         {
             foreach (User user in users)
             {
-                if(user.Email == email)
+                if (user.Email == email)
                 {
                     return user;
                 }
@@ -51,7 +50,7 @@ namespace UnitTests.Persistence
 
         public List<User> FindAll()
         {
-            if(users.Count != 0)
+            if (users.Count != 0)
             {
                 return users;
             }
@@ -63,36 +62,60 @@ namespace UnitTests.Persistence
 
         public void SaveUser(User user)
         {
-           if(user.LastName == "")
+            if (user.LastName == "")
             {
-            
+
             }
             else
             {
                 user.Id = 1;
                 users.Add(user);
-            
+
             }
         }
 
         public string GetNameOfUser(int userId)
         {
-            throw new NotImplementedException();
+            string name = "";
+            foreach (User user in users)
+            {
+                if (user.Id == userId)
+                {
+                    name = user.FirstName + " " + user.LastName;
+                }
+            }
+            return name;
         }
 
         public List<User> GetUsersEligibleForDiscount()
         {
-            throw new NotImplementedException();
+            return users;
         }
 
         public User FindUserById(int userId)
         {
-            throw new NotImplementedException();
+            foreach (User user in users)
+            {
+                if (user.Id == userId)
+                {
+                    return user;
+                }
+            }
+            return null;
         }
 
         public void UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].Id == user.Id)
+                {
+                    users[i].FirstName = user.FirstName;
+                    users[i].LastName = user.LastName;
+                    users[i].Email = user.Email;
+                    users[i].Password = user.Password;
+                }
+            }
         }
-    }      
+    }
 }

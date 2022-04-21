@@ -15,6 +15,7 @@ namespace ClassLibrary.Persistence
         public void CreateReview(Review review, int authorId, int RestaurantId);
         Review GetReviewById(int id);
         public void UpdateReview(Review review);
+       
     }
 
 }

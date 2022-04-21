@@ -46,15 +46,6 @@ namespace UnitTests
             CollectionAssert.AreEqual(restaurants, foundRestaurants);
         }
 
-        //[TestMethod]
-        //public void FindAllRestaurantsFailsTest()
-        //{ 
-        //    FakeRestaurantRepository fakeRepo = new FakeRestaurantRepository(new List<Restaurant>());
-        //    RestaurantManager restaurantManager = new RestaurantManager(fakeRepo);
-        //    restaurantManager.GetAllRestaurants();
-         
-        //}
-
         [TestMethod]
         public void DeleteRestaurant()
         {
@@ -131,6 +122,17 @@ namespace UnitTests
             FakeRestaurantRepository fakeRepo = new FakeRestaurantRepository(restaurants);
             RestaurantManager restaurantManager = new RestaurantManager(fakeRepo);
             restaurantManager.UpdateRestaurantInfo("NewName", "Amsterdam", "Pisano", "5623AA", 5, "+318967333", "Yes", "Yes", restaurant);
+        }
+
+        [TestMethod]
+        public void FindAllRestaurantsEligibleForDiscount()
+        {
+            List<Restaurant> restaurants = new List<Restaurant>() { new Restaurant { Id = 1, Name = "Pizzeria" }, new Restaurant { Id = 2, Name = "Mexican Dream" } };
+            FakeRestaurantRepository fakeRepo = new FakeRestaurantRepository(restaurants);
+
+            RestaurantManager restaurantManager = new RestaurantManager(fakeRepo);
+            List<Restaurant> foundRestaurants = restaurantManager.FindAllRestaurantsEligibleForDiscount();
+            CollectionAssert.AreEqual(restaurants, foundRestaurants);
         }
     }
 }

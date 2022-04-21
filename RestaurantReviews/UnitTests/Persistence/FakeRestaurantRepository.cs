@@ -93,14 +93,6 @@ namespace UnitTests.Persistence
                     {
                         restaurants[i] = restaurant;
                     }
-                    //else
-                    //{
-                    //    if (i == restaurants.Count - 1)
-                    //    {
-                    //        throw new RestaurantInfoException();
-                    //    }
-                    //}
-
                 }
             }
             else
