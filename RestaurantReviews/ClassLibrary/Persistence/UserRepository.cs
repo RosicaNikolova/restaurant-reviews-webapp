@@ -108,7 +108,7 @@ namespace ClassLibrary.Persistence
         }
 
 
-        public bool SaveUser(User user)
+        public void SaveUser(User user)
         {
             try
             {
@@ -125,8 +125,6 @@ namespace ClassLibrary.Persistence
                     conn.Open();
 
                     int result = cmd.ExecuteNonQuery();
-                    return true;
-
                 }
             }
             catch (Exception)
@@ -135,7 +133,7 @@ namespace ClassLibrary.Persistence
             }
         }
       
-        public bool DeleteUser(User user)
+        public void DeleteUser(User user)
         {
             try
             {
@@ -145,13 +143,12 @@ namespace ClassLibrary.Persistence
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("id", user.Id);
                     conn.Open();
-                    cmd.ExecuteNonQuery();
-                    return true;
+                    cmd.ExecuteNonQuery();                   
                 }
             }
             catch (Exception)
             {
-                return false;
+                throw new DataBaseException();
             }
         }
 
@@ -267,5 +264,6 @@ namespace ClassLibrary.Persistence
                 throw new DataBaseException();
             }
         }
+
     }
 }

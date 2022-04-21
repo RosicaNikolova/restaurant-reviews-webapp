@@ -10,7 +10,7 @@ namespace UnitTests.Persistence
 {
     class FakeUserRepository : IUserRepository
     {
-        private List<User> users;
+        public List<User> users;
 
         public FakeUserRepository(List<User> users)
         {
@@ -29,17 +29,12 @@ namespace UnitTests.Persistence
             return null;
         }
 
-        public bool DeleteUser(User user)
+        public void DeleteUser(User user)
         {
-            foreach (User u in users)
+           if (users.Contains(user))
             {
-                if (user.Id == u.Id)
-                {
-                    users.Remove(u);
-                    return true;
-                }
+                users.Remove(user);
             }
-            return false;
         }
 
         public User FindUserByEmail(string email)
@@ -66,17 +61,17 @@ namespace UnitTests.Persistence
             }
         }
 
-        public bool SaveUser(User user)
+        public void SaveUser(User user)
         {
            if(user.LastName == "")
             {
-                return false;
+            
             }
             else
             {
                 user.Id = 1;
                 users.Add(user);
-                return true;
+            
             }
         }
 
@@ -99,7 +94,5 @@ namespace UnitTests.Persistence
         {
             throw new NotImplementedException();
         }
-    }
-
-       
+    }      
 }

@@ -10,7 +10,7 @@ namespace UnitTests.Persistence
     public class FakeRestaurantRepository : IRestaurantRepository
     {
 
-        private List<Restaurant> restaurants;
+        public List<Restaurant> restaurants;
 
         public FakeRestaurantRepository(List<Restaurant> restaurants)
         {
@@ -24,7 +24,7 @@ namespace UnitTests.Persistence
 
         public Restaurant FindRestaurant(int id)
         {
-            foreach (var r in restaurants)
+            foreach (Restaurant r in restaurants)
             {
                 if (r.Id == id)
                 {
@@ -36,7 +36,7 @@ namespace UnitTests.Persistence
 
         public List<Restaurant> GetAllRestaurantsEligibleForDiscount()
         {
-            throw new NotImplementedException();
+            return restaurants;
         }
 
         public int GetNumberOfReviews(int id)
@@ -46,24 +46,31 @@ namespace UnitTests.Persistence
 
         public string GetRestaurantName(int restaurantId)
         {
-            throw new NotImplementedException();
+            foreach (Restaurant restaurant in restaurants)
+            {
+                if (restaurant.Id == restaurantId)
+                {
+                    return restaurant.Name;
+                }
+            }
+            return "";
         }
 
         public int GetRestuarantIdByName(string name)
         {
-            throw new NotImplementedException();
+            foreach (Restaurant restaurant in restaurants)
+            {
+                if (restaurant.Name == name)
+                {
+                    return restaurant.Id;
+                }
+            }
+            return -1;
         }
 
         public List<Restaurant> GetRestuarants()
         {
-            if (restaurants.Count == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return restaurants;
-            }
+            return restaurants;
         }
 
         public double GetScoreForRestaurant(int id, string typeOfScore)
@@ -71,30 +78,37 @@ namespace UnitTests.Persistence
             return 6.7;
         }
 
-        public bool SaveRestaurant(Restaurant restaurant)
+        public void SaveRestaurant(Restaurant restaurant)
         {
-            if (restaurant.Id != -1)
+            restaurants.Add(restaurant);
+        }
+
+        public void UpdateRestaurant(Restaurant restaurant)
+        {
+            if (restaurants.Count != 0)
             {
-                return true;
+                for (int i = 0; i < restaurants.Count; i++)
+                {
+                    if (restaurants[i].Id == restaurant.Id)
+                    {
+                        restaurants[i] = restaurant;
+                    }
+                    //else
+                    //{
+                    //    if (i == restaurants.Count - 1)
+                    //    {
+                    //        throw new RestaurantInfoException();
+                    //    }
+                    //}
+
+                }
             }
             else
             {
-                return false;
+                throw new RestaurantInfoException();
             }
         }
-
-        public bool UpdateRestaurant(Restaurant restaurant)
-        {
-            foreach (var r in restaurants)
-            {
-                if (r.Id == restaurant.Id)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-       
     }
+
 }
+

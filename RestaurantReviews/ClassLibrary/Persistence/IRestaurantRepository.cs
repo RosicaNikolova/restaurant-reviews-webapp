@@ -17,9 +17,9 @@ namespace ClassLibrary.Persistence
        
         public double GetScoreForRestaurant(int id, string typeOfScore);
       
-        public bool SaveRestaurant(Restaurant restaurant);
+        public void SaveRestaurant(Restaurant restaurant);
         
-        public bool UpdateRestaurant(Restaurant restaurant);
+        public void UpdateRestaurant(Restaurant restaurant);
         
         public void Delete(Restaurant restaurant);
         public int GetRestuarantIdByName(string name);

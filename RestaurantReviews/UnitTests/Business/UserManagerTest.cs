@@ -24,13 +24,14 @@ namespace UnitTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(LoginException))]
+        //[ExpectedException(typeof(LoginException))]
         public void FindUserFailsTest()
         {         
             FakeUserRepository fakeRepo = new FakeUserRepository(new List<User> ());
 
             UserManager userManager = new UserManager(fakeRepo);
-            User foundUser = userManager.FindUser("rosica@gmail.com", "123abv"); 
+            User foundUser = userManager.FindUser("rosica@gmail.com", "123abv");
+            Assert.AreEqual(null, foundUser);
         }
 
         [TestMethod]
@@ -45,13 +46,13 @@ namespace UnitTests
 
 
         [TestMethod]
-        [ExpectedException(typeof(FindUsersException))]
+        //[ExpectedException(typeof(FindUsersException))]
         public void FindAllUsersFailsTest()
         {
-            
             FakeUserRepository fakeRepo = new FakeUserRepository(new List<User>());
             UserManager userManager = new UserManager(fakeRepo);
             List<User> foundUsers = userManager.FindAllUsers();
+            Assert.AreEqual(null, foundUsers);
         }
 
 
@@ -62,26 +63,14 @@ namespace UnitTests
             userCreated.Email = "rosica@gmail.com";
             userCreated.Password = "123abv";
             userCreated.Id = 1;
-            FakeUserRepository fakeRepo = new FakeUserRepository(new List<User> { userCreated });
-            UserManager userManager = new UserManager(fakeRepo);
-            userManager.DeleteUser(userCreated);     
-        }
-
-
-        [TestMethod]
-        [ExpectedException(typeof(DelteUserException))]
-        public void DeleteUsersFailsTest()
-        {
-            User userCreated = new User();
-            userCreated.Email = "rosica@gmail.com";
-            userCreated.Password = "123abv";
-            userCreated.Id = 1;
-            FakeUserRepository fakeRepo = new FakeUserRepository(new List<User>());
-
+            List<User> users = new List<User>();
+            users.Add(userCreated);
+            FakeUserRepository fakeRepo = new FakeUserRepository(users);
             UserManager userManager = new UserManager(fakeRepo);
             userManager.DeleteUser(userCreated);
-
+            users.Remove(userCreated);
+            CollectionAssert.AreEqual(users, fakeRepo.users);
+           
         }
-
     }
 }

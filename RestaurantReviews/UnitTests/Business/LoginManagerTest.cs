@@ -22,17 +22,5 @@ namespace UnitTests
             User loggedInUser = logginManager.Login("rosica@gmail.com", "123abv");
             Assert.AreEqual(1, loggedInUser.Id);
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(LoginException))]
-        public void LoginFailsTest()
-        {
-            FakeUserRepository fakeRepo = new FakeUserRepository(new List<User>());
-            LoginManager userManager = new LoginManager(fakeRepo);
-            userManager.Login("fail", "test123");
-        }
-
-
-
     }
 }

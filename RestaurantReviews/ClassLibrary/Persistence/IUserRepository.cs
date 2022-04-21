@@ -14,12 +14,12 @@ namespace ClassLibrary.Persistence
 
         public List<User> FindAll();
         
-        public bool SaveUser(User user);
+        public void SaveUser(User user);
 
-        public bool DeleteUser(User user);
+        public void DeleteUser(User user);
         string GetNameOfUser(int userId);
         List<User> GetUsersEligibleForDiscount();
         User FindUserById(int userId);
-        void UpdateUser(User user);
+        public void UpdateUser(User user);
     }
 }

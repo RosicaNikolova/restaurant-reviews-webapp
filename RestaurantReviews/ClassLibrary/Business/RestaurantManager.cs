@@ -67,8 +67,6 @@ namespace ClassLibrary.Business
             restaurantRepository.SaveRestaurant(restaurant);
         }
 
-
-
         public void UpdateRestaurantInfo(string name, string city, string street, string postcode, int streetNumber, string phone, string parking, string delivery, Restaurant restaurant)
         {
             try
@@ -92,7 +90,6 @@ namespace ClassLibrary.Business
         public void DeleteRestaurant(Restaurant restaurant)
         {
             restaurantRepository.Delete(restaurant);
-
         }
 
         public string GetRestaurantName(int restaurantId)
@@ -106,7 +103,6 @@ namespace ClassLibrary.Business
             List<Restaurant> restaurants = new List<Restaurant>();
             restaurants = restaurantRepository.GetAllRestaurantsEligibleForDiscount();
             return restaurants;
-
         }
     }
 }

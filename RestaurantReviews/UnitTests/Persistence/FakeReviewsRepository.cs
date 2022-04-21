@@ -17,7 +17,7 @@ namespace UnitTests.Persistence
             this.reviews = reviews;
         }
 
-        public bool CreateReview(Review review, int authorId, int RestaurantId)
+        public void CreateReview(Review review, int authorId, int RestaurantId)
         {
             throw new NotImplementedException();
         }

@@ -27,7 +27,6 @@ namespace UnitTests
 
 
         [TestMethod]
-        [ExpectedException(typeof(RegistrationException))]
         public void RegisterFailsTest()
         {
             User userCreated = new User();
@@ -39,18 +38,8 @@ namespace UnitTests
             FakeUserRepository fakeRepo = new FakeUserRepository(new List<User> { userCreated });
             RegistrationManager registerManager = new RegistrationManager(fakeRepo);
             User registeredUser = registerManager.Register("rosica@gmail.com", "123abv", "Rositsa", "Nikolova");
+            Assert.AreEqual(null, registeredUser);
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(SaveUserException))]
-        public void RegistrationFailsToSaveUserTest()
-        {
-            FakeUserRepository fakeRepo = new FakeUserRepository(new List<User>());
-            RegistrationManager registerManager = new RegistrationManager(fakeRepo);
-            User registeredUser = registerManager.Register("rosica@gmail.com", "123abv", "Rositsa", "");  
-        }
-
-
 
     }
 }

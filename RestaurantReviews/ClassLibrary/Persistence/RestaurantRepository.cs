@@ -154,7 +154,7 @@ namespace ClassLibrary.Persistence
             }
         }
 
-        public bool SaveRestaurant(Restaurant restaurant)
+        public void SaveRestaurant(Restaurant restaurant)
         {
             try
             {
@@ -174,7 +174,6 @@ namespace ClassLibrary.Persistence
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    return true;
                 }
             }
             catch (Exception)
@@ -183,7 +182,7 @@ namespace ClassLibrary.Persistence
             }
         }
 
-        public bool UpdateRestaurant(Restaurant restaurant)
+        public void UpdateRestaurant(Restaurant restaurant)
         {
             try
             {
@@ -203,7 +202,6 @@ namespace ClassLibrary.Persistence
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    return true;
                 }
             }
             catch (Exception)

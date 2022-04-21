@@ -171,7 +171,7 @@ namespace ClassLibrary.Persistence
             }
         }
 
-        public bool CreateReview(Review review, int authorId, int restaurantId)
+        public void CreateReview(Review review, int authorId, int restaurantId)
         {
             try
             {
@@ -190,15 +190,6 @@ namespace ClassLibrary.Persistence
                     conn.Open();
 
                     int result = cmd.ExecuteNonQuery();
-                    if (result > 0)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
                 }
             }
             catch (Exception)
