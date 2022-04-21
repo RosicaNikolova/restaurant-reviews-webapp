@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Business
 {
-    public class LoginManager
+    public class LoginManager : ILoginManager
     {
         private IUserRepository userRepository;
 
@@ -20,6 +20,5 @@ namespace ClassLibrary.Business
             User user = userRepository.FindUser(email, password);
             return user;      
         }
-
     }
 }

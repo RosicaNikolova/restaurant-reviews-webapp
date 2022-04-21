@@ -1,5 +1,4 @@
-﻿
-using ClassLibrary.Exceptions;
+﻿using ClassLibrary.Exceptions;
 using ClassLibrary.Persistence;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Business
 {
-    public class ReviewManager
+    public class ReviewManager : IReviewManager
     {
 
         private IReviewRepository reviewRepository;

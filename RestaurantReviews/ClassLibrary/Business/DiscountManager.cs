@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClassLibrary.Business
 {
-    public class DiscountManager
+    public class DiscountManager: IDiscountManager
     {
         private IDiscountRepository discountRepository;
         public DiscountManager(IDiscountRepository repo)

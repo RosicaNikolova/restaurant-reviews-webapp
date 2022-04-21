@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Business
 {
-    public class RestaurantManager
+    public class RestaurantManager : IRestaurantManager
     {
         IRestaurantRepository restaurantRepository;
 

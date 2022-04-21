@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Business
 {
-    public class RegistrationManager
+    public class RegistrationManager : IRegistrationManager
     {
 
         private IUserRepository userRepository;
