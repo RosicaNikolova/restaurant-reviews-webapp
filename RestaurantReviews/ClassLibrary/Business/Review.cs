@@ -32,5 +32,10 @@ namespace ClassLibrary.Business
                 $"Date: {this.Date} {Environment.NewLine} Rating: Food: {this.FoodScore}, Service: {this.ServiceScore}, Price: {this.PriceScore} {Environment.NewLine}" +
                 $"Comment: {this.Comment}";
         }
+
+        public Review()
+        {
+                
+        }
     }
 }

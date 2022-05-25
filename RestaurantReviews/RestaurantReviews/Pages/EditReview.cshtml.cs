@@ -23,7 +23,7 @@ namespace RestaurantReviews.Pages
             try
             {
                 int userId = Convert.ToInt32(User.FindFirst("id").Value);
-                review = reviewManager.GetReviewByIdForUser(id, userId);
+                Review review = reviewManager.GetReviewByIdForUser(id, userId);
                 return Page();
             }
             catch (DataBaseException)
